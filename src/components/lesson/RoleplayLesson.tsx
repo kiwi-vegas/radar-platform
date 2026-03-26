@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import type { Lesson, RoleplayContent } from '@/lib/types'
 
 interface RoleplayLessonProps {
@@ -58,24 +59,18 @@ export default function RoleplayLesson({
         <p className="text-tx-secondary text-sm leading-relaxed">{content.intro}</p>
       </div>
 
-      {/* Script */}
-      <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
-        <div className="px-5 py-3 border-b border-surface-border flex items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          <span className="text-xs font-semibold text-brand-orange uppercase tracking-wider">Your Script</span>
+      {/* Lesson thumbnail */}
+      {lesson.image && (
+        <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <Image
+            src={lesson.image}
+            alt={lesson.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 896px) 100vw, 768px"
+          />
         </div>
-        <div className="p-5">
-          <pre className="text-tx-secondary text-sm leading-relaxed whitespace-pre-wrap font-sans">
-            {content.script}
-          </pre>
-        </div>
-      </div>
+      )}
 
       {/* Scoring criteria callout */}
       <div className="grid sm:grid-cols-2 gap-3">
