@@ -22,13 +22,16 @@ npm run dev
 ## Project Structure
 ```
 platform/
-├── supabase/schema.sql          # DB schema — run once
+├── supabase/
+│   ├── schema.sql               # DB schema — run once first
+│   └── schema_admin.sql         # Admin extensions — run after schema.sql
 ├── src/
 │   ├── lib/
 │   │   ├── types.ts             # All TypeScript types
 │   │   └── supabase/
 │   │       ├── client.ts        # Browser Supabase client
-│   │       └── server.ts        # Server Supabase client
+│   │       ├── server.ts        # Server Supabase client
+│   │       └── admin.ts         # Service role client (bypasses RLS — server only!)
 │   ├── data/courses/
 │   │   ├── radar.ts             # RADAR course content (all lessons)
 │   │   └── index.ts             # Course lookup helpers
@@ -39,13 +42,24 @@ platform/
 │   │   ├── dashboard            # Course catalog
 │   │   ├── courses/[slug]       # Course overview
 │   │   ├── courses/[slug]/lessons/[lessonId]  # Lesson player
-│   │   └── api/progress         # GET/POST progress API
+│   │   ├── admin/               # Admin dashboard (is_admin required)
+│   │   │   ├── layout.tsx       # Admin auth check + nav
+│   │   │   ├── page.tsx         # User progress dashboard
+│   │   │   └── nudges/page.tsx  # Email template editor + send
+│   │   └── api/
+│   │       ├── progress         # GET/POST student progress
+│   │       └── admin/
+│   │           ├── users        # GET all users with stats
+│   │           ├── templates    # GET/PUT email templates
+│   │           └── nudge        # POST send nudge email
 │   └── components/
 │       ├── course/
-│       │   ├── CourseSidebar.tsx
-│       │   └── (add more here)
+│       │   └── CourseSidebar.tsx
+│       ├── admin/
+│       │   ├── AdminDashboard.tsx  # User table, filters, send modal
+│       │   └── NudgeManager.tsx    # Template editor + at-risk user list
 │       └── lesson/
-│           ├── LessonPlayer.tsx  # Orchestrates all lesson types
+│           ├── LessonPlayer.tsx
 │           ├── VideoLesson.tsx
 │           ├── FlashCardLesson.tsx
 │           ├── ReflectionLesson.tsx
@@ -94,6 +108,45 @@ Lessons without a vimeoId show a "Coming soon" placeholder.
 - Sidebar: `#0D1320`
 - Border: `#1E2A3B`
 
+## Admin System
+
+### Setup (one-time)
+1. Run `supabase/schema_admin.sql` in Supabase SQL Editor
+2. Make yourself an admin:
+   ```sql
+   UPDATE user_profiles SET is_admin = TRUE
+   WHERE id = (SELECT id FROM auth.users WHERE email = 'your@email.com');
+   ```
+3. Add env vars in Vercel Settings → Environment Variables:
+   - `SUPABASE_SERVICE_ROLE_KEY` — from Supabase Project Settings → API
+   - `RESEND_API_KEY` — from resend.com (free tier available)
+   - `NUDGE_FROM_EMAIL` — e.g. `Barry Jenkins <barry@yourdomain.com>` (must be a verified Resend domain)
+4. Redeploy (env vars bake in at build time)
+
+### Admin Dashboard — `/admin`
+- User table: name, email, joined date, last active, progress bar, status badge
+- Filter by: All / At Risk / In Progress / Graduated / Not Started
+- Sort by: inactivity, progress, join date
+- "At Risk" banner shows when users are stalled 3+ days
+- "Send Nudge" button → modal with template selector + editable subject/body → send via Resend
+
+### Email Templates — `/admin/nudges`
+- Edit the 3 nudge sequences (3-Day, 4-Day, 7-Day)
+- Template changes save to Supabase `email_templates` table
+- Right panel shows at-risk users with quick-send buttons
+- All emails: From = Barry Jenkins, Reply-To = kiwi@ylopo.com
+
+### At-Risk Detection
+- User is "at risk" if: has started (≥1 lesson completed) + not graduated + 3+ days since last lesson activity
+- `inactiveDays` is calculated from max(completed_at) across lessons
+- Dashboard auto-sorts at-risk users to the top
+
+### Email Send Flow
+1. Admin opens nudge modal (template auto-selected based on inactive days)
+2. Admin can edit subject/body before sending
+3. POST /api/admin/nudge → Resend API → logged in email_nudges table
+4. User row shows "Last nudge: X days ago" after send
+
 ## Status
 - ✅ Auth (login/signup via Supabase)
 - ✅ Dashboard with course progress
@@ -101,7 +154,9 @@ Lessons without a vimeoId show a "Coming soon" placeholder.
 - ✅ All 5 lesson types built
 - ✅ Progress saved to Supabase
 - ✅ Graduation flow
-- ⬜ Admin panel (future)
-- ⬜ PPC Plus course content (future)
-- ⬜ Email notifications (future)
-- ⬜ Mastermind unlock gate (future)
+- ✅ Admin dashboard (user progress table + at-risk detection)
+- ✅ Email nudge system (3 templates, manual send via Resend)
+- ⬜ Automated nudge scheduling (add Vercel cron job or Supabase scheduled function)
+- ⬜ SMS nudges (add Twilio)
+- ⬜ PPC Plus course content
+- ⬜ Mastermind unlock gate
