@@ -110,6 +110,34 @@ export const radarCourse: Course = {
           },
         },
         {
+          id: 'lesson-1-mindset-videos',
+          title: 'Mindset Short Videos',
+          type: 'video-collection',
+          durationMinutes: 15,
+          content: {
+            intro:
+              "These are the golden nuggets — short clips pulled directly from Barry's Big Mastermind sessions. Watch each one, absorb the coaching, and carry it into your next call.",
+            videos: [
+              {
+                title: 'ABC',
+                vimeoId: '1177384833',
+              },
+              {
+                title: 'Stop Being a Waiter',
+                vimeoId: '1177385201',
+              },
+              {
+                title: "When They Say I'm Not Ready",
+                vimeoId: '1177385446',
+              },
+              {
+                title: "Don't Take No Personally",
+                vimeoId: '1177385010',
+              },
+            ],
+          },
+        },
+        {
           id: 'lesson-1-3',
           title: 'Live RADAR Roleplay Training',
           type: 'roleplay',

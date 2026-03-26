@@ -2,7 +2,7 @@
 // COURSE CONTENT TYPES (static data)
 // ============================================================
 
-export type LessonType = 'video' | 'flashcard' | 'reflection' | 'quiz' | 'roleplay'
+export type LessonType = 'video' | 'flashcard' | 'reflection' | 'quiz' | 'roleplay' | 'video-collection'
 
 export interface FlashCard {
   id: string
@@ -63,12 +63,23 @@ export interface RoleplayContent {
   remediation?: string
 }
 
+export interface VideoCollectionItem {
+  title: string
+  vimeoId: string
+}
+
+export interface VideoCollectionContent {
+  intro?: string
+  videos: VideoCollectionItem[]
+}
+
 export type LessonContent =
   | VideoContent
   | FlashCardContent
   | ReflectionContent
   | QuizContent
   | RoleplayContent
+  | VideoCollectionContent
 
 export interface Lesson {
   id: string

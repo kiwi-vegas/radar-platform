@@ -9,6 +9,7 @@ import FlashCardLesson from './FlashCardLesson'
 import ReflectionLesson from './ReflectionLesson'
 import QuizLesson from './QuizLesson'
 import RoleplayLesson from './RoleplayLesson'
+import VideoCollectionLesson from './VideoCollectionLesson'
 
 interface LessonPlayerProps {
   course: Course
@@ -26,6 +27,7 @@ const TYPE_LABEL: Record<string, string> = {
   reflection: 'Reflection',
   quiz: 'Knowledge Check',
   roleplay: 'Practice Call',
+  'video-collection': 'Video Series',
 }
 
 export default function LessonPlayer({
@@ -223,6 +225,15 @@ export default function LessonPlayer({
               lesson={lesson}
               isCompleted={isAlreadyCompleted}
               onComplete={(score) => markComplete(score)}
+              completing={completing}
+            />
+          )}
+
+          {lesson.type === 'video-collection' && (
+            <VideoCollectionLesson
+              lesson={lesson}
+              isCompleted={isAlreadyCompleted}
+              onComplete={() => markComplete()}
               completing={completing}
             />
           )}
