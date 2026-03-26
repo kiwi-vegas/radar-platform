@@ -106,7 +106,7 @@ export default function WaitlistTable({ initialEntries }: { initialEntries: Wait
             <div>Email</div>
             <div>Signed Up</div>
           </div>
-          <div className="divide-y" style={{ divideColor: '#1E2A3B' }}>
+          <div className="divide-y" style={{ borderColor: '#1E2A3B' }}>
             {filtered.map((entry) => (
               <div
                 key={entry.id}

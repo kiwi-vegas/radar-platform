@@ -138,7 +138,7 @@ export default function NudgeManager() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Send failed')
-      setSentUserIds((prev) => new Set([...prev, user.id]))
+      setSentUserIds((prev) => { const next = new Set(prev); next.add(user.id); return next })
     } catch (e) {
       setSendErrors((prev) => ({ ...prev, [user.id]: e instanceof Error ? e.message : 'Failed' }))
     } finally {
@@ -297,7 +297,7 @@ export default function NudgeManager() {
                 <p className="text-tx-muted text-xs mt-1">Everyone is on track or has graduated</p>
               </div>
             ) : (
-              <div className="divide-y" style={{ divideColor: '#1E2A3B' }}>
+              <div className="divide-y" style={{ borderColor: '#1E2A3B' }}>
                 {atRiskUsers.map((user) => {
                   const isSent = sentUserIds.has(user.id)
                   const isSending = sendingUserId === user.id
