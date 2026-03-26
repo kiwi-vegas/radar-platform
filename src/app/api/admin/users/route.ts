@@ -32,7 +32,12 @@ export async function GET() {
   }
 
   // Use service role for all data queries (bypasses RLS)
-  const admin = createAdminClient()
+  let admin: ReturnType<typeof createAdminClient>
+  try {
+    admin = createAdminClient()
+  } catch (e) {
+    return NextResponse.json({ error: e instanceof Error ? e.message : 'Admin client init failed' }, { status: 500 })
+  }
 
   // 1. All auth users
   const { data: authData, error: authError } = await admin.auth.admin.listUsers({

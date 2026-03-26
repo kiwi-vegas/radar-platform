@@ -134,8 +134,8 @@ export default function AdminDashboard() {
         fetch('/api/admin/users'),
         fetch('/api/admin/templates'),
       ])
-      if (!usersRes.ok) throw new Error('Failed to load users')
       const ud = await usersRes.json()
+      if (!usersRes.ok) throw new Error(ud.error || 'Failed to load users')
       setUsers(ud.users ?? [])
 
       if (templatesRes.ok) {
