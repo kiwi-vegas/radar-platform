@@ -38,36 +38,18 @@ export const radarCourse: Course = {
         },
         {
           id: 'lesson-1-2',
-          title: 'Understanding Early-Stage Sellers',
-          type: 'video',
-          durationMinutes: 4,
-          content: {
-            vimeoId: '',
-            description:
-              "Who are early-stage sellers and why are they worth more than any inbound lead you'll ever get? Learn why the 0–6 month window is the most valuable — and most ignored — window in real estate.",
-            keyPoints: [
-              'Early-stage sellers are 0–6 months from listing',
-              'They have zero agent relationship yet — you can be first',
-              'The first agent to build trust wins 80% of the time',
-            ],
-          },
-        },
-        {
-          id: 'lesson-1-3',
-          title: 'Core Concepts Flashcard Drill',
+          title: 'Winning Mindset Drills',
           type: 'flashcard',
           durationMinutes: 5,
           image: '/images/radar-flashcards-mindset.png',
           content: {
             intro:
-              'Before you learn the tactics, lock in the core concepts. Go through each card. Read the question, think about your answer, then flip. Speed is not the goal — understanding is.',
+              'Rapid-fire flashcards that train how you think, respond, and show up. Master the mindset that separates top performers from everyone else.',
             cards: [
               {
                 id: 'fc-1',
-                question: "In the Radar AI program, what does the acronym 'ABC' stand for?",
+                question: "In the RADAR program, what does the acronym 'ABC' stand for?",
                 answer: 'Always Be Consulting.',
-                questionImage: '/images/flashcards/1a.png',
-                answerImage: '/images/flashcards/1b.png',
               },
               {
                 id: 'fc-2',
@@ -75,56 +57,42 @@ export const radarCourse: Course = {
                   "What is the primary psychological shift required when moving from a 'closing' mindset to a 'consulting' mindset?",
                 answer:
                   'Focusing on building a relationship rather than pressuring for an immediate listing or sale.',
-                questionImage: '/images/flashcards/2a.png',
-                answerImage: '/images/flashcards/2b.png',
               },
               {
                 id: 'fc-3',
                 question:
-                  'According to the Radar Mastermind, the goal for every call should be to build a relationship with a _____.',
+                  'According to the RADAR Mastermind, the goal for every call should be to build a relationship with a _____.',
                 answer: 'Human being.',
-                questionImage: '/images/flashcards/3a.png',
-                answerImage: '/images/flashcards/3b.png',
               },
               {
                 id: 'fc-4',
                 question:
                   "Why is the 'Consultant' role particularly effective for homeowners compared to stock portfolio owners?",
                 answer:
-                  "Most consumers lack a trusted tool or advisor to help them track the value of their largest asset — their home.",
-                questionImage: '/images/flashcards/4a.png',
-                answerImage: '/images/flashcards/4b.png',
+                  'Most consumers lack a trusted tool or advisor to help them track the value of their largest asset — their home.',
               },
               {
                 id: 'fc-5',
                 question:
                   "What 'superpower' is recommended for agents to surface a lead's real story and motivation?",
                 answer: 'Curiosity.',
-                questionImage: '/images/flashcards/5a.png',
-                answerImage: '/images/flashcards/5b.png',
               },
               {
                 id: 'fc-6',
                 question:
                   "Instead of trying to 'overcome' an objection, agents should seek to _____ it.",
                 answer: 'Understand it.',
-                questionImage: '/images/flashcards/6a.png',
-                answerImage: '/images/flashcards/6b.png',
               },
               {
                 id: 'fc-7',
                 question: 'What is the three-step framework for handling resistance on a call?',
                 answer: 'Affirm → Seek to Understand → Value-First Pivot.',
-                questionImage: '/images/flashcards/7a.png',
-                answerImage: '/images/flashcards/7b.png',
               },
               {
                 id: 'fc-8',
                 question: "What does 'Normalizing Not Ready' mean?",
                 answer:
                   "Accepting that most leads won't be ready to sell immediately — to prevent the agent from entering fight-or-flight mode.",
-                questionImage: '/images/flashcards/8a.png',
-                answerImage: '/images/flashcards/8b.png',
               },
               {
                 id: 'fc-9',
@@ -132,15 +100,11 @@ export const radarCourse: Course = {
                   'How should an agent respond to a homeowner who says they are 12 months away from selling?',
                 answer:
                   "Affirm the decision (e.g., 'Planning early is smart') and express curiosity about how they landed on that timeline.",
-                questionImage: '/images/flashcards/9a.png',
-                answerImage: '/images/flashcards/9b.png',
               },
               {
                 id: 'fc-10',
                 question: "When you argue with a lead, they _____.",
                 answer: 'Defend.',
-                questionImage: '/images/flashcards/10a.png',
-                answerImage: '/images/flashcards/10b.png',
               },
             ],
           },
