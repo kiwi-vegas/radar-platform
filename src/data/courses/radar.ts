@@ -110,6 +110,46 @@ export const radarCourse: Course = {
           },
         },
         {
+          id: 'lesson-1-3',
+          title: 'Live RADAR Roleplay Training',
+          type: 'roleplay',
+          durationMinutes: 10,
+          image: '/images/ai-roleplay.png',
+          content: {
+            intro:
+              'This is where everything comes together. Inside the RADAR Roleplay Lab, you\'ll practice real conversations with a live AI simulator that mirrors actual seller objections and scenarios. This is the closest thing to a real RADAR call — without the pressure. Your goal is simple: apply the "Always Be Consulting" mindset, stay calm and curious, and work your way to an 8 out of 10 or higher. Repeat until it feels natural — because this is where confidence is built.',
+            script: `You're speaking with a homeowner who recently checked their home value online.
+
+---
+
+HOMEOWNER: "Hello?"
+
+YOU: "Hi [Name] — this is [Your Name] with [Your Team]. I'm reaching out because you took a look at your home's value recently, and I just wanted to quickly introduce myself as your go-to resource for the market. Is this a good time for just two minutes?"
+
+HOMEOWNER: "Sure, but I should let you know — we're not planning to sell anytime soon."
+
+YOU: "That's completely fine — most people I connect with aren't. Honestly, that's not why I'm calling. I just want to make sure that when the time does come, you have someone who actually knows your neighborhood and isn't just guessing at numbers. When was the last time anyone gave you a real breakdown of what's happening with values in your area?"
+
+HOMEOWNER: "Not recently... maybe a couple years ago."
+
+YOU: "That's pretty common. The market has shifted quite a bit since then — some neighborhoods are up, some have softened. Either way, you deserve to know exactly where you stand. It's your biggest asset. Would it be okay if I put together a quick, no-pressure market snapshot for your home — just so you have it?"
+
+HOMEOWNER: "I guess that would be fine."
+
+YOU: "Perfect. I'll make it simple and useful — no fluff. And if things ever change on your end, you'll already know me and trust the information I'm bringing you. That's really all this is."
+
+---
+
+Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No pitch. No close. Just consulting.`,
+            phoneNumber: '(555) 555-0100',
+            callInstructions:
+              'Call this number and you\'ll be connected to the RADAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
+            minimumScore: 8,
+            remediation:
+              'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
+          },
+        },
+        {
           id: 'lesson-1-4',
           title: 'Why "Not Ready" Is the Opportunity',
           type: 'video',

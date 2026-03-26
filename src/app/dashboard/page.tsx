@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { allCourses, getAllLessonIds, getCurrentLesson } from '@/data/courses'
+import WaitlistButton from '@/components/dashboard/WaitlistButton'
 
 async function getProgressForCourses(userId: string, courseSlugs: string[]) {
   const supabase = await createClient()
@@ -51,6 +52,14 @@ export default async function DashboardPage() {
     user.id,
     allCourses.map((c) => c.slug)
   )
+
+  // Check waitlist status
+  const { data: waitlistEntry } = await supabase
+    .from('ppc_waitlist')
+    .select('id')
+    .eq('user_id', user.id)
+    .maybeSingle()
+  const isOnWaitlist = !!waitlistEntry
 
   return (
     <div className="min-h-screen bg-surface">
@@ -188,21 +197,28 @@ export default async function DashboardPage() {
             )
           })}
 
-          {/* Coming soon placeholder */}
-          <div className="bg-surface-card border border-surface-border border-dashed rounded-2xl overflow-hidden opacity-50">
-            {/* Placeholder thumbnail */}
-            <div className="w-full aspect-video bg-surface-border flex items-center justify-center">
-              <span className="text-3xl font-black tracking-tight text-surface-hover">PPC+</span>
+          {/* PPC Plus — coming soon with waitlist */}
+          <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden hover:border-surface-hover transition-colors">
+            <div className="relative w-full aspect-video overflow-hidden bg-surface">
+              <Image
+                src="/images/coming-summer-2026.png"
+                alt="PPC Plus — Coming Summer 2026"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
             </div>
             <div className="p-5">
-              <div className="inline-flex items-center gap-1.5 text-xs font-medium text-tx-muted bg-surface-border rounded-full px-3 py-1 mb-3">
-                Coming Soon
+              <div className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full mb-3"
+                style={{ background: '#6366f115', color: '#6366f1', border: '1px solid #6366f130' }}>
+                Coming Summer 2026
               </div>
               <h2 className="text-base font-bold text-tx-primary mb-0.5">PPC Plus</h2>
               <p className="text-tx-secondary text-xs mb-1 font-medium">Getting More Buyers</p>
-              <p className="text-tx-muted text-xs leading-relaxed">
+              <p className="text-tx-muted text-xs mb-4 leading-relaxed">
                 Master paid search and digital advertising to build a consistent buyer pipeline.
               </p>
+              <WaitlistButton initialJoined={isOnWaitlist} />
             </div>
           </div>
         </div>
