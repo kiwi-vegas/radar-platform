@@ -24,7 +24,6 @@ export default function FlashCardLesson({
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
   const [results, setResults] = useState<CardResult[]>(new Array(cards.length).fill(null))
   const [showSummary, setShowSummary] = useState(isCompleted)
 
@@ -32,8 +31,7 @@ export default function FlashCardLesson({
   const isLast = currentIndex === cards.length - 1
   const currentResult = results[currentIndex]
 
-  // The card shows answer when flipped OR hovered
-  const showAnswer = isFlipped || isHovered
+  const showAnswer = isFlipped
 
   const correctCount = results.filter((r) => r === 'correct').length
 
@@ -48,7 +46,6 @@ export default function FlashCardLesson({
         setShowSummary(true)
       } else {
         setIsFlipped(false)
-        setIsHovered(false)
         setTimeout(() => setCurrentIndex((i) => i + 1), 150)
       }
     }, 300)
@@ -61,7 +58,6 @@ export default function FlashCardLesson({
 
   function restart() {
     setIsFlipped(false)
-    setIsHovered(false)
     setResults(new Array(cards.length).fill(null))
     setShowSummary(false)
     setTimeout(() => setCurrentIndex(0), 150)
@@ -163,38 +159,30 @@ export default function FlashCardLesson({
       )}
 
       {/* Progress dots */}
-      <div className="flex items-center justify-between text-xs text-tx-muted">
-        <span>Card {currentIndex + 1} of {cards.length}</span>
-        <div className="flex gap-1.5 items-center">
-          {cards.map((_, i) => {
-            const r = results[i]
-            return (
-              <div
-                key={i}
-                className="h-2 rounded-full transition-all duration-300"
-                style={{
-                  width: i === currentIndex ? '20px' : '8px',
-                  background:
-                    r === 'correct' ? '#22c55e'
-                    : r === 'incorrect' ? '#ef4444'
-                    : i === currentIndex ? '#F97316'
-                    : '#1E2A3B',
-                }}
-              />
-            )
-          })}
-        </div>
-        <span className="text-brand-orange font-medium tabular-nums">
-          {correctCount}/{cards.length}
-        </span>
+      <div className="flex items-center justify-center gap-1.5">
+        {cards.map((_, i) => {
+          const r = results[i]
+          return (
+            <div
+              key={i}
+              className="h-2 rounded-full transition-all duration-300"
+              style={{
+                width: i === currentIndex ? '20px' : '8px',
+                background:
+                  r === 'correct' ? '#22c55e'
+                  : r === 'incorrect' ? '#ef4444'
+                  : i === currentIndex ? '#F97316'
+                  : '#1E2A3B',
+              }}
+            />
+          )
+        })}
       </div>
 
       {/* Flashcard */}
       <div
         className="perspective cursor-pointer select-none"
         style={{ height: current.questionImage ? '380px' : '260px' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         onClick={handleCardClick}
       >
         <div
@@ -221,7 +209,7 @@ export default function FlashCardLesson({
             {/* Hover hint */}
             <div className="absolute bottom-3 left-0 right-0 flex justify-center">
               <span className="text-xs text-tx-muted bg-surface-card/80 backdrop-blur-sm px-3 py-1 rounded-full border border-surface-border">
-                Hover to reveal · Click to lock
+                Click to reveal answer
               </span>
             </div>
           </div>
@@ -290,7 +278,6 @@ export default function FlashCardLesson({
         onClick={() => {
           if (currentIndex === 0) return
           setIsFlipped(false)
-          setIsHovered(false)
           setTimeout(() => setCurrentIndex((i) => i - 1), 150)
         }}
         disabled={currentIndex === 0}
