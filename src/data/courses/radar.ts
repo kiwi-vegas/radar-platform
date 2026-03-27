@@ -268,6 +268,159 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
             ],
           },
         },
+        {
+          id: 'lesson-1-quiz',
+          title: 'Mindset Module Quiz',
+          type: 'quiz',
+          durationMinutes: 10,
+          content: {
+            intro:
+              "Time to lock it in. This 10-question quiz covers everything from the RADAR mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
+            passingScore: 70,
+            questions: [
+              {
+                id: 'mq-1',
+                question:
+                  "What is the primary mindset shift proposed by the RADAR program to replace the traditional 'ABC' of sales?",
+                options: [
+                  'Always Be Collecting',
+                  'Always Be Closing',
+                  'Always Be Cold-calling',
+                  'Always Be Consulting',
+                ],
+                correctIndex: 3,
+                explanation:
+                  'This shift emphasizes providing value as a trusted advisor and resource rather than pressuring the homeowner for an immediate sale.',
+              },
+              {
+                id: 'mq-2',
+                question:
+                  "According to the source material, why might 'timid' agents actually outperform aggressive ones in this consultative model?",
+                options: [
+                  'They avoid uncomfortable conversations, which homeowners find more appealing.',
+                  'They spend more time researching property data before making the first call.',
+                  'They are naturally better at memorizing complex scripts for every scenario.',
+                  'They are motivated by service and making people happy rather than personal gain.',
+                ],
+                correctIndex: 3,
+                explanation:
+                  "Once they overcome their need for personal acceptance, their natural inclination toward service allows them to build deeper trust with leads.",
+              },
+              {
+                id: 'mq-3',
+                question:
+                  "In the 'Australia Shoes' story used in the Mastermind, what is the key takeaway regarding an agent's success?",
+                options: [
+                  'Lowering prices is necessary when a market lacks immediate demand.',
+                  "Success is determined by the agent's perception of the opportunity.",
+                  'Geographic location is the primary driver of high propensity sellers.',
+                  'The quality of the leads is the only factor in determining a listing agreement.',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "The story illustrates that two people can see the same lack of immediate results as either a disaster or the greatest opportunity ever.",
+              },
+              {
+                id: 'mq-4',
+                question:
+                  "What is the psychological consequence of an agent attempting to 'argue' against a lead's objection?",
+                options: [
+                  "The agent will be perceived as a more authoritative 'closer.'",
+                  'The lead will instinctively defend their original position.',
+                  "The lead will acknowledge the agent's superior market knowledge.",
+                  'The lead will feel pressured and immediately book an appointment.',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "The training notes that when you argue, people defend — whereas when you affirm, you lower their resistance.",
+              },
+              {
+                id: 'mq-5',
+                question:
+                  "How does the training define 'courage' for agents who are nervous about calling strangers?",
+                options: [
+                  'The ability to follow a script so perfectly that rejection becomes impossible.',
+                  'The state of finally feeling no anxiety before starting a call block.',
+                  'The confidence that comes from knowing every detail about a property.',
+                  'The decision to take action while still feeling nervous or uncomfortable.',
+                ],
+                correctIndex: 3,
+                explanation:
+                  "The material emphasizes that it is normal to be scared and that courage is simply proceeding despite that feeling.",
+              },
+              {
+                id: 'mq-6',
+                question:
+                  'According to the mindset module, what is the ultimate goal of every call with a homeowner?',
+                options: [
+                  'To build a relationship with a human being.',
+                  'To obtain a signed listing agreement during the first conversation.',
+                  'To prove that the AI assistant provided accurate information.',
+                  "To convince the homeowner to move their timeline forward.",
+                ],
+                correctIndex: 0,
+                explanation:
+                  "Since most people are not ready to sell today, the immediate priority is establishing a long-term connection.",
+              },
+              {
+                id: 'mq-7',
+                question:
+                  "What is the intended result of 'Normalizing Not Ready' during a conversation with a seller?",
+                options: [
+                  'It encourages the homeowner to list their home sooner than they intended.',
+                  "It keeps the agent's nervous system calm and makes the homeowner feel safe.",
+                  'It allows the agent to end the call quickly and move to more motivated leads.',
+                  'It signals to the lead that the agent is not interested in their business yet.',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "By accepting that the homeowner isn't ready, the agent avoids 'fight or flight' mode and keeps the conversation authentic.",
+              },
+              {
+                id: 'mq-8',
+                question:
+                  "Barry Jenkins mentions that for most Americans, their home represents their largest net worth asset. What mindset should this trigger in the agent?",
+                options: [
+                  'They should pressure the homeowner to sell before their equity decreases.',
+                  "They should provide a trusted tool to track that asset, similar to a stock portfolio.",
+                  'They should remind the homeowner of the high risk of market crashes.',
+                  "They should charge a fee for the 'free' consulting services provided.",
+                ],
+                correctIndex: 1,
+                explanation:
+                  "Agents provide value by becoming the consultant who helps the consumer monitor and manage their most significant financial asset.",
+              },
+              {
+                id: 'mq-9',
+                question:
+                  "What does the 'Waiter/Waitress' analogy describe in the context of proactive lead conversion?",
+                options: [
+                  "Agents who only work with leads who are ready to list their home 'today.'",
+                  "Agents who only wait to be told what the 'order' (the listing) is.",
+                  'Agents who provide high-quality concierge service to their existing clients.',
+                  'Agents who facilitate introductions between buyers and sellers in a neighborhood.',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "Successful agents must create the need for their involvement by being curious and finding opportunities to add value.",
+              },
+              {
+                id: 'mq-10',
+                question:
+                  "Why does the Mastermind suggest that agents should 'celebrate failure' within their teams?",
+                options: [
+                  'To reward agents who fail so they do not feel pressured to succeed.',
+                  'To identify which agents are not following the provided scripts.',
+                  'To document common homeowner objections for future marketing materials.',
+                  'To hack the negative self-talk that prevents agents from trying new things.',
+                ],
+                correctIndex: 3,
+                explanation:
+                  "By changing the perspective on failure, agents avoid the shame that leads to quitting and instead focus on the 'reps' needed for growth.",
+              },
+            ],
+          },
+        },
       ],
     },
 
