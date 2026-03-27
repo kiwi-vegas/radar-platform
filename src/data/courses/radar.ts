@@ -194,6 +194,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
           title: 'Mindset Module Quiz',
           type: 'quiz',
           durationMinutes: 10,
+          image: '/images/quiz.png',
           content: {
             intro:
               "Time to lock it in. This 10-question quiz covers everything from the RADAR mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
