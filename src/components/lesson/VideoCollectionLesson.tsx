@@ -151,12 +151,12 @@ export default function VideoCollectionLesson({
       </div>
 
       {/* Video player */}
-      <div className="rounded-2xl overflow-hidden" style={{ background: '#0B0F1A' }}>
+      <div className="max-w-xl mx-auto w-full rounded-2xl overflow-hidden" style={{ background: '#0B0F1A' }}>
         <div ref={containerRef} className="w-full" />
       </div>
 
       {/* Progress bar + time */}
-      <div className="space-y-1.5">
+      <div className="max-w-xl mx-auto w-full space-y-1.5">
         <div className="w-full h-1 rounded-full overflow-hidden" style={{ background: '#1E2A3B' }}>
           <div
             className="h-full rounded-full transition-all duration-300"
