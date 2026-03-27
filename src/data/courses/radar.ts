@@ -113,7 +113,7 @@ export const radarCourse: Course = {
           id: 'lesson-1-mindset-videos',
           title: 'Mindset Short Videos',
           type: 'video-collection',
-          durationMinutes: 15,
+          durationMinutes: 25,
           content: {
             intro:
               "These are the golden nuggets — short clips pulled directly from Barry's Big Mastermind sessions. Watch each one, absorb the coaching, and carry it into your next call.",
@@ -133,6 +133,18 @@ export const radarCourse: Course = {
               {
                 title: "Don't Take No Personally",
                 vimeoId: '1177385010',
+              },
+              {
+                title: 'The Neuroscience of Courage in Sales',
+                vimeoId: '1177726386',
+              },
+              {
+                title: 'Growth Lives in Hard Things',
+                vimeoId: '1177743903',
+              },
+              {
+                title: "Stop Worrying About Bothering People",
+                vimeoId: '1177745274',
               },
             ],
           },
