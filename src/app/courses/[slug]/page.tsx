@@ -10,6 +10,7 @@ const LESSON_TYPE_ICONS: Record<string, string> = {
   reflection: '✍',
   quiz: '⚡',
   roleplay: '📞',
+  'video-collection': '▶',
 }
 
 const LESSON_TYPE_LABELS: Record<string, string> = {
@@ -18,6 +19,7 @@ const LESSON_TYPE_LABELS: Record<string, string> = {
   reflection: 'Reflection',
   quiz: 'Quiz',
   roleplay: 'Practice Call',
+  'video-collection': 'Video Series',
 }
 
 export default async function CourseOverviewPage({
