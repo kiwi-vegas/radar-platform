@@ -121,9 +121,9 @@ export const radarCourse: Course = {
               {
                 id: 'fc-9',
                 question:
-                  'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RADAR mindset?\n\nA. "Got it, sounds good. I\'ll follow up with you closer to that time."\nB. "Perfect, I\'ll set a reminder to check back in next year."\nC. "Totally makes sense. Just curious — how did you decide on a year?"\nD. "Great, I\'d love to show you what your home is worth when you\'re ready."',
+                  'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RADAR mindset?',
                 answer:
-                  'C — "Totally makes sense. Just curious — how did you decide on a year?"\n\nAffirm their timeline, then use curiosity to keep the conversation open. A and B schedule them away. D jumps to a pitch too early.',
+                  '"Totally makes sense. Just curious — how did you decide on a year?"',
               },
               {
                 id: 'fc-10',
