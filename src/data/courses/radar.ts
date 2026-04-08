@@ -28,7 +28,7 @@ export const radarCourse: Course = {
             instructorName: 'Barry Jenkins',
             instructorTitle: 'Head Realtor in Residence, Ylopo  ·  CMO, Better Homes and Gardens NAGR',
             instructorImage: '/images/Barry-realtor-in-residence.jpg',
-            bio: "Barry began his career at 18 and has spanned nearly two decades in real estate. He currently runs three teams in the Virginia Beach / Hampton, VA area and serves as CMO of Better Homes and Gardens NAGR. His teams sold just under 900 units last year and are ranked #9 on the Real Trends 1,000 — with Barry largely out of production and in the office only part time. He is also a full-time Executive at Ylopo as Head Realtor in Residence, where he trains agents, assists with product development, and leads platform evangelism. His passions are his faith, his wife, his two little boys, and his new foster daughter. His love of tech and systems allows him to leverage substantially — buying him more time with the people who matter most.",
+            bio: "Barry Jenkins is a real estate team leader at LPT Realty, real estate investor, and a national coach focused on building high-performance sales systems that convert. He also helps lead an 80-agent brokerage and has spent over a decade helping agents generate, nurture, and close business at scale. As the Head Realtor in Residence at Ylopo, he specializes in AI-driven lead conversion and database monetization. He is also the author of Too Nice for Sales which has remained a best seller for the last several years in a row, and a sought-after speaker on practical, results-driven growth.",
             credentials: [
               { value: '#9', label: 'Real Trends 1,000' },
               { value: '~900', label: 'Units Sold / Year' },
