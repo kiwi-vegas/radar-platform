@@ -182,7 +182,7 @@ export default function FlashCardLesson({
       {/* Flashcard */}
       <div
         className="perspective cursor-pointer select-none"
-        style={{ height: current.questionImage ? '380px' : '260px' }}
+        style={{ height: current.questionImage ? '380px' : '300px' }}
         onClick={handleCardClick}
       >
         <div
@@ -203,7 +203,7 @@ export default function FlashCardLesson({
             ) : (
               <div className="flex flex-col items-center justify-center h-full p-8 text-center">
                 <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-4">Question</div>
-                <p className="text-tx-primary text-lg font-medium leading-snug">{current.question}</p>
+                <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.question}</p>
               </div>
             )}
             {/* Hover hint */}
@@ -232,7 +232,7 @@ export default function FlashCardLesson({
             ) : (
               <div className="flex flex-col items-center justify-center h-full p-8 text-center">
                 <div className="text-xs font-semibold text-brand-orange uppercase tracking-wider mb-4">Answer</div>
-                <p className="text-tx-primary text-lg font-medium leading-snug">{current.answer}</p>
+                <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.answer}</p>
               </div>
             )}
           </div>

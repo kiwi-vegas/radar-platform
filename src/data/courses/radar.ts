@@ -20,6 +20,25 @@ export const radarCourse: Course = {
         'The foundation everything else is built on. If the mindset is wrong, nothing else works. Complete all lessons before advancing to tactics.',
       lessons: [
         {
+          id: 'lesson-0-intro',
+          title: 'Meet Your Instructor',
+          type: 'intro',
+          durationMinutes: 2,
+          content: {
+            instructorName: 'Barry Jenkins',
+            instructorTitle: 'Head Realtor in Residence, Ylopo  ·  CMO, Better Homes and Gardens NAGR',
+            instructorImage: '/images/Barry-realtor-in-residence.jpg',
+            bio: "Barry began his career at 18 and has spanned nearly two decades in real estate. He currently runs three teams in the Virginia Beach / Hampton, VA area and serves as CMO of Better Homes and Gardens NAGR. His teams sold just under 900 units last year and are ranked #9 on the Real Trends 1,000 — with Barry largely out of production and in the office only part time. He is also a full-time Executive at Ylopo as Head Realtor in Residence, where he trains agents, assists with product development, and leads platform evangelism. His passions are his faith, his wife, his two little boys, and his new foster daughter. His love of tech and systems allows him to leverage substantially — buying him more time with the people who matter most.",
+            credentials: [
+              { value: '#9', label: 'Real Trends 1,000' },
+              { value: '~900', label: 'Units Sold / Year' },
+              { value: '3', label: 'Teams in Virginia' },
+              { value: '20 yrs', label: 'In Real Estate' },
+            ],
+            ctaLabel: 'Begin Training',
+          },
+        },
+        {
           id: 'lesson-1-1',
           title: 'The RADAR Mindset — From "Always Be Closing" to "Always Be Consulting"',
           type: 'video',
@@ -97,9 +116,9 @@ export const radarCourse: Course = {
               {
                 id: 'fc-9',
                 question:
-                  'How should an agent respond to a homeowner who says they are 12 months away from selling?',
+                  'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RADAR mindset?\n\nA. "Got it, sounds good. I\'ll follow up with you closer to that time."\nB. "Perfect, I\'ll set a reminder to check back in next year."\nC. "Totally makes sense. Just curious — how did you decide on a year?"\nD. "Great, I\'d love to show you what your home is worth when you\'re ready."',
                 answer:
-                  "Affirm the decision (e.g., 'Planning early is smart') and express curiosity about how they landed on that timeline.",
+                  'C — "Totally makes sense. Just curious — how did you decide on a year?"\n\nAffirm their timeline, then use curiosity to keep the conversation open. A and B schedule them away. D jumps to a pitch too early.',
               },
               {
                 id: 'fc-10',
@@ -147,46 +166,6 @@ export const radarCourse: Course = {
                 vimeoId: '1177745274',
               },
             ],
-          },
-        },
-        {
-          id: 'lesson-1-3',
-          title: 'Live RADAR Roleplay Training',
-          type: 'roleplay',
-          durationMinutes: 10,
-          image: '/images/ai-roleplay.png',
-          content: {
-            intro:
-              'This is where everything comes together. Inside the RADAR Roleplay Lab, you\'ll practice real conversations with a live AI simulator that mirrors actual seller objections and scenarios. This is the closest thing to a real RADAR call — without the pressure. Your goal is simple: apply the "Always Be Consulting" mindset, stay calm and curious, and work your way to an 8 out of 10 or higher. Repeat until it feels natural — because this is where confidence is built.',
-            script: `You're speaking with a homeowner who recently checked their home value online.
-
----
-
-HOMEOWNER: "Hello?"
-
-YOU: "Hi [Name] — this is [Your Name] with [Your Team]. I'm reaching out because you took a look at your home's value recently, and I just wanted to quickly introduce myself as your go-to resource for the market. Is this a good time for just two minutes?"
-
-HOMEOWNER: "Sure, but I should let you know — we're not planning to sell anytime soon."
-
-YOU: "That's completely fine — most people I connect with aren't. Honestly, that's not why I'm calling. I just want to make sure that when the time does come, you have someone who actually knows your neighborhood and isn't just guessing at numbers. When was the last time anyone gave you a real breakdown of what's happening with values in your area?"
-
-HOMEOWNER: "Not recently... maybe a couple years ago."
-
-YOU: "That's pretty common. The market has shifted quite a bit since then — some neighborhoods are up, some have softened. Either way, you deserve to know exactly where you stand. It's your biggest asset. Would it be okay if I put together a quick, no-pressure market snapshot for your home — just so you have it?"
-
-HOMEOWNER: "I guess that would be fine."
-
-YOU: "Perfect. I'll make it simple and useful — no fluff. And if things ever change on your end, you'll already know me and trust the information I'm bringing you. That's really all this is."
-
----
-
-Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No pitch. No close. Just consulting.`,
-            phoneNumber: '(555) 555-0100',
-            callInstructions:
-              'Call this number and you\'ll be connected to the RADAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
-            minimumScore: 8,
-            remediation:
-              'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
           },
         },
         {
@@ -392,6 +371,46 @@ Would a quarterly market update be useful to you?"`,
             minimumScore: 8,
             remediation:
               'If you scored below 8, re-watch the video lesson, then call again. Most agents need 2–3 attempts before it feels natural. That is completely normal.',
+          },
+        },
+        {
+          id: 'lesson-1-3',
+          title: 'Live RADAR Roleplay Training',
+          type: 'roleplay',
+          durationMinutes: 10,
+          image: '/images/ai-roleplay.png',
+          content: {
+            intro:
+              'This is where everything comes together. Inside the RADAR Roleplay Lab, you\'ll practice real conversations with a live AI simulator that mirrors actual seller objections and scenarios. This is the closest thing to a real RADAR call — without the pressure. Your goal is simple: apply the "Always Be Consulting" mindset, stay calm and curious, and work your way to an 8 out of 10 or higher. Repeat until it feels natural — because this is where confidence is built.',
+            script: `You're speaking with a homeowner who recently checked their home value online.
+
+---
+
+HOMEOWNER: "Hello?"
+
+YOU: "Hi [Name] — this is [Your Name] with [Your Team]. I'm reaching out because you took a look at your home's value recently, and I just wanted to quickly introduce myself as your go-to resource for the market. Is this a good time for just two minutes?"
+
+HOMEOWNER: "Sure, but I should let you know — we're not planning to sell anytime soon."
+
+YOU: "That's completely fine — most people I connect with aren't. Honestly, that's not why I'm calling. I just want to make sure that when the time does come, you have someone who actually knows your neighborhood and isn't just guessing at numbers. When was the last time anyone gave you a real breakdown of what's happening with values in your area?"
+
+HOMEOWNER: "Not recently... maybe a couple years ago."
+
+YOU: "That's pretty common. The market has shifted quite a bit since then — some neighborhoods are up, some have softened. Either way, you deserve to know exactly where you stand. It's your biggest asset. Would it be okay if I put together a quick, no-pressure market snapshot for your home — just so you have it?"
+
+HOMEOWNER: "I guess that would be fine."
+
+YOU: "Perfect. I'll make it simple and useful — no fluff. And if things ever change on your end, you'll already know me and trust the information I'm bringing you. That's really all this is."
+
+---
+
+Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No pitch. No close. Just consulting.`,
+            phoneNumber: '(555) 555-0100',
+            callInstructions:
+              'Call this number and you\'ll be connected to the RADAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
+            minimumScore: 8,
+            remediation:
+              'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
           },
         },
         {

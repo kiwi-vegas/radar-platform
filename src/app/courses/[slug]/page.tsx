@@ -11,6 +11,7 @@ const LESSON_TYPE_ICONS: Record<string, string> = {
   quiz: '⚡',
   roleplay: '📞',
   'video-collection': '▶',
+  'intro': '👋',
 }
 
 const LESSON_TYPE_LABELS: Record<string, string> = {
@@ -20,6 +21,7 @@ const LESSON_TYPE_LABELS: Record<string, string> = {
   quiz: 'Quiz',
   roleplay: 'Practice Call',
   'video-collection': 'Video Series',
+  'intro': 'Introduction',
 }
 
 export default async function CourseOverviewPage({
@@ -273,6 +275,7 @@ const TYPE_BG: Record<string, string> = {
   reflection: 'from-amber-900/60 to-amber-800/30',
   quiz:       'from-emerald-900/60 to-emerald-800/30',
   roleplay:   'from-rose-900/60 to-rose-800/30',
+  intro:      'from-orange-900/60 to-orange-800/30',
 }
 
 function LessonPlaceholder({ type, color, index }: { type: string; color: string; index: number }) {

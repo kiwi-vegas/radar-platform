@@ -2,7 +2,7 @@
 // COURSE CONTENT TYPES (static data)
 // ============================================================
 
-export type LessonType = 'video' | 'flashcard' | 'reflection' | 'quiz' | 'roleplay' | 'video-collection'
+export type LessonType = 'video' | 'flashcard' | 'reflection' | 'quiz' | 'roleplay' | 'video-collection' | 'intro'
 
 export interface FlashCard {
   id: string
@@ -73,6 +73,20 @@ export interface VideoCollectionContent {
   videos: VideoCollectionItem[]
 }
 
+export interface IntroCredential {
+  value: string
+  label: string
+}
+
+export interface IntroContent {
+  instructorName: string
+  instructorTitle: string
+  instructorImage: string
+  bio: string
+  credentials?: IntroCredential[]
+  ctaLabel?: string
+}
+
 export type LessonContent =
   | VideoContent
   | FlashCardContent
@@ -80,6 +94,7 @@ export type LessonContent =
   | QuizContent
   | RoleplayContent
   | VideoCollectionContent
+  | IntroContent
 
 export interface Lesson {
   id: string
