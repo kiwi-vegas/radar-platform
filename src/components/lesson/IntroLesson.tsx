@@ -51,10 +51,33 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
         </div>
       )}
 
-      {/* Bio */}
-      <div className="rounded-2xl bg-surface border border-surface-border p-6">
-        <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-3">About Barry</div>
-        <p className="text-tx-secondary text-sm leading-relaxed">{content.bio}</p>
+      {/* Bio + Book side by side */}
+      <div className={`flex gap-5 items-start ${content.book ? 'flex-col sm:flex-row' : ''}`}>
+        <div className="rounded-2xl bg-surface border border-surface-border p-6 flex-1">
+          <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-3">About Barry</div>
+          <p className="text-tx-secondary text-sm leading-relaxed">{content.bio}</p>
+        </div>
+
+        {content.book && (
+          <div className="rounded-2xl bg-surface border border-surface-border p-5 flex flex-col items-center text-center sm:w-44 shrink-0 gap-3">
+            <div className="text-xs font-semibold text-brand-orange uppercase tracking-wider">Best-Selling Author</div>
+            <div className="relative w-28 rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
+              <Image
+                src={content.book.coverImage}
+                alt={content.book.title}
+                fill
+                className="object-cover"
+                sizes="112px"
+              />
+            </div>
+            <div>
+              <p className="text-tx-primary text-xs font-bold leading-snug">{content.book.title}</p>
+              {content.book.subtitle && (
+                <p className="text-tx-muted text-xs mt-0.5 leading-tight">{content.book.subtitle}</p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* CTA */}

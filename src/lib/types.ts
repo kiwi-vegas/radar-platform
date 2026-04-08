@@ -78,12 +78,19 @@ export interface IntroCredential {
   label: string
 }
 
+export interface IntroBook {
+  title: string
+  subtitle?: string
+  coverImage: string
+}
+
 export interface IntroContent {
   instructorName: string
   instructorTitle: string
   instructorImage: string
   bio: string
   credentials?: IntroCredential[]
+  book?: IntroBook
   ctaLabel?: string
 }
 

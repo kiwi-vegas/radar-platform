@@ -35,6 +35,11 @@ export const radarCourse: Course = {
               { value: '3', label: 'Teams in Virginia' },
               { value: '20 yrs', label: 'In Real Estate' },
             ],
+            book: {
+              title: 'Too Nice for Sales',
+              subtitle: 'A Practical Guide to Ethical Lead Conversion',
+              coverImage: '/images/too-nice-for-sales.jpg',
+            },
             ctaLabel: 'Begin Training',
           },
         },
