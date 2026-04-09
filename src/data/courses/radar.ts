@@ -384,6 +384,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
           title: 'Walkthrough of the Ylopo Seller Report',
           type: 'embed',
           durationMinutes: 3,
+          image: '/images/seller-report-walkthrough.png',
           content: {
             description:
               "An agent working RADAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
@@ -395,6 +396,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
           title: 'Create a Seller Alert for a Lead in Stars',
           type: 'embed',
           durationMinutes: 2,
+          image: '/images/creating-a-seller-report.png',
           content: {
             description:
               "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RADAR lead you work.",
