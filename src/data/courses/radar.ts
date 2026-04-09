@@ -340,45 +340,6 @@ export const radarCourse: Course = {
         'What to say, how to say it, and how to handle real conversations. Each lesson pairs a short video with a mandatory Maverick practice call. You must score ≥ 8 to advance.',
       lessons: [
         {
-          id: 'lesson-2-1',
-          title: 'The Opening Script',
-          type: 'video',
-          durationMinutes: 3,
-          content: {
-            vimeoId: '',
-            description:
-              "The first 15 seconds of every call determine everything. Here's the exact language that opens doors without triggering resistance.",
-            keyPoints: [
-              'Lead with curiosity — never pitch',
-              'Name the system (RADAR) — it builds instant credibility',
-              'Your tone matters more than your exact words',
-            ],
-          },
-        },
-        {
-          id: 'lesson-2-2',
-          title: 'Practice: The Opening Script',
-          type: 'roleplay',
-          durationMinutes: 10,
-          content: {
-            intro:
-              "You've watched the script. Now you need to own it. The only way to own a script is to say it out loud — to a real system that gives you honest feedback. Call the Maverick practice line below.",
-            script: `"Hi, is this [Name]?
-
-Hey, this is [Your Name] — I work with a system called RADAR that identifies homeowners in [Area] who may be thinking about selling in the next few months.
-
-I'm not calling to pressure you at all — I just wanted to reach out, introduce myself, and see if it would be valuable to keep you updated on what's happening with home values in your neighborhood.
-
-Would a quarterly market update be useful to you?"`,
-            phoneNumber: '(555) 000-MVRK',
-            callInstructions:
-              "Call the Maverick practice line. Run through the opening script exactly as written above. When you're done, score yourself honestly using the criteria on the right. Be tough — an 8 means it was genuinely smooth and natural.",
-            minimumScore: 8,
-            remediation:
-              'If you scored below 8, re-watch the video lesson, then call again. Most agents need 2–3 attempts before it feels natural. That is completely normal.',
-          },
-        },
-        {
           id: 'lesson-1-3',
           title: 'Live RADAR Roleplay Training',
           type: 'roleplay',
@@ -416,6 +377,67 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
             minimumScore: 8,
             remediation:
               'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
+          },
+        },
+        {
+          id: 'lesson-2-arcade-1',
+          title: 'Walkthrough of the Ylopo Seller Report',
+          type: 'embed',
+          durationMinutes: 3,
+          content: {
+            description:
+              "An agent working RADAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
+            embedHtml: `<div style="position: relative; padding-bottom: calc(45.2604% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/gzLHC8kQA5oMnu7blYRu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Walkthrough of the Ylopo Seller Report" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
+          },
+        },
+        {
+          id: 'lesson-2-arcade-2',
+          title: 'Create a Seller Alert for a Lead in Stars',
+          type: 'embed',
+          durationMinutes: 2,
+          content: {
+            description:
+              "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RADAR lead you work.",
+            embedHtml: `<div style="position: relative; padding-bottom: calc(48.6458% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/yXwzm80DHqKBacZdbwlX?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create a Seller Alert for a Lead in Stars" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
+          },
+        },
+        {
+          id: 'lesson-2-1',
+          title: 'The Opening Script',
+          type: 'video',
+          durationMinutes: 3,
+          content: {
+            vimeoId: '',
+            description:
+              "The first 15 seconds of every call determine everything. Here's the exact language that opens doors without triggering resistance.",
+            keyPoints: [
+              'Lead with curiosity — never pitch',
+              'Name the system (RADAR) — it builds instant credibility',
+              'Your tone matters more than your exact words',
+            ],
+          },
+        },
+        {
+          id: 'lesson-2-2',
+          title: 'Practice: The Opening Script',
+          type: 'roleplay',
+          durationMinutes: 10,
+          content: {
+            intro:
+              "You've watched the script. Now you need to own it. The only way to own a script is to say it out loud — to a real system that gives you honest feedback. Call the Maverick practice line below.",
+            script: `"Hi, is this [Name]?
+
+Hey, this is [Your Name] — I work with a system called RADAR that identifies homeowners in [Area] who may be thinking about selling in the next few months.
+
+I'm not calling to pressure you at all — I just wanted to reach out, introduce myself, and see if it would be valuable to keep you updated on what's happening with home values in your neighborhood.
+
+Would a quarterly market update be useful to you?"`,
+            phoneNumber: '(555) 000-MVRK',
+            callInstructions:
+              "Call the Maverick practice line. Run through the opening script exactly as written above. When you're done, score yourself honestly using the criteria on the right. Be tough — an 8 means it was genuinely smooth and natural.",
+            minimumScore: 8,
+            remediation:
+              'If you scored below 8, re-watch the video lesson, then call again. Most agents need 2–3 attempts before it feels natural. That is completely normal.',
           },
         },
         {

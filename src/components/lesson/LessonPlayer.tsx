@@ -11,6 +11,7 @@ import QuizLesson from './QuizLesson'
 import RoleplayLesson from './RoleplayLesson'
 import VideoCollectionLesson from './VideoCollectionLesson'
 import IntroLesson from './IntroLesson'
+import EmbedLesson from './EmbedLesson'
 
 interface LessonPlayerProps {
   course: Course
@@ -30,6 +31,7 @@ const TYPE_LABEL: Record<string, string> = {
   roleplay: 'Practice Call',
   'video-collection': 'Video Series',
   'intro': 'Introduction',
+  'embed': 'Interactive',
 }
 
 export default function LessonPlayer({
@@ -242,6 +244,15 @@ export default function LessonPlayer({
 
           {lesson.type === 'intro' && (
             <IntroLesson
+              lesson={lesson}
+              isCompleted={isAlreadyCompleted}
+              onComplete={() => markComplete()}
+              completing={completing}
+            />
+          )}
+
+          {lesson.type === 'embed' && (
+            <EmbedLesson
               lesson={lesson}
               isCompleted={isAlreadyCompleted}
               onComplete={() => markComplete()}
