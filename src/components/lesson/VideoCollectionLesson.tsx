@@ -97,6 +97,20 @@ export default function VideoCollectionLesson({
         </div>
       )}
 
+      {/* Quiz warning banner */}
+      {!isCompleted && (
+        <div className="flex items-start gap-3 rounded-xl px-4 py-3.5 border" style={{ background: '#F9731610', borderColor: '#F9731640' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" className="shrink-0 mt-0.5">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <p className="text-sm leading-snug" style={{ color: '#F97316' }}>
+            <span className="font-semibold">Don't skip these videos.</span>
+            {' '}The Mindset Quiz is coming up right after this section — these clips are exactly what it tests.
+          </p>
+        </div>
+      )}
+
       {/* Video tab bar */}
       <div className="flex gap-2 flex-wrap">
         {content.videos.map((v, i) => {
