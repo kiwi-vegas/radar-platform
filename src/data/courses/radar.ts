@@ -24,10 +24,11 @@ export const radarCourse: Course = {
           title: 'Meet Your Instructor',
           type: 'intro',
           durationMinutes: 2,
+          image: '/images/barry-celebrate.png',
           content: {
             instructorName: 'Barry Jenkins',
             instructorTitle: 'Head Realtor in Residence, Ylopo  ·  CMO, Better Homes and Gardens NAGR',
-            instructorImage: '/images/Barry-realtor-in-residence.jpg',
+            instructorImage: '/images/Barry1.jpg',
             bio: "Barry Jenkins is a real estate team leader at LPT Realty, real estate investor, and a national coach focused on building high-performance sales systems that convert. He also helps lead an 80-agent brokerage and has spent over a decade helping agents generate, nurture, and close business at scale. As the Head Realtor in Residence at Ylopo, he specializes in AI-driven lead conversion and database monetization. He is also the author of Too Nice for Sales which has remained a best seller for the last several years in a row, and a sought-after speaker on practical, results-driven growth.",
             credentials: [
               { value: '#9', label: 'Real Trends 1,000' },

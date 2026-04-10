@@ -16,15 +16,17 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
   return (
     <div className="space-y-6">
       {/* Hero image */}
-      <div className="relative rounded-2xl overflow-hidden border border-surface-border" style={{ aspectRatio: '16 / 6' }}>
-        <Image
-          src={content.instructorImage}
-          alt={content.instructorName}
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="(max-width: 896px) 100vw, 768px"
-        />
+      <div className="flex justify-center sm:justify-start">
+        <div className="relative rounded-2xl overflow-hidden border border-surface-border w-56 sm:w-64" style={{ aspectRatio: '1 / 1' }}>
+          <Image
+            src={content.instructorImage}
+            alt={content.instructorName}
+            fill
+            className="object-cover object-top"
+            priority
+            sizes="256px"
+          />
+        </div>
       </div>
 
       {/* Name + title */}
