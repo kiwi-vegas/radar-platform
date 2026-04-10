@@ -97,6 +97,7 @@ export interface IntroContent {
 export interface EmbedContent {
   description: string
   embedHtml: string
+  durationLabel?: string
 }
 
 export type LessonContent =

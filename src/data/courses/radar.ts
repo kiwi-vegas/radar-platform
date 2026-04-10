@@ -390,6 +390,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
             description:
               "An agent working RADAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(45.2604% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/gzLHC8kQA5oMnu7blYRu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Walkthrough of the Ylopo Seller Report" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
+            durationLabel: '2-3 minutes to complete',
           },
         },
         {
@@ -402,6 +403,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
             description:
               "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RADAR lead you work.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(48.6458% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/yXwzm80DHqKBacZdbwlX?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create a Seller Alert for a Lead in Stars" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
+            durationLabel: '1 minute to complete',
           },
         },
         {

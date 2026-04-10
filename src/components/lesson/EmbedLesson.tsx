@@ -25,6 +25,11 @@ export default function EmbedLesson({ lesson, isCompleted, onComplete, completin
         dangerouslySetInnerHTML={{ __html: content.embedHtml }}
       />
 
+      {/* Duration hint */}
+      {content.durationLabel && (
+        <p className="text-tx-muted text-xs text-center">({content.durationLabel})</p>
+      )}
+
       {/* Complete button */}
       <div className="pt-2">
         {isCompleted ? (
