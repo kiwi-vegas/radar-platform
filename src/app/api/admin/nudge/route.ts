@@ -2,15 +2,25 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { NextResponse } from 'next/server'
 
+const COURSE_URL = 'https://radar-platform-black.vercel.app/'
+
 function textToHtml(text: string): string {
-  return '<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; max-width: 600px;">' +
-    text
-      .split('\n\n')
-      .map((para) =>
-        `<p style="margin: 0 0 16px 0;">${para.replace(/\n/g, '<br>')}</p>`
-      )
-      .join('') +
-    '</div>'
+  const body = text
+    .split('\n\n')
+    .map((para) =>
+      `<p style="margin: 0 0 16px 0;">${para.replace(/\n/g, '<br>')}</p>`
+    )
+    .join('')
+
+  const cta = `
+    <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+      <a href="${COURSE_URL}" style="display: inline-block; background-color: #F97316; color: #ffffff; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; padding: 12px 28px; border-radius: 8px;">
+        Jump Back Into the Course →
+      </a>
+    </div>
+  `
+
+  return `<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; max-width: 600px;">${body}${cta}</div>`
 }
 
 // POST /api/admin/nudge — send a nudge email to a user
