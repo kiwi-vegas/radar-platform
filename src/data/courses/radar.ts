@@ -718,14 +718,629 @@ I'm not here to push anything at all. I work with a lot of homeowners who are 6�
             ],
           },
         },
+      ],
+    },
+
+    // ============================================================
+    // SECTION 4: SCRIPTS
+    // ============================================================
+    {
+      id: 'section-scripts',
+      title: 'Section 4: Scripts',
+      description:
+        'The complete call from first word to next step. These lessons give you the exact language, the scenarios, and the reps to deliver every RaiDAR call with confidence and zero pressure.',
+      lessons: [
         {
-          id: 'lesson-3-4',
+          id: 'lesson-4-1',
+          title: 'The Purpose and Vibe of the RaiDAR Call',
+          type: 'flashcard',
+          durationMinutes: 7,
+          content: {
+            intro:
+              'Before you touch a script, you need to own the mindset behind it. These cards cover what the RaiDAR call is actually trying to accomplish — and what it is not. Get this foundation right and the words will land naturally.',
+            cards: [
+              {
+                id: 'sc-1',
+                question: 'What is the primary purpose of the RaiDAR follow-up call?',
+                answer:
+                  'To continue the conversation the AI assistant started over text — casually and without pressure. Not to pitch or close.',
+              },
+              {
+                id: 'sc-2',
+                question: 'What three things should a RaiDAR call accomplish if done well?',
+                answer:
+                  'Press into curiosity, normalize "not ready," and ask thoughtful questions that help the homeowner avoid bad decisions.',
+              },
+              {
+                id: 'sc-3',
+                question: 'If the call is done right, what happens naturally at the end?',
+                answer:
+                  "Trust builds and next steps happen on their own — the agent doesn't have to force them.",
+              },
+              {
+                id: 'sc-4',
+                question: 'How should the vibe of a RaiDAR call feel to the homeowner?',
+                answer:
+                  'Casual and unexpected — like a natural continuation of a conversation, not a sales call.',
+              },
+              {
+                id: 'sc-5',
+                question: 'What is "success" on a RaiDAR call? (It is not always an appointment.)',
+                answer:
+                  'Clear timeline understanding + clear motivation + trust built + continued engagement. An appointment is a bonus, not the goal.',
+              },
+              {
+                id: 'sc-6',
+                question: 'Why does normalizing "not ready" benefit the agent, not just the homeowner?',
+                answer:
+                  "It keeps the agent's nervous system calm, prevents fight-or-flight mode, and makes the conversation feel authentic rather than desperate.",
+              },
+              {
+                id: 'sc-7',
+                question:
+                  'True or false: The goal of a RaiDAR call is to convince the homeowner to move their timeline forward.',
+                answer:
+                  'False. The goal is to understand where they are and stay in their orbit as a trusted resource — not to push them faster than they\'re ready.',
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-2',
+          title: 'Opening the Call and Disarming the Lead',
+          type: 'flashcard',
+          durationMinutes: 8,
+          content: {
+            intro:
+              'The first 15 seconds determine everything. These cards drill the exact opening language — and the disarming frame that immediately lowers resistance. Commit these to memory.',
+            cards: [
+              {
+                id: 'sc-8',
+                question: 'What is the correct opening line for a RaiDAR call?',
+                answer:
+                  '"Hey [First Name], this is [Agent Name]. I saw my assistant was texting with you about some information on your home, so I wanted to continue that conversation for a minute." [Pause]',
+              },
+              {
+                id: 'sc-9',
+                question: 'What are two things the agent must NOT do at the opening of a RaiDAR call?',
+                answer: 'Do NOT apologize. Do NOT ask permission to sell.',
+              },
+              {
+                id: 'sc-10',
+                question:
+                  'What should the agent anchor to at the top of the call instead of leading with a pitch?',
+                answer:
+                  'The text conversation that already happened — this creates continuity and legitimacy rather than a cold start.',
+              },
+              {
+                id: 'sc-11',
+                question: 'If the homeowner sounds hesitant after the opening, what is the correct response?',
+                answer: '"Totally fine, I\'ll keep this short." — Acknowledge it, don\'t push through it.',
+              },
+              {
+                id: 'sc-12',
+                question: 'What is the "disarming frame" line used after the opening?',
+                answer:
+                  '"I\'m sure you aren\'t ready to sell any time soon, but have you thought at all about moving in the next year or so?"',
+              },
+              {
+                id: 'sc-13',
+                question: 'Why does the disarming frame work psychologically?',
+                answer:
+                  'It assumes "not ready" as the default, making it safe for the homeowner to say either yes or no. It invites honesty rather than triggering defensiveness.',
+              },
+              {
+                id: 'sc-14',
+                question:
+                  'Why does the disarming frame invite more candid responses than asking "Are you thinking about selling?"',
+                answer:
+                  "Because it removes the implied pressure to say yes. The homeowner doesn't feel like they're being recruited — they feel like they're being consulted.",
+              },
+              {
+                id: 'sc-15',
+                question:
+                  'After delivering the disarming frame question, what should the agent do?',
+                answer: 'Pause. Let the question land. Do not fill the silence.',
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-3',
+          title: 'Reading the Text Response — 4 Scenarios',
+          type: 'flashcard',
+          durationMinutes: 10,
+          content: {
+            intro:
+              "Every RaiDAR call starts from a specific text exchange. The lead already said something — your job is to pick up exactly where that thread left off. These 4 scenarios cover every major entry point. Know which one you're in before you dial.",
+            cards: [
+              {
+                id: 'sc-16',
+                question:
+                  'The lead responded to a pricing or home value text. What is the correct connector question?',
+                answer:
+                  '"I saw my assistant sent you some pricing information. What stood out to you when you looked at that?"',
+              },
+              {
+                id: 'sc-17',
+                question:
+                  'The lead responded to the pricing text and said the price seemed high. What is a strong follow-up?',
+                answer:
+                  '"How did you decide that felt high?" — Don\'t argue. Get curious about how they landed on that assessment.',
+              },
+              {
+                id: 'sc-18',
+                question:
+                  'The lead responded to a pricing text and seemed interested. What is a strong follow-up to deepen the conversation?',
+                answer: '"Tell me more about that." — Then stop talking. Let them fill the silence.',
+              },
+              {
+                id: 'sc-19',
+                question:
+                  'The lead responded to an agent comparison text. What is the correct connector question?',
+                answer:
+                  '"I saw you were open to information about local agents. What made you curious about that specifically?"',
+              },
+              {
+                id: 'sc-20',
+                question:
+                  "After a lead responds to the agent comparison text, how do you determine if they're researching or actively deciding?",
+                answer:
+                  '"Are you comparing options, or just educating yourself right now?" — This separates browsers from buyers without pressure.',
+              },
+              {
+                id: 'sc-21',
+                question:
+                  'The lead responded "maybe" or "just looking." What question do you use to unpack what that actually means?',
+                answer:
+                  '"When you say \'just looking,\' what does that actually mean for you right now?"',
+              },
+              {
+                id: 'sc-22',
+                question:
+                  'A lead in the "just looking" scenario seems uncertain. What question distinguishes timing uncertainty from market uncertainty?',
+                answer:
+                  '"Is that more about timing, or uncertainty about the market?" — Then follow wherever their answer leads.',
+              },
+              {
+                id: 'sc-23',
+                question:
+                  'A "just looking" lead needs a push toward imagining a real future. What question creates that?',
+                answer:
+                  '"What would need to change for this to feel more real?" — It invites them to define their own trigger, not yours.',
+              },
+              {
+                id: 'sc-24',
+                question:
+                  'The lead responded to a "home valuer" text mentioning a price that would make moving worth it. What is the correct connector question?',
+                answer:
+                  '"You mentioned a price that would make moving worth it. How did you land on that number?"',
+              },
+              {
+                id: 'sc-25',
+                question:
+                  "For the home valuer scenario, how do you determine if the lead's magic number is based on lifestyle or market data?",
+                answer:
+                  '"Is that based on lifestyle goals or what you\'ve seen in the market?" — This reveals whether they have a real anchor or an emotional one.',
+              },
+              {
+                id: 'sc-26',
+                question:
+                  'After establishing the lead\'s magic number in the home valuer scenario, what is the best forward-looking question?',
+                answer:
+                  '"If the market supported that number, what would you want to do next?" — It moves them from aspiration to action without pressure.',
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-4',
+          title: 'Power Phrases, Normalizing, and Value Statement',
+          type: 'flashcard',
+          durationMinutes: 6,
+          content: {
+            intro:
+              'Three short sections that do heavy lifting in the middle of every call: the power phrases that keep conversations open, the normalizing language that builds trust, and the value statement that positions you as a resource rather than a salesperson.',
+            cards: [
+              {
+                id: 'sc-27',
+                question:
+                  'What are the three core power phrases used to keep a conversation going without pushing?',
+                answer:
+                  '"Tell me more about that." / "How did you decide that was the right timing?" / "What makes that important to you?"',
+              },
+              {
+                id: 'sc-28',
+                question: "After asking a power phrase question, what is the agent's only job?",
+                answer:
+                  "Stop talking. Find their story. The silence belongs to the homeowner.",
+              },
+              {
+                id: 'sc-29',
+                question: 'What is the exact "normalizing not ready" line used mid-call?',
+                answer:
+                  '"I\'m actually glad to hear you\'re not ready to sell yet. I specialize in helping people who aren\'t ready. Most people I work with just want clarity before they make any decisions." [Pause. Let that land.]',
+              },
+              {
+                id: 'sc-30',
+                question:
+                  'Why does saying "I\'m glad you\'re not ready" create more trust than trying to move the lead forward?',
+                answer:
+                  'It signals that the agent is not threatened by their timeline and has no agenda to push — which makes the homeowner more willing to open up.',
+              },
+              {
+                id: 'sc-31',
+                question:
+                  'What is the value statement script used to explain what the agent does — without pitching a listing?',
+                answer:
+                  '"What I normally do is a walkthrough of a client\'s home, in person or virtual, and look at it the way a buyer would. The goal is to help you avoid spending money on repairs or upgrades that won\'t give you a return."',
+              },
+              {
+                id: 'sc-32',
+                question:
+                  'What is the value statement framed around — and what is it explicitly NOT framed around?',
+                answer:
+                  'Framed around preventing wasted money. NOT framed around pushing a sale or getting a listing.',
+              },
+              {
+                id: 'sc-33',
+                question: 'What outcome does the walkthrough value statement offer the homeowner?',
+                answer:
+                  "Clarity and protection — knowing which repairs to skip so they don't waste money when the time comes.",
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-5',
+          title: 'Transition, Close, and the 8-Day Drip',
+          type: 'flashcard',
+          durationMinutes: 8,
+          content: {
+            intro:
+              'How to move from a good conversation to a clear next step — and what happens after the call ends. These cards cover the transition to next steps, the call close, and every day of the 8-day text drip sequence.',
+            cards: [
+              {
+                id: 'sc-34',
+                question: 'What is the transition script used to propose next steps without pressure?',
+                answer:
+                  '"If it would be helpful, the next step for most people at your stage is just a quick walkthrough to get clarity. No pressure, no listing conversation. Would that actually be useful for you, or not yet?"',
+              },
+              {
+                id: 'sc-35',
+                question: 'What is the correct response if the homeowner says no to the walkthrough?',
+                answer:
+                  '"That\'s totally fine. Then staying informed is probably the smartest move right now." — Accept it gracefully and reframe it as a win.',
+              },
+              {
+                id: 'sc-36',
+                question: 'What is the closing script for the call?',
+                answer:
+                  '"It sounds like you\'re still figuring things out, which is totally normal. What I usually do at this stage is a quick walkthrough, in person or virtual, where I look at the home the way a buyer would and point out repairs or upgrades you don\'t need to do so you don\'t waste money when the time comes. Is there usually a better day of the week for that?"',
+              },
+              {
+                id: 'sc-37',
+                question:
+                  'What are the three things the closing script assumes and avoids to keep it low-pressure?',
+                answer:
+                  'Assumes "not ready," frames the walkthrough as preventing wasted money, and never mentions listing.',
+              },
+              {
+                id: 'sc-38',
+                question: 'What does the close ask for instead of "Can I book an appointment?"',
+                answer:
+                  '"Is there usually a better day of the week for that?" — It assumes a yes softly, and asks about preference rather than commitment.',
+              },
+              {
+                id: 'sc-39',
+                question: 'Day 1 of the 8-day text drip — what does it say?',
+                answer:
+                  '"Hey! [First Name], I saw you were curious about selling. What\'s your ideal timeline? (Just exploring, next few months, or ASAP?)"',
+              },
+              {
+                id: 'sc-40',
+                question: 'Day 2 of the 8-day text drip — what does it say?',
+                answer:
+                  '"Just wanted to check in and include your custom market valuation report. [custom_ylopo_seller_report]"',
+              },
+              {
+                id: 'sc-41',
+                question: 'Day 3 of the 8-day text drip — what does it say?',
+                answer:
+                  '"The sellers report I sent you yesterday can be a great starting point. I\'d be happy to spend ten minutes reviewing with you. Is this afternoon a good time?"',
+              },
+              {
+                id: 'sc-42',
+                question: 'Day 4 of the 8-day text drip — what does it say?',
+                answer:
+                  '"I can also send you a prep list with the top 3 things that would give you the biggest return. Want me to send that?"',
+              },
+              {
+                id: 'sc-43',
+                question: 'Day 5 of the 8-day text drip — what does it say?',
+                answer:
+                  '"If you had a magic-number price that would make moving worth it... what would it be?"',
+              },
+              {
+                id: 'sc-44',
+                question: 'Day 6 of the 8-day text drip — what does it say?',
+                answer:
+                  '"Happy to do a quick walkthrough (in person or virtual) just to give you clarity and options — zero pressure. Want to find a time?"',
+              },
+              {
+                id: 'sc-45',
+                question: 'Day 7 of the 8-day text drip — what does it say?',
+                answer:
+                  '"Still here if you need anything. I noticed some shifting in the market trends this week, would you like to discuss?"',
+              },
+              {
+                id: 'sc-46',
+                question: 'Day 8 of the 8-day text drip — what does it say?',
+                answer:
+                  '"I took the liberty of setting up a home search in your area for you. Check it out here: [link]. Let me know if you see anything that catches your eye!"',
+              },
+              {
+                id: 'sc-47',
+                question:
+                  'What is the strategic purpose of Day 8 — sending a home search to a potential seller?',
+                answer:
+                  "It shows the seller what buyers in their price range are actively looking at, which makes their own move feel more concrete and keeps the agent relevant without pressure.",
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-6',
+          title: 'Scripts Comprehension Quiz',
+          type: 'quiz',
+          durationMinutes: 10,
+          content: {
+            intro:
+              'This 12-question quiz covers every major concept from the RaiDAR scriptbook — call purpose, opening language, scenario routing, power phrases, the value statement, and the drip sequence. You need 70% or better to advance to the practice call.',
+            passingScore: 70,
+            questions: [
+              {
+                id: 'sq-1',
+                question: 'What is the primary purpose of a RaiDAR follow-up call?',
+                options: [
+                  'To pitch the homeowner on listing their home as soon as possible',
+                  'To continue the AI text conversation and build trust through curiosity',
+                  'To qualify the lead and determine if they are hot, warm, or cold',
+                  'To conduct a comparative market analysis over the phone',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "The RaiDAR call is not a pitch — it's a continuation of the trust the AI already started building over text. The job is curiosity, not conversion.",
+              },
+              {
+                id: 'sq-2',
+                question: 'Which two things should the agent never do at the start of a RaiDAR call?',
+                options: [
+                  'Use the homeowner\'s first name and mention RADAR',
+                  'Apologize for calling and ask permission to sell',
+                  'Reference the text conversation and pause after opening',
+                  'Mention the home\'s value and ask about their timeline',
+                ],
+                correctIndex: 1,
+                explanation:
+                  'Apologizing gives away your authority and asking permission to sell frames the call wrong from the start. Anchor to the text, state your name, and let them respond.',
+              },
+              {
+                id: 'sq-3',
+                question:
+                  'Why does the disarming frame ("I\'m sure you aren\'t ready to sell any time soon...") work so effectively?',
+                options: [
+                  'It creates urgency by implying the market may not support their home value later',
+                  'It assumes not ready as the default, making it safe to answer honestly either way',
+                  'It qualifies the lead quickly so the agent can decide whether to continue',
+                  'It lets the agent skip the opener and go straight to next steps',
+                ],
+                correctIndex: 1,
+                explanation:
+                  "By leading with the assumption they're not ready, you remove the threat. The homeowner doesn't feel they have to defend themselves, which makes them more likely to tell you the truth.",
+              },
+              {
+                id: 'sq-4',
+                question:
+                  'A lead responded to a home valuation text. Which connector question is correct?',
+                options: [
+                  'Would you be open to listing your home this spring?',
+                  'I saw my assistant sent you some pricing information. What stood out to you when you looked at that?',
+                  'I noticed you checked your value — are you thinking about selling soon?',
+                  'I saw you were open to information about local agents. What made you curious about that?',
+                ],
+                correctIndex: 1,
+                explanation:
+                  'Option D is the Scenario B connector (agent comparison text). The correct opener for a pricing/value text response picks up exactly what the AI sent and asks an open-ended question about their reaction.',
+              },
+              {
+                id: 'sq-5',
+                question:
+                  'A lead says they\'re "just looking." Which question best unpacks what that actually means for them?',
+                options: [
+                  'Are you comparing options, or just educating yourself right now?',
+                  'What would it take to make you ready today?',
+                  'When you say "just looking," what does that actually mean for you right now?',
+                  'How did you land on that number?',
+                ],
+                correctIndex: 2,
+                explanation:
+                  'The "just looking" scenario requires direct, curious clarification. "When you say..." opens the door without challenging them. Option A is the Scenario B follow-up. Option D is the home valuer scenario.',
+              },
+              {
+                id: 'sq-6',
+                question:
+                  'After asking a power phrase question like "Tell me more about that," what should the agent do?',
+                options: [
+                  'Immediately follow up with a second question to keep the momentum going',
+                  'Summarize what the homeowner said and offer a solution',
+                  'Stop talking and let the homeowner fill the silence',
+                  'Transition to the value statement before they can object',
+                ],
+                correctIndex: 2,
+                explanation:
+                  'Power phrases only work if the agent gets out of the way afterward. The silence belongs to the homeowner. Filling it breaks the dynamic.',
+              },
+              {
+                id: 'sq-7',
+                question:
+                  'What is the correct response when a homeowner says they are not ready to sell yet?',
+                options: [
+                  "That's understandable — what if we just set a quick appointment to review options?",
+                  "I'm actually glad to hear that. I specialize in helping people who aren't ready. Most people I work with just want clarity before they make any decisions.",
+                  "No problem — I'll put you in our database and someone will reach out in six months.",
+                  "Okay, but the market is shifting — you may want to reconsider your timeline.",
+                ],
+                correctIndex: 1,
+                explanation:
+                  'This is the "normalizing not ready" line verbatim. It flips the expected script entirely: instead of pushing, you affirm. This builds more trust in one sentence than anything else on the call.',
+              },
+              {
+                id: 'sq-8',
+                question:
+                  'How is the walkthrough value statement framed — and what does it deliberately avoid mentioning?',
+                options: [
+                  'Framed as a free consultation; avoids mentioning commission',
+                  'Framed as market research; avoids mentioning price',
+                  'Framed as preventing wasted money on unnecessary repairs; avoids any mention of listing',
+                  "Framed as buyer readiness; avoids mentioning the agent's fee",
+                ],
+                correctIndex: 2,
+                explanation:
+                  "The walkthrough is positioned as a protective service — saving the homeowner from spending money on repairs that won't give a return. The word \"listing\" never appears.",
+              },
+              {
+                id: 'sq-9',
+                question:
+                  'The transition to next steps ends with: "Would that actually be useful for you, ___?"',
+                options: [
+                  '...or would you prefer to wait?',
+                  '...or not yet?',
+                  '...or should we schedule something now?',
+                  '...or are you still figuring things out?',
+                ],
+                correctIndex: 1,
+                explanation:
+                  '"Or not yet?" is the exact language. It gives permission to say no without it feeling like a rejection. It implies they might be ready soon — which is different from implying they might never be.',
+              },
+              {
+                id: 'sq-10',
+                question: 'The closing script softly moves toward scheduling by asking:',
+                options: [
+                  'What day works best for you this week?',
+                  'Can I block some time on your calendar?',
+                  'Is there usually a better day of the week for that?',
+                  'Would next Tuesday or Wednesday work for you?',
+                ],
+                correctIndex: 2,
+                explanation:
+                  'The exact language is "Is there usually a better day of the week for that?" It assumes forward motion without demanding a commitment. "Usually" implies this is routine and low-stakes.',
+              },
+              {
+                id: 'sq-11',
+                question:
+                  'On which day of the 8-day drip does the agent ask: "If you had a magic-number price that would make moving worth it... what would it be?"',
+                options: ['Day 2', 'Day 4', 'Day 5', 'Day 7'],
+                correctIndex: 2,
+                explanation:
+                  'Day 5 is the magic-number question. By that point, the agent has already sent a market report (Day 2), offered to review it (Day 3), and offered a prep list (Day 4). Day 5 uses that momentum to invite the homeowner to anchor on a price.',
+              },
+              {
+                id: 'sq-12',
+                question:
+                  'What is the strategic purpose of Day 8 in the drip — setting up a home search for a potential seller?',
+                options: [
+                  'To upsell the homeowner on buyer representation if they need to find a new home first',
+                  "To show the seller what buyers in their price range are competing for, making their own move feel more concrete",
+                  'To transition the lead from the seller pipeline into the buyer pipeline',
+                  "To demonstrate the agent's technology capabilities and differentiate from competitors",
+                ],
+                correctIndex: 1,
+                explanation:
+                  "Seeing what buyers are actively searching for in their price range helps sellers visualize demand and makes the idea of selling feel more real and timely — without any direct pressure from the agent.",
+              },
+            ],
+          },
+        },
+        {
+          id: 'lesson-4-7',
+          title: 'Full RaiDAR Call Practice',
+          type: 'roleplay',
+          durationMinutes: 15,
+          image: '/images/ai-roleplay.png',
+          content: {
+            intro:
+              'This is the capstone practice call for Section 4. You will run a complete RaiDAR call from open to close — anchoring to a text conversation, delivering the disarming frame, reading the scenario, using power phrases, normalizing not ready, delivering the value statement, and transitioning to next steps. There are no shortcuts. Every beat matters. Score yourself honestly — an 8 means it felt natural, consultant-like, and low-pressure throughout.',
+            script: `FULL RaiDAR CALL — 7 BEATS TO HIT
+
+CONTEXT: The homeowner responded to a home valuation text sent by your AI assistant.
+
+---
+
+BEAT 1 — OPEN (anchor to the text, no apology, no permission-asking)
+YOU: "Hey [Name], this is [Your Name]. I saw my assistant was texting with you about some information on your home, so I wanted to continue that conversation for a minute." [Pause]
+HOMEOWNER: "Oh, sure... I guess."
+
+---
+
+BEAT 2 — DISARMING FRAME (assume not ready, invite honesty)
+YOU: "I'm sure you aren't ready to sell any time soon, but have you thought at all about moving in the next year or so?"
+HOMEOWNER: "Not really. We've talked about it but nothing serious."
+
+---
+
+BEAT 3 — SCENARIO CONNECTOR (home valuer — connect to what they responded to)
+YOU: "That makes sense. I saw my assistant sent you some pricing information. What stood out to you when you looked at that?"
+HOMEOWNER: "Honestly I was kind of surprised at the number. Seemed higher than I expected."
+
+---
+
+BEAT 4 — POWER PHRASES (dig deeper, stop talking)
+YOU: "How did you decide that felt high?"
+HOMEOWNER: [Responds with context]
+YOU: "Tell me more about that." [Stop. Let them talk.]
+
+---
+
+BEAT 5 — NORMALIZE NOT READY
+YOU: "I'm actually glad to hear you're not ready to sell yet. I specialize in helping people who aren't ready. Most people I work with just want clarity before they make any decisions." [Pause. Let that land.]
+HOMEOWNER: "Yeah that's kind of where we are."
+
+---
+
+BEAT 6 — VALUE STATEMENT (no pitch, no listing talk)
+YOU: "What I normally do is a walkthrough of a client's home — in person or virtual — and look at it the way a buyer would. The goal is to help you avoid spending money on repairs or upgrades that won't give you a return."
+
+---
+
+BEAT 7 — TRANSITION AND CLOSE
+YOU: "If it would be helpful, the next step for most people at your stage is just a quick walkthrough to get clarity. No pressure, no listing conversation. Would that actually be useful for you, or not yet?"
+[If yes → "Is there usually a better day of the week for that?"]
+[If no → "That's totally fine. Then staying informed is probably the smartest move right now."]
+
+---
+
+SCORING GUIDE:
+8 = All 7 beats hit, no pressure felt, transitions smooth
+7 = 6 beats hit, one moment that felt salesy or rushed
+6 = 5 beats hit, clear gaps in normalizing or value statement
+< 6 = Call felt like a pitch — start over, review the script`,
+            phoneNumber: '(555) 555-0100',
+            callInstructions:
+              "Call the practice line. Introduce yourself as an agent and the AI will respond as a homeowner who reacted to a home valuation text. Work through all 7 beats in order. Stay curious, stay low-pressure, and let pauses breathe. When the call ends, score yourself using the guide above.",
+            minimumScore: 8,
+            remediation:
+              'If you scored below 8, identify which beat broke down. The most common failures are: (1) rushing past the pause after the opener, (2) skipping the disarming frame and jumping to the scenario connector, and (3) letting the value statement sound like a pitch. Review those three moments specifically, then call again targeting just that one beat. Most agents need 2–3 rounds before the full call flows.',
+          },
+        },
+        {
+          id: 'lesson-4-graduation',
           title: 'Graduation: Your RADAR Game Plan',
           type: 'reflection',
           durationMinutes: 10,
           content: {
             intro:
-              "You've completed the RADAR training. Before you graduate, commit to your plan in writing. Specificity is the difference between a plan and a wish.",
+              "You've completed all four sections of RADAR training. Before you graduate, commit to your plan in writing. Specificity is the difference between a plan and a wish.",
             questions: [
               {
                 id: 'grad-1',
@@ -756,7 +1371,7 @@ I'm not here to push anything at all. I work with a lot of homeowners who are 6�
               },
             ],
             outro:
-              "Congratulations. You have earned your RADAR certification. The system works when you do. Now go build some relationships.",
+              'Congratulations. You have completed all four sections of RADAR certification — mindset, tactics, nurture, and scripts. The system works when you do. Now go build some relationships.',
           },
         },
       ],
