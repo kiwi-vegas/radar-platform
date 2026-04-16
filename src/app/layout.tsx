@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'RADAR Training Platform',
+  title: 'RaiDAR Training Platform',
   description: 'Performance-based learning for real estate professionals',
 }
 

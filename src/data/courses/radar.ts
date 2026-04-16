@@ -3,10 +3,10 @@ import type { Course } from '@/lib/types'
 export const radarCourse: Course = {
   id: 'radar-v1',
   slug: 'radar',
-  title: 'RADAR',
+  title: 'RaiDAR',
   subtitle: 'Getting More Sellers',
   description:
-    'Master the RADAR system to identify and engage early-stage sellers before your competitors ever know they exist. This is not about cold calling — it is about being the trusted advisor already in the conversation when sellers are ready to move.',
+    'Master the RaiDAR system to identify and engage early-stage sellers before your competitors ever know they exist. This is not about cold calling — it is about being the trusted advisor already in the conversation when sellers are ready to move.',
   coverColor: '#F97316',
   coverImage: '/images/main-radar-thumb.png',
   sections: [
@@ -46,7 +46,7 @@ export const radarCourse: Course = {
         },
         {
           id: 'lesson-1-1',
-          title: 'The RADAR Mindset — From "Always Be Closing" to "Always Be Consulting"',
+          title: 'The RaiDAR Mindset — From "Always Be Closing" to "Always Be Consulting"',
           type: 'video',
           durationMinutes: 5,
           image: '/images/mindset.png',
@@ -73,7 +73,7 @@ export const radarCourse: Course = {
             cards: [
               {
                 id: 'fc-1',
-                question: "In the RADAR program, what does the acronym 'ABC' stand for?",
+                question: "In the RaiDAR program, what does the acronym 'ABC' stand for?",
                 answer: 'Always Be Consulting.',
               },
               {
@@ -86,7 +86,7 @@ export const radarCourse: Course = {
               {
                 id: 'fc-3',
                 question:
-                  'According to the RADAR Mastermind, the goal for every call should be to build a relationship with a _____.',
+                  'According to the RaiDAR Mastermind, the goal for every call should be to build a relationship with a _____.',
                 answer: 'Human being.',
               },
               {
@@ -122,7 +122,7 @@ export const radarCourse: Course = {
               {
                 id: 'fc-9',
                 question:
-                  'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RADAR mindset?',
+                  'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RaiDAR mindset?',
                 answer:
                   '"Totally makes sense. Just curious — how did you decide on a year?"',
               },
@@ -182,13 +182,13 @@ export const radarCourse: Course = {
           image: '/images/quiz.png',
           content: {
             intro:
-              "Time to lock it in. This 10-question quiz covers everything from the RADAR mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
+              "Time to lock it in. This 10-question quiz covers everything from the RaiDAR mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
             passingScore: 70,
             questions: [
               {
                 id: 'mq-1',
                 question:
-                  "What is the primary mindset shift proposed by the RADAR program to replace the traditional 'ABC' of sales?",
+                  "What is the primary mindset shift proposed by the RaiDAR program to replace the traditional 'ABC' of sales?",
                 options: [
                   'Always Be Collecting',
                   'Always Be Closing',
@@ -342,13 +342,13 @@ export const radarCourse: Course = {
       lessons: [
         {
           id: 'lesson-1-3',
-          title: 'Live RADAR Roleplay Training',
+          title: 'Live RaiDAR Roleplay Training',
           type: 'roleplay',
           durationMinutes: 10,
           image: '/images/ai-roleplay.png',
           content: {
             intro:
-              'This is where everything comes together. Inside the RADAR Roleplay Lab, you\'ll practice real conversations with a live AI simulator that mirrors actual seller objections and scenarios. This is the closest thing to a real RADAR call — without the pressure. Your goal is simple: apply the "Always Be Consulting" mindset, stay calm and curious, and work your way to an 8 out of 10 or higher. Repeat until it feels natural — because this is where confidence is built.',
+              'This is where everything comes together. Inside the RaiDAR Roleplay Lab, you\'ll practice real conversations with a live AI simulator that mirrors actual seller objections and scenarios. This is the closest thing to a real RaiDAR call — without the pressure. Your goal is simple: apply the "Always Be Consulting" mindset, stay calm and curious, and work your way to an 8 out of 10 or higher. Repeat until it feels natural — because this is where confidence is built.',
             script: `You're speaking with a homeowner who recently checked their home value online.
 
 ---
@@ -374,7 +374,7 @@ YOU: "Perfect. I'll make it simple and useful — no fluff. And if things ever c
 Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No pitch. No close. Just consulting.`,
             phoneNumber: '(555) 555-0100',
             callInstructions:
-              'Call this number and you\'ll be connected to the RADAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
+              'Call this number and you\'ll be connected to the RaiDAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
             minimumScore: 8,
             remediation:
               'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
@@ -388,7 +388,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
           image: '/images/seller-report-walkthrough.png',
           content: {
             description:
-              "An agent working RADAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
+              "An agent working RaiDAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(45.2604% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/gzLHC8kQA5oMnu7blYRu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Walkthrough of the Ylopo Seller Report" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
             durationLabel: '2-3 minutes to complete',
           },
@@ -401,7 +401,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
           image: '/images/creating-a-seller-report.png',
           content: {
             description:
-              "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RADAR lead you work.",
+              "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RaiDAR lead you work.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(48.6458% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/yXwzm80DHqKBacZdbwlX?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create a Seller Alert for a Lead in Stars" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
             durationLabel: '1 minute to complete',
           },
@@ -804,7 +804,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                 id: 'sq-2',
                 question: 'Which two things should the agent never do at the start of a RaiDAR call?',
                 options: [
-                  'Use the homeowner\'s first name and mention RADAR',
+                  'Use the homeowner\'s first name and mention RaiDAR',
                   'Apologize for calling and ask permission to sell',
                   'Reference the text conversation and pause after opening',
                   'Mention the home\'s value and ask about their timeline',
@@ -1023,11 +1023,11 @@ SCORING GUIDE:
         },
         {
           id: 'lesson-4-certificate',
-          title: 'RADAR Certification',
+          title: 'RaiDAR Certification',
           type: 'certificate',
           durationMinutes: 2,
           content: {
-            courseName: 'RADAR',
+            courseName: 'RaiDAR',
             courseSubtitle: 'Getting More Sellers',
             modules: ['Mindset', 'Tactical', 'Scripting for Success'],
             instructorName: 'Barry Jenkins',

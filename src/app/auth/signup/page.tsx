@@ -82,7 +82,7 @@ export default function SignupPage() {
                 <circle cx="12" cy="12" r="11" stroke="white" strokeWidth="1" fill="none" opacity="0.3"/>
               </svg>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-tx-primary">RADAR</span>
+            <span className="text-2xl font-bold tracking-tight text-tx-primary">RaiDAR</span>
           </div>
           <p className="text-tx-secondary text-sm">Training Platform</p>
         </div>
@@ -90,7 +90,7 @@ export default function SignupPage() {
         {/* Card */}
         <div className="bg-surface-card border border-surface-border rounded-2xl p-8">
           <h1 className="text-xl font-semibold text-tx-primary mb-1">Create your account</h1>
-          <p className="text-tx-secondary text-sm mb-6">Start your RADAR training today</p>
+          <p className="text-tx-secondary text-sm mb-6">Start your RaiDAR training today</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

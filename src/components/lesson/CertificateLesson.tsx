@@ -53,7 +53,7 @@ export default function CertificateLesson({
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>RADAR Certificate — ${userName}</title>
+  <title>RaiDAR Certificate — ${userName}</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -265,7 +265,7 @@ export default function CertificateLesson({
           </div>
           <h2 className="text-2xl font-bold text-tx-primary mb-2">You did it.</h2>
           <p className="text-tx-secondary text-sm max-w-md mx-auto">
-            You&apos;ve completed the full RADAR Training Program. Your certificate is ready to download and share.
+            You&apos;ve completed the full RaiDAR Training Program. Your certificate is ready to download and share.
           </p>
         </div>
 
@@ -356,7 +356,7 @@ export default function CertificateLesson({
         </div>
 
         <p className="text-center text-xs text-tx-muted mt-4">
-          Share your certificate with your team leader to unlock your RADAR leads.
+          Share your certificate with your team leader to unlock your RaiDAR leads.
         </p>
       </div>
     )
@@ -368,7 +368,7 @@ export default function CertificateLesson({
       <div className="text-center mb-6">
         <h2 className="text-xl font-bold text-tx-primary mb-2">You&apos;re almost there.</h2>
         <p className="text-tx-secondary text-sm max-w-lg mx-auto">
-          Complete all three sections of RADAR training to earn your certificate. Once you graduate, you can download and share this with your team leader.
+          Complete all three sections of RaiDAR training to earn your certificate. Once you graduate, you can download and share this with your team leader.
         </p>
       </div>
 

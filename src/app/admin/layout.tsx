@@ -31,7 +31,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                   <circle cx="12" cy="12" r="11" stroke="white" strokeWidth="1" fill="none" opacity="0.3"/>
                 </svg>
               </div>
-              <span className="font-bold text-tx-primary tracking-tight text-sm">RADAR</span>
+              <span className="font-bold text-tx-primary tracking-tight text-sm">RaiDAR</span>
               <span
                 className="text-xs font-semibold px-2 py-0.5 rounded-full ml-1"
                 style={{ background: '#F9731622', color: '#F97316', border: '1px solid #F9731644' }}

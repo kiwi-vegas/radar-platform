@@ -51,7 +51,7 @@ export async function GET() {
   const { data: profiles } = await admin.from('user_profiles').select('id, full_name, is_admin')
   const profileMap = new Map((profiles ?? []).map((p: { id: string; full_name: string | null; is_admin: boolean }) => [p.id, p]))
 
-  // 3. All enrollments (RADAR course)
+  // 3. All enrollments (RaiDAR course)
   const { data: enrollments } = await admin
     .from('user_course_enrollments')
     .select('user_id, course_slug, enrolled_at, graduated_at')
