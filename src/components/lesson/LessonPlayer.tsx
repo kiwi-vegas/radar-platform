@@ -12,6 +12,7 @@ import RoleplayLesson from './RoleplayLesson'
 import VideoCollectionLesson from './VideoCollectionLesson'
 import IntroLesson from './IntroLesson'
 import EmbedLesson from './EmbedLesson'
+import CertificateLesson from './CertificateLesson'
 
 interface LessonPlayerProps {
   course: Course
@@ -32,6 +33,7 @@ const TYPE_LABEL: Record<string, string> = {
   'video-collection': 'Video Series',
   'intro': 'Introduction',
   'embed': 'Interactive',
+  'certificate': 'Certification',
 }
 
 export default function LessonPlayer({
@@ -48,6 +50,7 @@ export default function LessonPlayer({
   const [completing, setCompleting] = useState(false)
   const [completeError, setCompleteError] = useState<string | null>(null)
   const [showGraduation, setShowGraduation] = useState(false)
+  const [certCompleted, setCertCompleted] = useState(false)
 
   const markComplete = useCallback(
     async (score?: number) => {
@@ -72,7 +75,11 @@ export default function LessonPlayer({
         }
 
         if (isLastLesson) {
-          setShowGraduation(true)
+          if (lesson.type === 'certificate') {
+            setCertCompleted(true)
+          } else {
+            setShowGraduation(true)
+          }
         } else if (nextLessonId) {
           router.push(`/courses/${course.slug}/lessons/${nextLessonId}`)
         }
@@ -257,6 +264,17 @@ export default function LessonPlayer({
               isCompleted={isAlreadyCompleted}
               onComplete={() => markComplete()}
               completing={completing}
+            />
+          )}
+
+          {lesson.type === 'certificate' && (
+            <CertificateLesson
+              lesson={lesson}
+              isCompleted={isAlreadyCompleted}
+              showCompleted={certCompleted || isAlreadyCompleted}
+              onComplete={() => markComplete()}
+              completing={completing}
+              courseSlug={course.slug}
             />
           )}
         </div>

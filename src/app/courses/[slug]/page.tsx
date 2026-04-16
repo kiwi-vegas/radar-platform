@@ -13,6 +13,7 @@ const LESSON_TYPE_ICONS: Record<string, string> = {
   'video-collection': '▶',
   'intro': '👋',
   'embed': '⚙',
+  'certificate': '🏆',
 }
 
 const LESSON_TYPE_LABELS: Record<string, string> = {
@@ -24,6 +25,7 @@ const LESSON_TYPE_LABELS: Record<string, string> = {
   'video-collection': 'Video Series',
   'intro': 'Introduction',
   'embed': 'Interactive',
+  'certificate': 'Certification',
 }
 
 export default async function CourseOverviewPage({
@@ -277,8 +279,9 @@ const TYPE_BG: Record<string, string> = {
   reflection: 'from-amber-900/60 to-amber-800/30',
   quiz:       'from-emerald-900/60 to-emerald-800/30',
   roleplay:   'from-rose-900/60 to-rose-800/30',
-  intro:      'from-orange-900/60 to-orange-800/30',
-  embed:      'from-cyan-900/60 to-cyan-800/30',
+  intro:        'from-orange-900/60 to-orange-800/30',
+  embed:        'from-cyan-900/60 to-cyan-800/30',
+  certificate:  'from-yellow-900/60 to-yellow-800/30',
 }
 
 function LessonPlaceholder({ type, color, index }: { type: string; color: string; index: number }) {

@@ -53,6 +53,11 @@ const TYPE_ICON: Record<string, React.ReactNode> = {
       <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
     </svg>
   ),
+  'certificate': (
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+    </svg>
+  ),
 }
 
 export default function CourseSidebar({ course, currentLessonId, completedIds }: CourseSidebarProps) {
