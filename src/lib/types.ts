@@ -8,6 +8,7 @@ export interface FlashCard {
   id: string
   question: string
   answer: string
+  clarification?: string  // explains the WHY behind the answer; shown on demand
   questionImage?: string  // path relative to /public, e.g. '/images/flashcards/1a.png'
   answerImage?: string    // path relative to /public, e.g. '/images/flashcards/1b.png'
 }

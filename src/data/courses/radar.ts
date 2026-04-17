@@ -75,6 +75,7 @@ export const radarCourse: Course = {
                 id: 'fc-1',
                 question: "In the RaiDAR program, what does the acronym 'ABC' stand for?",
                 answer: 'Always Be Consulting.',
+                clarification: "The traditional sales ABC — Always Be Closing — puts the agent's needs (getting a signed listing) ahead of the homeowner's. Flipping it to Always Be Consulting shifts the focus to the homeowner's situation and timeline. This reframe isn't just philosophical — it changes how leads respond to you in real time, because people can feel the difference between someone trying to extract value and someone genuinely trying to help.",
               },
               {
                 id: 'fc-2',
@@ -82,12 +83,14 @@ export const radarCourse: Course = {
                   "What is the primary psychological shift required when moving from a 'closing' mindset to a 'consulting' mindset?",
                 answer:
                   'Focusing on building a relationship rather than pressuring for an immediate listing or sale.',
+                clarification: "When you lead with 'how can I help you think through this?' instead of 'are you ready to list?', you trigger an entirely different response in the homeowner. Pressure activates defensiveness. Service activates trust. Agents who shift to a consulting mindset don't just get more listings eventually — they get better conversations immediately, because leads stop hiding their real situation.",
               },
               {
                 id: 'fc-3',
                 question:
                   'According to the RaiDAR Mastermind, the goal for every call should be to build a relationship with a _____.',
                 answer: 'Human being.',
+                clarification: "This sounds obvious, but most agents treat calls as transactions — they're trying to get a lead to 'convert.' The Mastermind frames it differently: every person on the other end of that call has a life, a situation, and a timeline that has nothing to do with your pipeline. When you approach them as a human being first, you ask better questions, you listen more carefully, and you become the kind of advisor people actually want to call back.",
               },
               {
                 id: 'fc-4',
@@ -95,29 +98,34 @@ export const radarCourse: Course = {
                   "Why is the 'Consultant' role particularly effective for homeowners compared to stock portfolio owners?",
                 answer:
                   'Most consumers lack a trusted tool or advisor to help them track the value of their largest asset — their home.',
+                clarification: "Stock investors have apps, advisors, and daily price updates. Homeowners have almost nothing. They check Zillow occasionally and guess. This creates a genuine gap that an agent can fill — not by pitching a listing, but by positioning themselves as the go-to resource for understanding home value over time. When you fill that gap, you earn trust before the homeowner ever needs to sell.",
               },
               {
                 id: 'fc-5',
                 question:
                   "What 'superpower' is recommended for agents to surface a lead's real story and motivation?",
                 answer: 'Curiosity.',
+                clarification: "Curiosity is not just a personality trait — it's a tactical tool. When you ask a genuine, curious follow-up question instead of pushing toward a close, you give the homeowner room to share their real situation. Most agents never hear the real story because they stop listening the moment they sense the answer isn't 'yes, I want to list.' Curiosity keeps you in the conversation long enough to find out what's actually going on.",
               },
               {
                 id: 'fc-6',
                 question:
                   "Instead of trying to 'overcome' an objection, agents should seek to _____ it.",
                 answer: 'Understand it.',
+                clarification: "Every objection is information. When a homeowner says 'we're not ready' or 'we'll wait until spring,' they're telling you something about their situation, their fears, or their constraints. Agents who try to overcome that objection are arguing with the person's reality. Agents who seek to understand it ask 'what's driving that timing for you?' — and often discover a situation they can actually help with.",
               },
               {
                 id: 'fc-7',
                 question: 'What is the three-step framework for handling resistance on a call?',
                 answer: 'Affirm → Seek to Understand → Value-First Pivot.',
+                clarification: "This sequence works because each step earns the right to the next one. Affirming first ('totally makes sense') lowers the homeowner's guard. Seeking to understand ('what's your thinking on that?') gets you real information. The value-first pivot ('here's something that might actually help you right now') positions you as useful before they need you. Skip any step and the whole thing collapses.",
               },
               {
                 id: 'fc-8',
                 question: "What does 'Normalizing Not Ready' mean?",
                 answer:
                   "Accepting that most leads won't be ready to sell immediately — to prevent the agent from entering fight-or-flight mode.",
+                clarification: "When agents expect every lead to convert on the first call, they become desperate — and leads can feel it. That desperation triggers a defensive response in the homeowner and a fight-or-flight response in the agent. Normalizing not ready is a mental reset: it means you go into every call expecting that most people aren't ready, so you stay calm, curious, and genuinely helpful regardless of where they are in their timeline.",
               },
               {
                 id: 'fc-9',
@@ -125,11 +133,13 @@ export const radarCourse: Course = {
                   'A homeowner says, "We\'re probably about a year away from selling." What is the best next response based on the RaiDAR mindset?',
                 answer:
                   '"Totally makes sense. Just curious — how did you decide on a year?"',
+                clarification: "This response does three things at once: it affirms their timeline without arguing, it stays curious instead of closing, and it opens a door to learn what's actually driving that decision. 'How did you decide on a year?' often surfaces things like a child's graduation, a financial milestone, or just vague uncertainty — all of which are opportunities to add value. The wrong response is 'well, the market is hot right now...' — that's arguing, not consulting.",
               },
               {
                 id: 'fc-10',
                 question: "When you argue with a lead, they _____.",
                 answer: 'Defend.',
+                clarification: "This is rooted in basic human psychology: when someone challenges our position, we instinctively dig in to defend it. The more forcefully an agent pushes back on a homeowner's objection, the more committed the homeowner becomes to that position. The opposite is also true — when you affirm and get curious, the homeowner often talks themselves into a more open stance without you having to do anything.",
               },
             ],
           },
@@ -432,36 +442,42 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                 question: 'What is the primary purpose of the RaiDAR follow-up call?',
                 answer:
                   'To continue the conversation the AI assistant started over text — casually and without pressure. Not to pitch or close.',
+                clarification: "The AI already started a rapport-building exchange with this homeowner. When you call, you're not a stranger — you're continuing something that already exists. Framing it as 'continuing the conversation' rather than 'I'm calling to tell you about my services' completely changes how the homeowner hears those first seconds. The goal is continuation, not conversion.",
               },
               {
                 id: 'sc-2',
                 question: 'What three things should a RaiDAR call accomplish if done well?',
                 answer:
                   'Press into curiosity, normalize "not ready," and ask thoughtful questions that help the homeowner avoid bad decisions.',
+                clarification: "These three things aren't tactics — they're a way of showing up. Pressing into curiosity means you actually want to understand their situation, not just qualify them. Normalizing not ready signals that you're not desperate, which builds trust. Asking questions that help them avoid bad decisions (like selling without understanding their options) positions you as an advisor, not a closer. Do all three and the homeowner starts to trust you before the call is even over.",
               },
               {
                 id: 'sc-3',
                 question: 'If the call is done right, what happens naturally at the end?',
                 answer:
                   "Trust builds and next steps happen on their own — the agent doesn't have to force them.",
+                clarification: "Most agents try to engineer a next step ('can I schedule a time to meet?') as a tactic. In the RaiDAR framework, next steps emerge from trust — because the homeowner wants to keep talking to someone who made them feel understood, not sold. When you do the call right, the homeowner often suggests the next step themselves, or eagerly accepts one because they've already decided you're worth their time.",
               },
               {
                 id: 'sc-4',
                 question: 'How should the vibe of a RaiDAR call feel to the homeowner?',
                 answer:
                   'Casual and unexpected — like a natural continuation of a conversation, not a sales call.',
+                clarification: "The AI-to-phone handoff is designed to feel seamless, not like an escalation. If the homeowner suddenly feels like they're being 'worked,' they'll shut down. The casual tone is not accidental — it's the mechanism that keeps the conversation open. A homeowner who feels like they're chatting will share more than one who feels like they're being pitched.",
               },
               {
                 id: 'sc-5',
                 question: 'What is "success" on a RaiDAR call? (It is not always an appointment.)',
                 answer:
                   'Clear timeline understanding + clear motivation + trust built + continued engagement. An appointment is a bonus, not the goal.',
+                clarification: "Redefining success is one of the most important mental shifts in this entire framework. When agents chase appointments, they push too hard and lose the relationship. When they chase understanding — timeline, motivation, trust — they often end up with better appointments anyway, because the homeowner actually wants to meet. Measure success by what you learned, not what you got.",
               },
               {
                 id: 'sc-6',
                 question: 'Why does normalizing "not ready" benefit the agent, not just the homeowner?',
                 answer:
                   "It keeps the agent's nervous system calm, prevents fight-or-flight mode, and makes the conversation feel authentic rather than desperate.",
+                clarification: "This is about neuroscience as much as sales strategy. When you expect rejection, your body braces for it — your voice gets tighter, your questions get shorter, and you start rushing. Normalizing not ready is the reset that keeps you relaxed and present. A calm agent sounds like a trusted advisor. A desperate agent sounds like someone trying to make their quota.",
               },
               {
                 id: 'sc-7',
@@ -469,6 +485,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'True or false: The goal of a RaiDAR call is to convince the homeowner to move their timeline forward.',
                 answer:
                   'False. The goal is to understand where they are and stay in their orbit as a trusted resource — not to push them faster than they\'re ready.',
+                clarification: "Trying to accelerate a homeowner's timeline is one of the most common and damaging mistakes agents make. It signals that you care more about your schedule than their situation. The RaiDAR model flips this: your job is to be so useful and trustworthy that when their timeline naturally moves forward, you're the first person they call. Patience is the competitive advantage.",
               },
             ],
           },
@@ -487,11 +504,13 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                 question: 'What is the correct opening line for a RaiDAR call?',
                 answer:
                   '"Hey [First Name], this is [Agent Name]. I saw my assistant was texting with you about some information on your home, so I wanted to continue that conversation for a minute." [Pause]',
+                clarification: "Every word in this opener is deliberate. 'My assistant was texting with you' is true — an AI system did reach out — and it immediately provides context without requiring the homeowner to place you. 'Continue that conversation' reframes the call as an extension of something they already participated in, not a cold outreach. The pause at the end is critical: it invites them to respond instead of rolling you into a scripted sales call.",
               },
               {
                 id: 'sc-9',
                 question: 'What are two things the agent must NOT do at the opening of a RaiDAR call?',
                 answer: 'Do NOT apologize. Do NOT ask permission to sell.',
+                clarification: "Apologizing ('sorry to bother you') immediately signals low status and puts the homeowner in the role of deciding whether to tolerate the call. Asking permission to sell ('would you be open to...?') frames the call as a sales attempt before you've established any value. Both mistakes tell the homeowner you believe the call is an imposition — which is exactly the opposite of how a trusted advisor shows up.",
               },
               {
                 id: 'sc-10',
@@ -499,23 +518,27 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What should the agent anchor to at the top of the call instead of leading with a pitch?',
                 answer:
                   'The text conversation that already happened — this creates continuity and legitimacy rather than a cold start.',
+                clarification: "The text exchange is the most powerful asset you have at the start of this call. The homeowner already responded to the AI, which means they already showed some level of curiosity. By anchoring to that exchange, you remind them of their own action — and use it to justify the call. You're not a stranger calling out of nowhere; you're the human behind the conversation they started.",
               },
               {
                 id: 'sc-11',
                 question: 'If the homeowner sounds hesitant after the opening, what is the correct response?',
                 answer: '"Totally fine, I\'ll keep this short." — Acknowledge it, don\'t push through it.',
+                clarification: "Hesitation is a signal, not a rejection. Acknowledging it ('totally fine, I'll keep this short') does two things: it validates their response, which lowers defenses, and it demonstrates that you're not going to pressure them. Agents who push through hesitation lose the call right there. Agents who acknowledge it often find the homeowner relaxes within the next two sentences.",
               },
               {
                 id: 'sc-12',
                 question: 'What is the "disarming frame" line used after the opening?',
                 answer:
                   '"I\'m sure you aren\'t ready to sell any time soon, but have you thought at all about moving in the next year or so?"',
+                clarification: "This single line is arguably the most important in the entire script. It works because it assumes the answer the homeowner is afraid to give — 'not ready' — and says it first. When you say it for them, you remove the social awkwardness of having to disappoint you, and they feel safe being honest. The follow-up question is open enough that both 'yes' and 'not really' lead somewhere useful.",
               },
               {
                 id: 'sc-13',
                 question: 'Why does the disarming frame work psychologically?',
                 answer:
                   'It assumes "not ready" as the default, making it safe for the homeowner to say either yes or no. It invites honesty rather than triggering defensiveness.',
+                clarification: "Most sales scripts create a binary situation for the homeowner: either agree with the agent, or resist them. The disarming frame eliminates that dynamic by making 'not ready' the expected and accepted answer. When there's nothing to push against, there's nothing to resist. The homeowner can answer honestly — and honest answers are the only ones you can actually work with.",
               },
               {
                 id: 'sc-14',
@@ -523,12 +546,14 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'Why does the disarming frame invite more candid responses than asking "Are you thinking about selling?"',
                 answer:
                   "Because it removes the implied pressure to say yes. The homeowner doesn't feel like they're being recruited — they feel like they're being consulted.",
+                clarification: "'Are you thinking about selling?' is a yes/no question with social stakes — saying yes feels like agreeing to be sold to. The disarming frame reframes the entire conversation as a low-stakes check-in. The homeowner doesn't feel like they're making a commitment by answering; they feel like they're just having a conversation. That's the environment where real information gets shared.",
               },
               {
                 id: 'sc-15',
                 question:
                   'After delivering the disarming frame question, what should the agent do?',
                 answer: 'Pause. Let the question land. Do not fill the silence.',
+                clarification: "Silence after a question is one of the most powerful tools in a conversation — and one of the hardest things for most agents to do. When you fill the silence, you rescue the homeowner from having to answer, which means you lose the information their answer would have given you. The pause is doing work: it signals confidence, gives the homeowner time to formulate a real response, and prevents you from accidentally talking over the most important part of the call.",
               },
             ],
           },
@@ -548,6 +573,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'The lead responded to a pricing or home value text. What is the correct connector question?',
                 answer:
                   '"I saw my assistant sent you some pricing information. What stood out to you when you looked at that?"',
+                clarification: "This question does two things: it references the specific text they got (continuity), and it asks an open-ended question about their reaction rather than their intentions. 'What stood out to you?' is powerful because it has no right or wrong answer — the homeowner can say 'the price seemed high,' 'I was surprised it was that much,' or 'not much, just curious' — and all of those responses give you something real to work with.",
               },
               {
                 id: 'sc-17',
@@ -555,12 +581,14 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'The lead responded to the pricing text and said the price seemed high. What is a strong follow-up?',
                 answer:
                   '"How did you decide that felt high?" — Don\'t argue. Get curious about how they landed on that assessment.',
+                clarification: "The instinct for most agents is to defend the number: 'Actually, comparable homes in your area sold for...' That's the wrong move. The homeowner's perception of 'high' is based on something — their own mortgage, a neighbor's sale, what they paid, wishful thinking. Asking 'how did you decide that felt high?' uncovers the real anchor. Once you know the anchor, you can have a useful conversation. Until then, you're arguing with a feeling.",
               },
               {
                 id: 'sc-18',
                 question:
                   'The lead responded to a pricing text and seemed interested. What is a strong follow-up to deepen the conversation?',
                 answer: '"Tell me more about that." — Then stop talking. Let them fill the silence.',
+                clarification: "Three words and a pause is one of the most powerful tools in any conversation. 'Tell me more about that' is non-directional — it doesn't push the homeowner toward any particular answer, it just gives them permission to keep talking. Most people will. And what they say next usually contains something much more valuable than whatever they said first — the real motivation, the real concern, the real timeline.",
               },
               {
                 id: 'sc-19',
@@ -568,6 +596,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'The lead responded to an agent comparison text. What is the correct connector question?',
                 answer:
                   '"I saw you were open to information about local agents. What made you curious about that specifically?"',
+                clarification: "'What made you curious about that specifically?' is the key phrase here. It implies that their curiosity is meaningful and worth understanding, and it opens the door for them to reveal the real reason they engaged with the text — which might be 'we've been thinking about interviewing agents,' 'our neighbor just sold and we're wondering about our home,' or 'I was just clicking around.' Each answer tells you a completely different thing about where they are.",
               },
               {
                 id: 'sc-20',
@@ -575,6 +604,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   "After a lead responds to the agent comparison text, how do you determine if they're researching or actively deciding?",
                 answer:
                   '"Are you comparing options, or just educating yourself right now?" — This separates browsers from buyers without pressure.',
+                clarification: "This question does the work of a qualification question without sounding like one. 'Comparing options' signals they're actively in a decision process. 'Just educating myself' tells you they're earlier in the journey. Both are valuable — but they lead to very different conversations. And because you've given them both options with no judgment attached, they'll tell you the truth.",
               },
               {
                 id: 'sc-21',
@@ -582,6 +612,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'The lead responded "maybe" or "just looking." What question do you use to unpack what that actually means?',
                 answer:
                   '"When you say \'just looking,\' what does that actually mean for you right now?"',
+                clarification: "'Just looking' is a defense mechanism — it's how people protect themselves from being sold to before they're ready. But it almost never means nothing. Asking 'what does that actually mean for you right now?' strips away the vagueness and invites them to be specific. The word 'actually' is doing subtle but important work here: it signals that you're genuinely curious, not just moving through a script.",
               },
               {
                 id: 'sc-22',
@@ -589,6 +620,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'A lead in the "just looking" scenario seems uncertain. What question distinguishes timing uncertainty from market uncertainty?',
                 answer:
                   '"Is that more about timing, or uncertainty about the market?" — Then follow wherever their answer leads.',
+                clarification: "Uncertainty comes from different places — and the source matters for how you respond. Timing uncertainty ('we don't know when we want to move') calls for a follow-up about what would clarify the timing. Market uncertainty ('we're not sure if now is a good time to sell') opens a door to market data and education. By naming both possibilities, you make it easy for the homeowner to identify which one is true — and both lead somewhere useful.",
               },
               {
                 id: 'sc-23',
@@ -596,6 +628,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'A "just looking" lead needs a push toward imagining a real future. What question creates that?',
                 answer:
                   '"What would need to change for this to feel more real?" — It invites them to define their own trigger, not yours.',
+                clarification: "This question is subtle but powerful. It doesn't push the homeowner to move faster — it asks them to articulate what their own tipping point looks like. When they answer, they're essentially telling you what to watch for and what to bring them when it happens. That information is your entire follow-up strategy. And because they defined it themselves, it doesn't feel like pressure when you reference it later.",
               },
               {
                 id: 'sc-24',
@@ -603,6 +636,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'The lead responded to a "home valuer" text mentioning a price that would make moving worth it. What is the correct connector question?',
                 answer:
                   '"You mentioned a price that would make moving worth it. How did you land on that number?"',
+                clarification: "The homeowner has already done the work of anchoring to a number — your job is to understand that anchor. 'How did you land on that number?' gets at whether it's a real financial calculation (based on their remaining mortgage, a target net proceeds number, or a replacement home cost) or an intuitive gut feel. Understanding that distinction determines whether you can actually help them get there or whether you need to gently recalibrate expectations.",
               },
               {
                 id: 'sc-25',
@@ -610,6 +644,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   "For the home valuer scenario, how do you determine if the lead's magic number is based on lifestyle or market data?",
                 answer:
                   '"Is that based on lifestyle goals or what you\'ve seen in the market?" — This reveals whether they have a real anchor or an emotional one.',
+                clarification: "Lifestyle-based numbers ('we need enough to buy the lake house we want') are real and workable — they tell you exactly what the homeowner needs from the sale. Market-based numbers ('I saw a house down the street sell for X') are often misapplied — the homeowner may be anchoring on a different home size, condition, or market moment. Knowing which type you're dealing with tells you whether to affirm the number or gently educate.",
               },
               {
                 id: 'sc-26',
@@ -617,6 +652,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'After establishing the lead\'s magic number in the home valuer scenario, what is the best forward-looking question?',
                 answer:
                   '"If the market supported that number, what would you want to do next?" — It moves them from aspiration to action without pressure.',
+                clarification: "This question works because it's conditional — 'if the market supported that number' — which means you're not asking them to commit to anything. You're simply asking them to imagine a scenario where their conditions are met. What they say next ('we'd probably start looking at places in Phoenix' or 'we'd want to be out before winter') is a roadmap. It also reveals urgency: if they have a clear answer, they're further along than 'just looking' suggests.",
               },
             ],
           },
@@ -636,18 +672,21 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What are the three core power phrases used to keep a conversation going without pushing?',
                 answer:
                   '"Tell me more about that." / "How did you decide that was the right timing?" / "What makes that important to you?"',
+                clarification: "Each of these phrases is deliberately non-directional. They don't push the homeowner toward any particular answer — they just create space for them to keep talking. 'Tell me more' is pure invitation. 'How did you decide' uncovers the reasoning behind a position. 'What makes that important' surfaces values and motivations that are often more powerful than any sales point you could offer. Use them whenever you want to go deeper without steering.",
               },
               {
                 id: 'sc-28',
                 question: "After asking a power phrase question, what is the agent's only job?",
                 answer:
                   "Stop talking. Find their story. The silence belongs to the homeowner.",
+                clarification: "A power phrase question only works if you actually let the homeowner answer it. The instinct to fill silence with more questions, reassurances, or follow-ups is what kills the moment. The homeowner needs time to formulate a real answer — especially to 'what makes that important to you?' which requires some reflection. The agent who stays quiet after asking a good question always learns more than the agent who rushes to the next point.",
               },
               {
                 id: 'sc-29',
                 question: 'What is the exact "normalizing not ready" line used mid-call?',
                 answer:
                   '"I\'m actually glad to hear you\'re not ready to sell yet. I specialize in helping people who aren\'t ready. Most people I work with just want clarity before they make any decisions." [Pause. Let that land.]',
+                clarification: "This is one of the most counterintuitive lines in the script — and one of the most effective. Every other agent the homeowner has talked to has tried to move them along. When you say 'I'm glad you're not ready,' you completely flip the dynamic. You become the only person in their life who isn't pushing them, which instantly makes you the most trustworthy person in the room. The pause after this line is critical — let it land before you say anything else.",
               },
               {
                 id: 'sc-30',
@@ -655,6 +694,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'Why does saying "I\'m glad you\'re not ready" create more trust than trying to move the lead forward?',
                 answer:
                   'It signals that the agent is not threatened by their timeline and has no agenda to push — which makes the homeowner more willing to open up.',
+                clarification: "Homeowners are conditioned to expect agents to push. When you signal that you have no agenda — that you're genuinely fine with wherever they are — it removes the social pressure that's been keeping them guarded. They stop trying to manage you and start telling you what's actually going on. That information is worth far more than any closing technique, because it tells you exactly how and when to be useful.",
               },
               {
                 id: 'sc-31',
@@ -662,6 +702,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What is the value statement script used to explain what the agent does — without pitching a listing?',
                 answer:
                   '"What I normally do is a walkthrough of a client\'s home, in person or virtual, and look at it the way a buyer would. The goal is to help you avoid spending money on repairs or upgrades that won\'t give you a return."',
+                clarification: "The walkthrough is the Trojan horse of this system. It provides genuine value (homeowners really do waste money on the wrong improvements), but it also gets you in the home in a non-threatening context. By positioning it as protection — 'so you don't waste money' — you align your interests with theirs. There's no listing agenda visible. And yet once you're in that home, you've already done more than every agent who sent a postcard.",
               },
               {
                 id: 'sc-32',
@@ -669,12 +710,14 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What is the value statement framed around — and what is it explicitly NOT framed around?',
                 answer:
                   'Framed around preventing wasted money. NOT framed around pushing a sale or getting a listing.',
+                clarification: "The framing is everything. 'Would you like to meet to discuss listing your home?' triggers resistance. 'Would it help to know which repairs to skip so you don't waste money?' triggers gratitude. The outcome is the same visit — but the homeowner's emotional response to each invitation is completely different. This framing works because it solves a problem they already have, whether they're selling next month or in three years.",
               },
               {
                 id: 'sc-33',
                 question: 'What outcome does the walkthrough value statement offer the homeowner?',
                 answer:
                   "Clarity and protection — knowing which repairs to skip so they don't waste money when the time comes.",
+                clarification: "Clarity and protection are two of the most valuable things you can offer a pre-seller. Clarity because most homeowners genuinely don't know what their home is worth or what it would cost to get it ready. Protection because the fear of 'doing it wrong' is a real barrier to moving forward. By offering both in a single visit, you solve the two biggest emotional obstacles to the listing conversation — before the listing conversation ever begins.",
               },
             ],
           },
@@ -693,18 +736,21 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                 question: 'What is the transition script used to propose next steps without pressure?',
                 answer:
                   '"If it would be helpful, the next step for most people at your stage is just a quick walkthrough to get clarity. No pressure, no listing conversation. Would that actually be useful for you, or not yet?"',
+                clarification: "'If it would be helpful' and 'most people at your stage' are both doing important work. The first phrase makes the next step optional and positions you as responsive to their needs rather than your agenda. The second normalizes the walkthrough as a standard step — 'most people' do this, so it's not weird or committal. The closing question ('would that actually be useful, or not yet?') gives them an easy out, which paradoxically makes them more likely to say yes.",
               },
               {
                 id: 'sc-35',
                 question: 'What is the correct response if the homeowner says no to the walkthrough?',
                 answer:
                   '"That\'s totally fine. Then staying informed is probably the smartest move right now." — Accept it gracefully and reframe it as a win.',
+                clarification: "Accepting a 'no' gracefully is one of the most powerful things you can do. It confirms that you meant it when you said 'no pressure.' It also keeps the conversation open — the homeowner doesn't have to escape or get off the phone, because you've made it clear that no is a fine answer. 'Staying informed is probably the smartest move' gives them a positive action to take (receiving your market updates) rather than ending the interaction.",
               },
               {
                 id: 'sc-36',
                 question: 'What is the closing script for the call?',
                 answer:
                   '"It sounds like you\'re still figuring things out, which is totally normal. What I usually do at this stage is a quick walkthrough, in person or virtual, where I look at the home the way a buyer would and point out repairs or upgrades you don\'t need to do so you don\'t waste money when the time comes. Is there usually a better day of the week for that?"',
+                clarification: "Every phrase in this close is load-bearing. 'Still figuring things out, which is totally normal' is a final normalization before the ask. 'What I usually do at this stage' frames the walkthrough as standard practice, not a special request. 'Point out repairs you don't need to do' is protection framing — you're saving them from themselves. And 'is there usually a better day of the week' assumes agreement softly while asking about preference, not permission.",
               },
               {
                 id: 'sc-37',
@@ -712,60 +758,70 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What are the three things the closing script assumes and avoids to keep it low-pressure?',
                 answer:
                   'Assumes "not ready," frames the walkthrough as preventing wasted money, and never mentions listing.',
+                clarification: "Each of these three elements neutralizes a different source of resistance. Assuming not ready removes the pressure to be at a certain stage. Framing around wasted money aligns your interests with theirs (both of you benefit from them not overspending on improvements). Never mentioning listing removes the subtext that's making the homeowner guard themselves — they can relax because there's no ask coming that they're not ready for.",
               },
               {
                 id: 'sc-38',
                 question: 'What does the close ask for instead of "Can I book an appointment?"',
                 answer:
                   '"Is there usually a better day of the week for that?" — It assumes a yes softly, and asks about preference rather than commitment.',
+                clarification: "'Can I book an appointment?' requires a yes-or-no decision with social stakes. 'Is there usually a better day of the week?' assumes the meeting is happening and simply asks about logistics. The word 'usually' is especially clever — it implies this is a recurring thing in their life, making the question feel casual rather than consequential. When people answer a logistics question, they've implicitly agreed to the thing behind it.",
               },
               {
                 id: 'sc-39',
                 question: 'Day 1 of the 8-day text drip — what does it say?',
                 answer:
                   '"Hey! [First Name], I saw you were curious about selling. What\'s your ideal timeline? (Just exploring, next few months, or ASAP?)"',
+                clarification: "Day 1 opens with curiosity, not information. By asking about their timeline immediately, you signal that your communication is going to be personalized — not a generic drip. The three options in parentheses ('just exploring, next few months, or ASAP?') give them easy ways to respond that don't require them to compose a full reply. Any answer they give is the foundation for everything that follows.",
               },
               {
                 id: 'sc-40',
                 question: 'Day 2 of the 8-day text drip — what does it say?',
                 answer:
                   '"Just wanted to check in and include your custom market valuation report. [custom_ylopo_seller_report]"',
+                clarification: "Day 2 delivers concrete value: their home's market data, personalized to their address. 'Custom market valuation report' feels specific and personal, not like a generic newsletter. This is the first touchpoint where the homeowner gets something they can actually use, which shifts the relationship from 'agent contacting me' to 'person providing me with useful information.' That shift matters for every subsequent message.",
               },
               {
                 id: 'sc-41',
                 question: 'Day 3 of the 8-day text drip — what does it say?',
                 answer:
                   '"The sellers report I sent you yesterday can be a great starting point. I\'d be happy to spend ten minutes reviewing with you. Is this afternoon a good time?"',
+                clarification: "Day 3 builds on Day 2's value delivery by offering to make it even more useful. 'Ten minutes' is important — it's specific enough to feel non-threatening and low-commitment. Referencing what you sent yesterday creates continuity and shows you're paying attention to the sequence. The question 'is this afternoon a good time?' is casual and specific, which makes it easier to answer than 'would you like to schedule a call?'",
               },
               {
                 id: 'sc-42',
                 question: 'Day 4 of the 8-day text drip — what does it say?',
                 answer:
                   '"I can also send you a prep list with the top 3 things that would give you the biggest return. Want me to send that?"',
+                clarification: "Day 4 introduces a new piece of value: actionable prep guidance. Framing it as 'the top 3 things' rather than a comprehensive list makes it feel manageable and not overwhelming. 'That would give you the biggest return' keeps the framing around their financial benefit. And 'want me to send that?' is an easy yes — it requires no commitment beyond receiving information, which makes the yes rate very high.",
               },
               {
                 id: 'sc-43',
                 question: 'Day 5 of the 8-day text drip — what does it say?',
                 answer:
                   '"If you had a magic-number price that would make moving worth it... what would it be?"',
+                clarification: "Day 5 is a pivot from information delivery to emotional engagement. 'Magic-number price' is a deliberately casual, non-threatening way to ask about motivation — it sounds like a fun hypothetical rather than a qualification question. By this point in the drip, the homeowner has received enough value that they're more likely to engage authentically. Whatever number they name becomes your most important data point for the rest of the relationship.",
               },
               {
                 id: 'sc-44',
                 question: 'Day 6 of the 8-day text drip — what does it say?',
                 answer:
                   '"Happy to do a quick walkthrough (in person or virtual) just to give you clarity and options — zero pressure. Want to find a time?"',
+                clarification: "Day 6 reintroduces the walkthrough offer, but now it lands differently than it would have on Day 1. By this point, the homeowner has received market data, a prep list, and a value-focused message. 'Zero pressure' is stated explicitly because it needs to be believed, not just implied. The offer of 'in person or virtual' removes a logistical barrier — it signals flexibility and makes the yes easier.",
               },
               {
                 id: 'sc-45',
                 question: 'Day 7 of the 8-day text drip — what does it say?',
                 answer:
                   '"Still here if you need anything. I noticed some shifting in the market trends this week, would you like to discuss?"',
+                clarification: "Day 7 is a soft presence touchpoint — it reminds the homeowner you exist without asking for anything. 'Still here if you need anything' is service-oriented, not sales-oriented. The market trend hook gives them something specific to respond to if they want to engage, without requiring them to. This type of low-friction touchpoint is what keeps you top of mind for homeowners who are 6-12 months out without wearing them down.",
               },
               {
                 id: 'sc-46',
                 question: 'Day 8 of the 8-day text drip — what does it say?',
                 answer:
                   '"I took the liberty of setting up a home search in your area for you. Check it out here: [link]. Let me know if you see anything that catches your eye!"',
+                clarification: "Day 8 is the most counterintuitive message in the sequence — you're sending a seller a buyer search. But this is intentional: seeing what buyers in their price range are actively looking at creates a visceral sense of demand. It also signals that you have access to market data they can't get elsewhere. 'I took the liberty' frames it as a proactive gift, not a sales push. If they click the link and browse, they're thinking like a seller — which is exactly what you want.",
               },
               {
                 id: 'sc-47',
@@ -773,6 +829,7 @@ Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No 
                   'What is the strategic purpose of Day 8 — sending a home search to a potential seller?',
                 answer:
                   "It shows the seller what buyers in their price range are actively looking at, which makes their own move feel more concrete and keeps the agent relevant without pressure.",
+                clarification: "The psychology here is based on market concreteness. Abstract knowledge ('the market is good') doesn't move people. But seeing real buyers actively searching for homes like theirs makes the demand feel real and specific. It closes the mental gap between 'thinking about selling someday' and 'understanding what selling actually looks like.' The agent stays relevant because they're the one providing this window into buyer behavior — a view no one else is offering.",
               },
             ],
           },

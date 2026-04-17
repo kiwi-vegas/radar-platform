@@ -11,8 +11,6 @@ interface FlashCardLessonProps {
   completing: boolean
 }
 
-type CardResult = 'correct' | 'incorrect' | null
-
 export default function FlashCardLesson({
   lesson,
   isCompleted,
@@ -24,100 +22,68 @@ export default function FlashCardLesson({
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [results, setResults] = useState<CardResult[]>(new Array(cards.length).fill(null))
+  const [showClarification, setShowClarification] = useState(false)
+  const [reviewedCount, setReviewedCount] = useState(0)
+  const [reviewed, setReviewed] = useState<boolean[]>(new Array(cards.length).fill(false))
   const [showSummary, setShowSummary] = useState(isCompleted)
 
   const current = cards[currentIndex]
   const isLast = currentIndex === cards.length - 1
-  const currentResult = results[currentIndex]
 
-  const showAnswer = isFlipped
+  function advance() {
+    const newReviewed = [...reviewed]
+    newReviewed[currentIndex] = true
+    setReviewed(newReviewed)
+    if (!reviewed[currentIndex]) setReviewedCount((n) => n + 1)
 
-  const correctCount = results.filter((r) => r === 'correct').length
-
-  function handleScore(result: 'correct' | 'incorrect') {
-    const newResults = [...results]
-    newResults[currentIndex] = result
-    setResults(newResults)
-
-    // Auto-advance after a short pause
-    setTimeout(() => {
-      if (isLast) {
-        setShowSummary(true)
-      } else {
-        setIsFlipped(false)
-        setTimeout(() => setCurrentIndex((i) => i + 1), 150)
-      }
-    }, 300)
+    if (isLast) {
+      setShowSummary(true)
+    } else {
+      setIsFlipped(false)
+      setShowClarification(false)
+      setTimeout(() => setCurrentIndex((i) => i + 1), 150)
+    }
   }
 
   function handleCardClick() {
-    // Click toggles flip (useful for mobile, or for desktop if they want to lock the answer visible)
-    setIsFlipped((f) => !f)
-  }
-
-  function restart() {
-    setIsFlipped(false)
-    setResults(new Array(cards.length).fill(null))
-    setShowSummary(false)
-    setTimeout(() => setCurrentIndex(0), 150)
+    if (!isFlipped) setIsFlipped(true)
   }
 
   // --- Summary screen ---
   if (showSummary) {
-    const pct = Math.round((correctCount / cards.length) * 100)
-    const passed = pct >= 70
-
     return (
       <div className="space-y-6 animate-fade-in">
-        {/* Score card */}
-        <div className={`rounded-2xl border p-8 text-center ${passed ? 'bg-green-500/5 border-green-500/20' : 'bg-orange-500/5 border-orange-500/20'}`}>
-          <div className="text-5xl font-bold mb-2" style={{ color: passed ? '#22c55e' : '#F97316' }}>
-            {correctCount}/{cards.length}
+        <div className="rounded-2xl border p-8 text-center" style={{ background: '#F9731608', borderColor: '#F9731630' }}>
+          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#F9731620', border: '2px solid #F9731440' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
           </div>
-          <div className="text-tx-secondary text-sm mb-1">{pct}% correct</div>
-          <div className={`text-lg font-semibold mt-4 ${passed ? 'text-green-400' : 'text-brand-orange'}`}>
-            {passed ? 'Great work!' : 'Keep practicing!'}
-          </div>
-          <p className="text-tx-muted text-sm mt-2">
-            {passed
-              ? 'You have a solid grasp of the core concepts.'
-              : 'Review the cards you missed and try again.'}
+          <h3 className="text-xl font-bold text-tx-primary mb-2">All {cards.length} cards reviewed.</h3>
+          <p className="text-tx-secondary text-sm max-w-sm mx-auto">
+            You&apos;ve been through everything in this lesson. The quiz later will test how much has stuck — but for now, you&apos;re ready to move on.
           </p>
         </div>
 
-        {/* Per-card breakdown */}
+        {/* Card list recap */}
         <div className="space-y-2">
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <div
               key={card.id}
               className="flex items-start gap-3 px-4 py-3 rounded-xl bg-surface-card border border-surface-border"
             >
-              <div className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${results[i] === 'correct' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                {results[i] === 'correct' ? (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-                ) : (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                )}
+              <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ background: '#F9731620', color: '#F97316' }}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-tx-secondary text-xs leading-snug">{card.question}</p>
-                {results[i] === 'incorrect' && (
-                  <p className="text-brand-orange text-xs mt-1 font-medium">{card.answer}</p>
-                )}
-              </div>
+              <p className="text-tx-secondary text-xs leading-snug">{card.question}</p>
             </div>
           ))}
         </div>
 
-        {/* Actions */}
+        {/* Complete button */}
         <div className="flex gap-3">
-          <button
-            onClick={restart}
-            className="flex-1 py-3 rounded-xl border border-surface-border text-tx-secondary hover:text-tx-primary hover:border-surface-hover transition-colors text-sm font-medium"
-          >
-            ↺ Try Again
-          </button>
           {!isCompleted && (
             <button
               onClick={onComplete}
@@ -131,8 +97,8 @@ export default function FlashCardLesson({
                 </>
               ) : (
                 <>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  Complete & Continue
+                  Complete &amp; Continue
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                 </>
               )}
             </button>
@@ -148,7 +114,7 @@ export default function FlashCardLesson({
     )
   }
 
-  // --- Card drill screen ---
+  // --- Card review screen ---
   return (
     <div className="space-y-5 animate-fade-in">
       {/* Intro */}
@@ -160,23 +126,16 @@ export default function FlashCardLesson({
 
       {/* Progress dots */}
       <div className="flex items-center justify-center gap-1.5">
-        {cards.map((_, i) => {
-          const r = results[i]
-          return (
-            <div
-              key={i}
-              className="h-2 rounded-full transition-all duration-300"
-              style={{
-                width: i === currentIndex ? '20px' : '8px',
-                background:
-                  r === 'correct' ? '#22c55e'
-                  : r === 'incorrect' ? '#ef4444'
-                  : i === currentIndex ? '#F97316'
-                  : '#1E2A3B',
-              }}
-            />
-          )
-        })}
+        {cards.map((_, i) => (
+          <div
+            key={i}
+            className="h-2 rounded-full transition-all duration-300"
+            style={{
+              width: i === currentIndex ? '20px' : '8px',
+              background: reviewed[i] ? '#F97316' : i === currentIndex ? '#F9731680' : '#1E2A3B',
+            }}
+          />
+        ))}
       </div>
 
       {/* Flashcard */}
@@ -186,7 +145,7 @@ export default function FlashCardLesson({
         onClick={handleCardClick}
       >
         <div
-          className={`transform-style-3d relative w-full h-full transition-transform duration-500 ${showAnswer ? 'rotate-y-180' : ''}`}
+          className={`transform-style-3d relative w-full h-full transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}`}
         >
           {/* Front — question */}
           <div className="backface-hidden absolute inset-0 bg-surface-card border border-surface-border rounded-2xl overflow-hidden flex flex-col">
@@ -206,7 +165,6 @@ export default function FlashCardLesson({
                 <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.question}</p>
               </div>
             )}
-            {/* Hover hint */}
             <div className="absolute bottom-3 left-0 right-0 flex justify-center">
               <span className="text-xs text-tx-muted bg-surface-card/80 backdrop-blur-sm px-3 py-1 rounded-full border border-surface-border">
                 Click to reveal answer
@@ -239,45 +197,55 @@ export default function FlashCardLesson({
         </div>
       </div>
 
-      {/* Scoring buttons — appear once answer is visible */}
+      {/* Action buttons — appear once answer is visible */}
       <div
         className="transition-all duration-300 overflow-hidden"
-        style={{ maxHeight: showAnswer ? '120px' : '0', opacity: showAnswer ? 1 : 0 }}
+        style={{ maxHeight: isFlipped ? '300px' : '0', opacity: isFlipped ? 1 : 0 }}
       >
-        <div className="pt-1">
-          <p className="text-center text-xs text-tx-muted mb-3">Did you get it right?</p>
+        <div className="pt-1 space-y-3">
+          {/* Clarification panel */}
+          {showClarification && current.clarification && (
+            <div className="rounded-xl border px-5 py-4 animate-fade-in" style={{ background: '#131A2B', borderColor: '#F9731630' }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F97316' }}>
+                Why this matters
+              </p>
+              <p className="text-tx-secondary text-sm leading-relaxed">{current.clarification}</p>
+            </div>
+          )}
+
           <div className="flex gap-3">
+            {/* Clarification button — only shown if card has clarification and panel isn't open */}
+            {current.clarification && !showClarification && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setShowClarification(true) }}
+                className="flex-1 py-3 rounded-xl border text-sm font-medium transition-colors"
+                style={{ borderColor: '#1E2A3B', color: '#94a3b8', background: 'transparent' }}
+              >
+                I need more clarification
+              </button>
+            )}
+
+            {/* Got it button */}
             <button
-              onClick={(e) => { e.stopPropagation(); handleScore('incorrect') }}
-              disabled={currentResult !== null}
-              className="flex-1 py-3 rounded-xl border text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              style={{ borderColor: '#ef444440', color: '#ef4444', background: '#ef444408' }}
+              onClick={(e) => { e.stopPropagation(); advance() }}
+              className="flex-1 py-3 rounded-xl text-white text-sm font-semibold transition-opacity hover:opacity-90 flex items-center justify-center gap-2"
+              style={{ background: '#F97316' }}
             >
+              Got it, next
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                <polyline points="9 18 15 12 9 6"/>
               </svg>
-              Missed it
-            </button>
-            <button
-              onClick={(e) => { e.stopPropagation(); handleScore('correct') }}
-              disabled={currentResult !== null}
-              className="flex-1 py-3 rounded-xl border text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              style={{ borderColor: '#22c55e40', color: '#22c55e', background: '#22c55e08' }}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              Got it!
             </button>
           </div>
         </div>
       </div>
 
-      {/* Manual nav (prev only, since scoring auto-advances) */}
+      {/* Back nav */}
       <button
         onClick={() => {
           if (currentIndex === 0) return
           setIsFlipped(false)
+          setShowClarification(false)
           setTimeout(() => setCurrentIndex((i) => i - 1), 150)
         }}
         disabled={currentIndex === 0}
