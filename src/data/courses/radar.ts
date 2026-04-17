@@ -382,9 +382,9 @@ YOU: "Perfect. I'll make it simple and useful — no fluff. And if things ever c
 ---
 
 Goal: Keep the conversation low-pressure, curiosity-driven, and value-first. No pitch. No close. Just consulting.`,
-            phoneNumber: '(555) 555-0100',
+            phoneNumber: '(332) 378-5521',
             callInstructions:
-              'Call this number and you\'ll be connected to the RaiDAR Roleplay AI. Introduce yourself as an agent and the AI will respond as a homeowner. Work through the conversation using the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant — not the salesperson. When the call ends, score yourself honestly below.',
+              'Call (332) 378-5521 right now to begin your roleplay. The AI will respond as a homeowner — use the script above as your guide. Stay curious, keep it low-pressure, and focus on being the consultant. When the call ends, you\'ll automatically receive a report card via text message on the phone you called from. Once you score 8 or better, take a screenshot of that report card and upload it below to continue.',
             minimumScore: 8,
             remediation:
               'An 8 means the call felt smooth, natural, and genuinely consultant-like — not perfect, but solid. Review the script and pinpoint where you felt rushed or fell into closing mode. Call again and focus on that one moment. Most agents need 2–3 rounds before it clicks. That repetition is exactly the point.',
@@ -1070,9 +1070,9 @@ SCORING GUIDE:
 7 = 6 beats hit, one moment that felt salesy or rushed
 6 = 5 beats hit, clear gaps in normalizing or value statement
 < 6 = Call felt like a pitch — start over, review the script`,
-            phoneNumber: '(555) 555-0100',
+            phoneNumber: '(332) 378-5521',
             callInstructions:
-              "Call the practice line. Introduce yourself as an agent and the AI will respond as a homeowner who reacted to a home valuation text. Work through all 7 beats in order. Stay curious, stay low-pressure, and let pauses breathe. When the call ends, score yourself using the guide above.",
+              'Call (332) 378-5521 right now to begin your roleplay. The AI will respond as a homeowner who reacted to a home valuation text. Work through all 7 beats in order — stay curious, stay low-pressure, and let pauses breathe. When the call ends, you\'ll automatically receive a report card via text message on the phone you called from. Once you score 8 or better, take a screenshot of that report card and upload it below to continue.',
             minimumScore: 8,
             remediation:
               'If you scored below 8, identify which beat broke down. The most common failures are: (1) rushing past the pause after the opener, (2) skipping the disarming frame and jumping to the scenario connector, and (3) letting the value statement sound like a pitch. Review those three moments specifically, then call again targeting just that one beat. Most agents need 2–3 rounds before the full call flows.',
