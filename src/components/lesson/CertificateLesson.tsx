@@ -372,11 +372,11 @@ export default function CertificateLesson({
               }} />
             ))}
 
-            <div className="relative px-6 pt-4 pb-6">
-              {/* Ribbon — pulled tight, no extra margin */}
-              <div className="flex justify-center" style={{ marginTop: '-8px', marginBottom: '-6px' }}>
+            <div className="relative px-6 pt-0 pb-6">
+              {/* Ribbon — cropped container removes transparent tail padding */}
+              <div style={{ height: '195px', overflow: 'hidden', display: 'flex', justifyContent: 'center', margin: '-12px 0 -18px' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '340px', height: 'auto', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
+                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '400px', height: '400px', objectFit: 'cover', objectPosition: 'top center', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
               </div>
 
               {/* University */}
