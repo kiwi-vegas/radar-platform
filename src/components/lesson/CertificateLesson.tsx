@@ -22,7 +22,10 @@ export default function CertificateLesson({
 }: CertificateLessonProps) {
   const content = lesson.content as CertificateContent
   const [userName, setUserName] = useState<string | null>(null)
+  const [instagramCopied, setInstagramCopied] = useState(false)
   const router = useRouter()
+
+  const shareCaption = `Guess what? I'm super excited to keep leveling up my real estate skills 🎉 I just graduated from the RaiDAR: Getting More Sellers program by Ylopo! This training covered seller mindset, tactical prospecting, and scripting — everything I need to identify, engage, and convert seller leads. Can't wait to put it all into action. 🏡 #RaiDAR #YlopoUniversity #RealEstate #SellerLeads #LevelingUp`
 
   const completionDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -74,17 +77,25 @@ export default function CertificateLesson({
     return () => { cancelled = true }
   }, [])
 
-  // ─── LinkedIn share ─────────────────────────────────────────────────────────
+  // ─── Share handlers ──────────────────────────────────────────────────────────
   function handleLinkedIn() {
     const url = encodeURIComponent('https://www.ylopo.com')
-    const summary = encodeURIComponent(
-      `I just completed the RaiDAR: Getting More Sellers training program by Ylopo. Covered Mindset, Tactical strategies, and Scripting for Success — ready to identify, engage, and convert seller leads.`
-    )
+    const summary = encodeURIComponent(shareCaption)
     const title = encodeURIComponent('RaiDAR Certified — Getting More Sellers')
-    window.open(
-      `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`,
-      '_blank'
-    )
+    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, '_blank')
+  }
+
+  function handleFacebook() {
+    const url = encodeURIComponent('https://www.ylopo.com')
+    const quote = encodeURIComponent(shareCaption)
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${quote}`, '_blank')
+  }
+
+  function handleInstagram() {
+    navigator.clipboard.writeText(shareCaption).catch(() => {})
+    setInstagramCopied(true)
+    setTimeout(() => setInstagramCopied(false), 3000)
+    window.open('https://www.instagram.com/', '_blank')
   }
 
   // ─── Print certificate (formal) ─────────────────────────────────────────────
@@ -545,43 +556,84 @@ export default function CertificateLesson({
             Download &amp; Share Your Card
           </button>
 
-          {/* Secondary row */}
-          <div className="grid grid-cols-3 gap-2">
-            {/* LinkedIn */}
-            <button
-              onClick={handleLinkedIn}
-              className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-medium transition-colors"
-              style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: '#94a3b8' }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-              </svg>
-              LinkedIn
-            </button>
+          {/* Social share row */}
+          <div>
+            <p className="text-xs text-tx-muted text-center mb-2">Share your achievement</p>
+            <div className="grid grid-cols-3 gap-2">
+              {/* LinkedIn */}
+              <button
+                onClick={handleLinkedIn}
+                className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-semibold transition-colors"
+                style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: '#0A66C2' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+                LinkedIn
+              </button>
 
-            {/* Formal certificate */}
+              {/* Facebook */}
+              <button
+                onClick={handleFacebook}
+                className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-semibold transition-colors"
+                style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: '#1877F2' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+                Facebook
+              </button>
+
+              {/* Instagram */}
+              <button
+                onClick={handleInstagram}
+                className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-semibold transition-colors relative"
+                style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: instagramCopied ? '#7BC109' : '#E1306C' }}
+              >
+                {instagramCopied ? (
+                  <>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    Caption copied!
+                  </>
+                ) : (
+                  <>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                    Instagram
+                  </>
+                )}
+              </button>
+            </div>
+            {instagramCopied && (
+              <p className="text-xs text-center mt-2" style={{ color: '#7BC109' }}>
+                Caption copied — paste it when you create your Instagram post.
+              </p>
+            )}
+          </div>
+
+          {/* Utility row */}
+          <div className="grid grid-cols-2 gap-2">
             <button
               onClick={handleDownloadCertificate}
-              className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-medium transition-colors"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-medium transition-colors"
               style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: '#94a3b8' }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10 9 9 9 8 9"/>
               </svg>
-              Certificate
+              Download Certificate
             </button>
-
-            {/* Dashboard */}
             <button
               onClick={() => router.push('/dashboard')}
-              className="flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl text-xs font-medium transition-colors"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-medium transition-colors"
               style={{ background: '#131A2B', border: '1px solid #1E2A3B', color: '#94a3b8' }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                 <polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
