@@ -373,10 +373,10 @@ export default function CertificateLesson({
             ))}
 
             <div className="relative px-6 pt-0 pb-6">
-              {/* Ribbon — cropped container removes transparent tail padding */}
-              <div style={{ height: '195px', overflow: 'hidden', display: 'flex', justifyContent: 'center', margin: '-12px 0 -18px' }}>
+              {/* Ribbon — top-anchored crop removes tail padding while showing full badge */}
+              <div style={{ height: '240px', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', margin: '0 0 -30px' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '400px', height: '400px', objectFit: 'cover', objectPosition: 'top center', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
+                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '380px', height: 'auto', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
               </div>
 
               {/* University */}
