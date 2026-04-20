@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          orange: '#F97316',
-          'orange-light': '#FB923C',
-          'orange-dark': '#EA6C0A',
+          green: '#7BC109',
+          'green-light': '#8ED10A',
+          'green-dark': '#508200',
         },
         surface: {
           DEFAULT: '#0B0F1A',
@@ -28,7 +28,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Nunito', 'system-ui', 'sans-serif'],
+        heading: ['Raleway', 'system-ui', 'sans-serif'],
       },
       animation: {
         'flip-in': 'flipIn 0.4s ease-out',

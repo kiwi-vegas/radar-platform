@@ -7,7 +7,7 @@ export const radarCourse: Course = {
   subtitle: 'Getting More Sellers',
   description:
     'Master the RaiDAR system to identify and engage early-stage sellers before your competitors ever know they exist. This is not about cold calling — it is about being the trusted advisor already in the conversation when sellers are ready to move.',
-  coverColor: '#F97316',
+  coverColor: '#7BC109',
   coverImage: '/images/main-radar-thumb.png',
   sections: [
     // ============================================================

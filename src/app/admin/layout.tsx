@@ -24,7 +24,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <div className="flex items-center gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-brand-orange flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-brand-green flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="3" fill="white"/>
                   <circle cx="12" cy="12" r="7" stroke="white" strokeWidth="1.5" fill="none" opacity="0.6"/>
@@ -34,7 +34,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               <span className="font-bold text-tx-primary tracking-tight text-sm">RaiDAR</span>
               <span
                 className="text-xs font-semibold px-2 py-0.5 rounded-full ml-1"
-                style={{ background: '#F9731622', color: '#F97316', border: '1px solid #F9731644' }}
+                style={{ background: '#7BC10922', color: '#7BC109', border: '1px solid #7BC10944' }}
               >
                 Admin
               </span>

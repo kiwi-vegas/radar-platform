@@ -99,12 +99,12 @@ export default function VideoCollectionLesson({
 
       {/* Quiz warning banner */}
       {!isCompleted && (
-        <div className="flex items-start gap-3 rounded-xl px-4 py-3.5 border" style={{ background: '#F9731610', borderColor: '#F9731640' }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" className="shrink-0 mt-0.5">
+        <div className="flex items-start gap-3 rounded-xl px-4 py-3.5 border" style={{ background: '#7BC10910', borderColor: '#7BC10940' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2" className="shrink-0 mt-0.5">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          <p className="text-sm leading-snug" style={{ color: '#F97316' }}>
+          <p className="text-sm leading-snug" style={{ color: '#7BC109' }}>
             <span className="font-semibold">Don't skip these videos.</span>
             {' '}The Mindset Quiz is coming up right after this section — these clips are exactly what it tests.
           </p>
@@ -125,9 +125,9 @@ export default function VideoCollectionLesson({
               onClick={() => setActiveIdx(i)}
               className="flex flex-col items-start gap-1.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
               style={{
-                background: isActive ? '#F9731620' : '#131A2B',
-                color: isActive ? '#F97316' : '#6b7280',
-                border: isActive ? '1px solid #F9731650' : '1px solid #1E2A3B',
+                background: isActive ? '#7BC10920' : '#131A2B',
+                color: isActive ? '#7BC109' : '#6b7280',
+                border: isActive ? '1px solid #7BC10950' : '1px solid #1E2A3B',
                 minWidth: 0,
               }}
             >
@@ -135,7 +135,7 @@ export default function VideoCollectionLesson({
                 <span
                   className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
                   style={{
-                    background: watched ? '#22c55e' : isActive ? '#F97316' : '#1E2A3B',
+                    background: watched ? '#22c55e' : isActive ? '#7BC109' : '#1E2A3B',
                     color: watched || isActive ? 'white' : '#6b7280',
                   }}
                 >
@@ -155,7 +155,7 @@ export default function VideoCollectionLesson({
                 <div className="w-full h-0.5 rounded-full overflow-hidden" style={{ background: '#1E2A3B' }}>
                   <div
                     className="h-full rounded-full transition-all duration-500"
-                    style={{ width: `${pct}%`, background: isActive ? '#F97316' : '#6b7280' }}
+                    style={{ width: `${pct}%`, background: isActive ? '#7BC109' : '#6b7280' }}
                   />
                 </div>
               )}
@@ -176,7 +176,7 @@ export default function VideoCollectionLesson({
             className="h-full rounded-full transition-all duration-300"
             style={{
               width: currentProgress ? `${Math.round(currentProgress.percent * 100)}%` : '0%',
-              background: '#F97316',
+              background: '#7BC109',
             }}
           />
         </div>
@@ -211,7 +211,7 @@ export default function VideoCollectionLesson({
           onClick={() => setActiveIdx((i) => i + 1)}
           disabled={isLast}
           className="flex items-center gap-1.5 text-sm font-medium transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          style={{ color: isLast ? '#6b7280' : '#F97316' }}
+          style={{ color: isLast ? '#6b7280' : '#7BC109' }}
         >
           Next video
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -232,7 +232,7 @@ export default function VideoCollectionLesson({
         <button
           onClick={onComplete}
           disabled={completing}
-          className="w-full py-4 rounded-xl text-white font-semibold bg-brand-orange hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 rounded-xl text-white font-semibold bg-brand-green hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {completing ? (
             <>

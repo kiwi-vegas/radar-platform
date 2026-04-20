@@ -31,7 +31,7 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
 
       {/* Name + title */}
       <div>
-        <div className="text-xs font-semibold text-brand-orange uppercase tracking-widest mb-1.5">
+        <div className="text-xs font-semibold text-brand-green uppercase tracking-widest mb-1.5">
           Your Instructor
         </div>
         <h2 className="text-2xl font-bold text-tx-primary">{content.instructorName}</h2>
@@ -62,7 +62,7 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
 
         {content.book && (
           <div className="rounded-2xl bg-surface border border-surface-border p-5 flex flex-col items-center text-center sm:w-44 shrink-0 gap-3">
-            <div className="text-xs font-semibold text-brand-orange uppercase tracking-wider">Best-Selling Author</div>
+            <div className="text-xs font-semibold text-brand-green uppercase tracking-wider">Best-Selling Author</div>
             <div className="relative w-28 rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
               <Image
                 src={content.book.coverImage}
@@ -87,7 +87,7 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
         <button
           onClick={onComplete}
           disabled={completing}
-          className="px-10 py-4 rounded-xl text-white font-semibold bg-brand-orange hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2 text-base"
+          className="px-10 py-4 rounded-xl text-white font-semibold bg-brand-green hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2 text-base"
         >
           {completing ? 'Loading…' : (content.ctaLabel ?? 'Begin Training')}
           {!completing && (

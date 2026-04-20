@@ -167,9 +167,15 @@ export default async function CourseOverviewPage({
                       <p className="text-tx-muted text-xs ml-7">{section.description}</p>
                     )}
                   </div>
-                  <span className="text-tx-muted text-xs shrink-0">
-                    {sectionProgress}/{section.lessons.length}
-                  </span>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <span className="flex items-center gap-1 text-xs text-tx-muted">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      {sectionDuration(section.lessons)}
+                    </span>
+                    <span className="text-tx-muted text-xs">{sectionProgress}/{section.lessons.length}</span>
+                  </div>
                 </div>
 
                 {/* Lessons */}
@@ -232,7 +238,7 @@ export default async function CourseOverviewPage({
                             <div className="flex items-center gap-2 mt-0.5">
                               <span className="text-xs text-tx-muted">{LESSON_TYPE_LABELS[lesson.type]}</span>
                               <span className="text-tx-muted text-xs">·</span>
-                              <span className="text-xs text-tx-muted">{lesson.durationMinutes} min</span>
+                              <span className="text-xs text-tx-muted">{lessonDuration(lesson.durationMinutes)}</span>
                             </div>
                           </div>
                         ) : (
@@ -248,7 +254,7 @@ export default async function CourseOverviewPage({
                                 {LESSON_TYPE_ICONS[lesson.type]} {LESSON_TYPE_LABELS[lesson.type]}
                               </span>
                               <span className="text-tx-muted text-xs">·</span>
-                              <span className="text-xs text-tx-muted">{lesson.durationMinutes} min</span>
+                              <span className="text-xs text-tx-muted">{lessonDuration(lesson.durationMinutes)}</span>
                             </div>
                           </Link>
                         )}
@@ -270,6 +276,28 @@ export default async function CourseOverviewPage({
       </main>
     </div>
   )
+}
+
+// ── Duration helpers ────────────────────────────────────────────────────────
+
+function lessonDuration(min: number): string {
+  if (min <= 2) return '2–3 min'
+  if (min <= 3) return '3–4 min'
+  if (min <= 5) return '4–6 min'
+  if (min <= 6) return '6–8 min'
+  if (min <= 7) return '7–9 min'
+  if (min <= 8) return '8–10 min'
+  if (min <= 10) return '10–12 min'
+  if (min <= 15) return '15–20 min'
+  if (min <= 25) return '25–30 min'
+  return `${min}+ min`
+}
+
+function sectionDuration(lessons: { durationMinutes: number }[]): string {
+  const total = lessons.reduce((sum, l) => sum + l.durationMinutes, 0)
+  const low = Math.max(5, Math.floor(total / 5) * 5)
+  const high = Math.ceil((total * 1.2) / 5) * 5
+  return `${low}–${high} min`
 }
 
 // ── Placeholder thumbnail for lessons without a custom image ────────────────

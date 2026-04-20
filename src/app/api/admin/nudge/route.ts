@@ -14,7 +14,7 @@ function textToHtml(text: string): string {
 
   const cta = `
     <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
-      <a href="${COURSE_URL}" style="display: inline-block; background-color: #F97316; color: #ffffff; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; padding: 12px 28px; border-radius: 8px;">
+      <a href="${COURSE_URL}" style="display: inline-block; background-color: #7BC109; color: #ffffff; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; text-decoration: none; padding: 12px 28px; border-radius: 8px;">
         Jump Back Into the Course →
       </a>
     </div>

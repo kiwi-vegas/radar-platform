@@ -124,8 +124,8 @@ export default function QuizLesson({
                       textColor = '#fca5a5'
                     }
                   } else if (isSelected) {
-                    borderColor = '#F97316'
-                    bgColor = '#F9731614'
+                    borderColor = '#7BC109'
+                    bgColor = '#7BC10914'
                     textColor = '#F1F5F9'
                   }
 
@@ -142,7 +142,7 @@ export default function QuizLesson({
                         style={{ borderColor }}
                       >
                         {isSelected && !submitted && (
-                          <div className="w-2 h-2 rounded-full bg-brand-orange" />
+                          <div className="w-2 h-2 rounded-full bg-brand-green" />
                         )}
                         {submitted && isAnswer && (
                           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3">
@@ -180,7 +180,7 @@ export default function QuizLesson({
         <button
           onClick={handleSubmit}
           disabled={!allAnswered}
-          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed bg-brand-orange"
+          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed bg-brand-green"
         >
           {allAnswered ? 'Submit Answers' : 'Answer all questions to submit'}
         </button>
@@ -188,7 +188,7 @@ export default function QuizLesson({
         <button
           onClick={handlePass}
           disabled={completing}
-          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-orange flex items-center justify-center gap-2"
+          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-green flex items-center justify-center gap-2"
         >
           {completing ? (
             <>
@@ -213,7 +213,7 @@ export default function QuizLesson({
             setScore(null)
             setAnswers({})
           }}
-          className="w-full py-4 rounded-xl border border-brand-orange text-brand-orange font-semibold hover:bg-brand-orange/5 transition-colors"
+          className="w-full py-4 rounded-xl border border-brand-green text-brand-green font-semibold hover:bg-brand-green/5 transition-colors"
         >
           Try Again
         </button>

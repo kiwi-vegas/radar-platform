@@ -79,7 +79,7 @@ function StatusBadge({ user }: { user: AdminUser }) {
   if (user.status === 'in-progress') {
     return (
       <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full"
-        style={{ background: '#F9731615', color: '#F97316', border: '1px solid #F9731630' }}>
+        style={{ background: '#7BC10915', color: '#7BC109', border: '1px solid #7BC10930' }}>
         <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
         In Progress
       </span>
@@ -95,7 +95,7 @@ function StatusBadge({ user }: { user: AdminUser }) {
 }
 
 function ProgressBar({ pct, graduated }: { pct: number; graduated: boolean }) {
-  const color = graduated ? '#22c55e' : pct > 60 ? '#F97316' : pct > 0 ? '#F97316' : '#1E2A3B'
+  const color = graduated ? '#22c55e' : pct > 60 ? '#7BC109' : pct > 0 ? '#7BC109' : '#1E2A3B'
   return (
     <div className="flex items-center gap-2">
       <div className="flex-1 h-1.5 rounded-full" style={{ background: '#1E2A3B', minWidth: '60px' }}>
@@ -104,7 +104,7 @@ function ProgressBar({ pct, graduated }: { pct: number; graduated: boolean }) {
           style={{ width: `${pct}%`, background: color }}
         />
       </div>
-      <span className="text-xs font-semibold w-9 text-right" style={{ color: graduated ? '#22c55e' : '#F97316' }}>
+      <span className="text-xs font-semibold w-9 text-right" style={{ color: graduated ? '#22c55e' : '#7BC109' }}>
         {pct}%
       </span>
     </div>
@@ -266,7 +266,7 @@ export default function AdminDashboard() {
     return (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <svg className="animate-spin mx-auto mb-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+          <svg className="animate-spin mx-auto mb-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2">
             <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
           </svg>
           <p className="text-tx-muted text-sm">Loading users…</p>
@@ -280,7 +280,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
           <p className="text-red-400 mb-3">{error}</p>
-          <button onClick={load} className="text-sm text-brand-orange hover:opacity-80 transition-opacity">
+          <button onClick={load} className="text-sm text-brand-green hover:opacity-80 transition-opacity">
             Try again
           </button>
         </div>
@@ -310,9 +310,9 @@ export default function AdminDashboard() {
       {/* Stats cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Total Users', value: counts.total, color: '#F97316', bg: '#F9731610' },
+          { label: 'Total Users', value: counts.total, color: '#7BC109', bg: '#7BC10910' },
           { label: 'At Risk', value: counts.atRisk, color: '#ef4444', bg: '#ef444410', pulse: counts.atRisk > 0 },
-          { label: 'In Progress', value: counts.inProgress, color: '#F97316', bg: '#F9731610' },
+          { label: 'In Progress', value: counts.inProgress, color: '#7BC109', bg: '#7BC10910' },
           { label: 'Graduated', value: counts.graduated, color: '#22c55e', bg: '#22c55e10' },
         ].map((stat) => (
           <div
@@ -372,9 +372,9 @@ export default function AdminDashboard() {
               onClick={() => setFilter(key)}
               className="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
               style={{
-                background: filter === key ? '#F9731620' : '#131A2B',
-                color: filter === key ? '#F97316' : '#6b7280',
-                border: filter === key ? '1px solid #F9731640' : '1px solid #1E2A3B',
+                background: filter === key ? '#7BC10920' : '#131A2B',
+                color: filter === key ? '#7BC109' : '#6b7280',
+                border: filter === key ? '1px solid #7BC10940' : '1px solid #1E2A3B',
               }}
             >
               {label}
@@ -452,7 +452,7 @@ export default function AdminDashboard() {
                 <div className="flex items-center gap-3 min-w-0">
                   <div
                     className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white"
-                    style={{ background: user.isAtRisk ? '#ef444430' : user.status === 'graduated' ? '#22c55e30' : '#F9731630' }}
+                    style={{ background: user.isAtRisk ? '#ef444430' : user.status === 'graduated' ? '#22c55e30' : '#7BC10930' }}
                   >
                     {user.fullName.charAt(0).toUpperCase()}
                   </div>
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
                 <div>
                   {user.lastNudge ? (
                     <div>
-                      <span className="text-xs font-medium" style={{ color: '#F97316' }}>
+                      <span className="text-xs font-medium" style={{ color: '#7BC109' }}>
                         {TEMPLATE_NAMES[user.lastNudge.templateId] ?? user.lastNudge.templateId}
                       </span>
                       <p className="text-tx-muted text-xs mt-0.5">{formatRelative(user.lastNudge.sentAt)}</p>
@@ -506,7 +506,7 @@ export default function AdminDashboard() {
                     <button
                       onClick={() => openNudgeModal(user)}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 whitespace-nowrap"
-                      style={{ background: '#F9731620', color: '#F97316', border: '1px solid #F9731640' }}
+                      style={{ background: '#7BC10920', color: '#7BC109', border: '1px solid #7BC10940' }}
                     >
                       Send Nudge
                     </button>
@@ -564,16 +564,16 @@ export default function AdminDashboard() {
                     onClick={() => switchTemplate(tpl.id)}
                     className="flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition-all relative"
                     style={{
-                      background: isSelected ? '#F9731625' : '#0B0F1A',
-                      color: isSelected ? '#F97316' : '#6b7280',
-                      border: isSelected ? '1px solid #F9731650' : '1px solid #1E2A3B',
+                      background: isSelected ? '#7BC10925' : '#0B0F1A',
+                      color: isSelected ? '#7BC109' : '#6b7280',
+                      border: isSelected ? '1px solid #7BC10950' : '1px solid #1E2A3B',
                     }}
                   >
                     {tpl.name}
                     {isRecommended && (
                       <span
                         className="absolute -top-1.5 -right-1.5 text-xs w-4 h-4 rounded-full flex items-center justify-center"
-                        style={{ background: '#F97316', fontSize: '8px', color: 'white' }}
+                        style={{ background: '#7BC109', fontSize: '8px', color: 'white' }}
                       >
                         ✓
                       </span>
@@ -651,7 +651,7 @@ export default function AdminDashboard() {
                 onClick={sendNudge}
                 disabled={sending || sendSuccess}
                 className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ background: '#F97316' }}
+                style={{ background: '#7BC109' }}
               >
                 {sending ? (
                   <>

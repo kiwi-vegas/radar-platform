@@ -53,9 +53,9 @@ export default function FlashCardLesson({
   if (showSummary) {
     return (
       <div className="space-y-6 animate-fade-in">
-        <div className="rounded-2xl border p-8 text-center" style={{ background: '#F9731608', borderColor: '#F9731630' }}>
-          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#F9731620', border: '2px solid #F9731440' }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2.5">
+        <div className="rounded-2xl border p-8 text-center" style={{ background: '#7BC10908', borderColor: '#7BC10930' }}>
+          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#7BC10920', border: '2px solid #F9731440' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2.5">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
@@ -72,23 +72,39 @@ export default function FlashCardLesson({
               key={card.id}
               className="flex items-start gap-3 px-4 py-3 rounded-xl bg-surface-card border border-surface-border"
             >
-              <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ background: '#F9731620', color: '#F97316' }}>
+              <div className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ background: '#7BC10920', color: '#7BC109' }}>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
-              <p className="text-tx-secondary text-xs leading-snug">{card.question}</p>
+              <div className="flex flex-col gap-1">
+                <p className="text-tx-secondary text-xs leading-snug">{card.question}</p>
+                <p className="text-xs leading-snug font-medium" style={{ color: '#7BC109' }}>{card.answer}</p>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Complete button */}
         <div className="flex gap-3">
+          <button
+            onClick={() => {
+              setCurrentIndex(0)
+              setIsFlipped(false)
+              setShowClarification(false)
+              setReviewed(new Array(cards.length).fill(false))
+              setReviewedCount(0)
+              setShowSummary(false)
+            }}
+            className="py-3 px-5 rounded-xl border border-surface-border text-tx-secondary hover:text-tx-primary hover:border-surface-hover transition-colors text-sm font-medium whitespace-nowrap"
+          >
+            ↺ Let&apos;s do it again
+          </button>
           {!isCompleted && (
             <button
               onClick={onComplete}
               disabled={completing}
-              className="flex-1 py-3 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-orange flex items-center justify-center gap-2 text-sm"
+              className="flex-1 py-3 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-green flex items-center justify-center gap-2 text-sm"
             >
               {completing ? (
                 <>
@@ -97,7 +113,7 @@ export default function FlashCardLesson({
                 </>
               ) : (
                 <>
-                  Complete &amp; Continue
+                  Continue Next
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                 </>
               )}
@@ -132,7 +148,7 @@ export default function FlashCardLesson({
             className="h-2 rounded-full transition-all duration-300"
             style={{
               width: i === currentIndex ? '20px' : '8px',
-              background: reviewed[i] ? '#F97316' : i === currentIndex ? '#F9731680' : '#1E2A3B',
+              background: reviewed[i] ? '#7BC109' : i === currentIndex ? '#7BC10980' : '#1E2A3B',
             }}
           />
         ))}
@@ -175,7 +191,7 @@ export default function FlashCardLesson({
           {/* Back — answer */}
           <div
             className="backface-hidden absolute inset-0 rounded-2xl overflow-hidden flex flex-col rotate-y-180"
-            style={{ borderColor: '#F9731644', border: '1px solid #F9731444', background: '#F9731608' }}
+            style={{ borderColor: '#7BC10944', border: '1px solid #F9731444', background: '#7BC10908' }}
           >
             {current.answerImage ? (
               <div className="relative w-full h-full">
@@ -189,7 +205,7 @@ export default function FlashCardLesson({
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                <div className="text-xs font-semibold text-brand-orange uppercase tracking-wider mb-4">Answer</div>
+                <div className="text-xs font-semibold text-brand-green uppercase tracking-wider mb-4">Answer</div>
                 <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.answer}</p>
               </div>
             )}
@@ -205,8 +221,8 @@ export default function FlashCardLesson({
         <div className="pt-1 space-y-3">
           {/* Clarification panel */}
           {showClarification && current.clarification && (
-            <div className="rounded-xl border px-5 py-4 animate-fade-in" style={{ background: '#131A2B', borderColor: '#F9731630' }}>
-              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F97316' }}>
+            <div className="rounded-xl border px-5 py-4 animate-fade-in" style={{ background: '#131A2B', borderColor: '#7BC10930' }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#7BC109' }}>
                 Why this matters
               </p>
               <p className="text-tx-secondary text-sm leading-relaxed">{current.clarification}</p>
@@ -229,7 +245,7 @@ export default function FlashCardLesson({
             <button
               onClick={(e) => { e.stopPropagation(); advance() }}
               className="flex-1 py-3 rounded-xl text-white text-sm font-semibold transition-opacity hover:opacity-90 flex items-center justify-center gap-2"
-              style={{ background: '#F97316' }}
+              style={{ background: '#7BC109' }}
             >
               Got it, next
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -43,7 +43,7 @@ export default function EmbedLesson({ lesson, isCompleted, onComplete, completin
           <button
             onClick={onComplete}
             disabled={completing}
-            className="px-8 py-3 rounded-xl text-white font-semibold bg-brand-orange hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2 text-sm"
+            className="px-8 py-3 rounded-xl text-white font-semibold bg-brand-green hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2 text-sm"
           >
             {completing ? (
               <>

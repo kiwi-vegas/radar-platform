@@ -48,7 +48,7 @@ function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-orange transition-colors text-sm"
+            className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-green transition-colors text-sm"
             placeholder="you@example.com"
           />
         </div>
@@ -60,7 +60,7 @@ function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-orange transition-colors text-sm"
+            className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-green transition-colors text-sm"
             placeholder="••••••••"
           />
         </div>
@@ -74,7 +74,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-brand-orange hover:bg-brand-orange-dark disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl py-3 transition-colors text-sm"
+          className="w-full bg-brand-green hover:bg-brand-green-dark disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl py-3 transition-colors text-sm"
         >
           {loading ? 'Signing in…' : 'Sign In'}
         </button>
@@ -90,7 +90,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-brand-orange flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-brand-green flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="3" fill="white"/>
                 <circle cx="12" cy="12" r="7" stroke="white" strokeWidth="1.5" fill="none" opacity="0.6"/>
@@ -114,7 +114,7 @@ export default function LoginPage() {
 
         <p className="text-center text-tx-muted text-sm mt-6">
           Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-brand-orange hover:text-brand-orange-light transition-colors">
+          <Link href="/auth/signup" className="text-brand-green hover:text-brand-green-light transition-colors">
             Create one
           </Link>
         </p>

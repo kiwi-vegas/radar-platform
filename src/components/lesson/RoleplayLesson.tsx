@@ -76,14 +76,14 @@ export default function RoleplayLesson({
       <div className="grid sm:grid-cols-2 gap-3">
         <div className="bg-surface-card border border-surface-border rounded-xl p-4">
           <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-2">Minimum to Pass</div>
-          <div className="text-3xl font-bold text-brand-orange">{content.minimumScore}/10</div>
+          <div className="text-3xl font-bold text-brand-green">{content.minimumScore}/10</div>
           <div className="text-xs text-tx-muted mt-1">Required on your report card</div>
         </div>
         <div className="bg-surface-card border border-surface-border rounded-xl p-4">
           <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-2">Practice Line</div>
           <a
             href={`tel:${content.phoneNumber.replace(/\D/g, '')}`}
-            className="text-xl font-bold text-brand-orange hover:opacity-80 transition-opacity block"
+            className="text-xl font-bold text-brand-green hover:opacity-80 transition-opacity block"
           >
             {content.phoneNumber}
           </a>
@@ -92,15 +92,15 @@ export default function RoleplayLesson({
       </div>
 
       {/* Call instructions */}
-      <div className="bg-brand-orange/5 border border-brand-orange/20 rounded-2xl p-5">
+      <div className="bg-brand-green/5 border border-brand-green/20 rounded-2xl p-5">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-lg bg-brand-orange/20 flex items-center justify-center shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+          <div className="w-8 h-8 rounded-lg bg-brand-green/20 flex items-center justify-center shrink-0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.18a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
           </div>
           <div>
-            <div className="text-sm font-semibold text-brand-orange mb-1">How This Works</div>
+            <div className="text-sm font-semibold text-brand-green mb-1">How This Works</div>
             <p className="text-tx-secondary text-sm leading-relaxed">{content.callInstructions}</p>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function RoleplayLesson({
       {step === 'prep' && (
         <button
           onClick={() => setStep('upload')}
-          className="w-full py-4 rounded-xl text-white font-semibold bg-brand-orange hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+          className="w-full py-4 rounded-xl text-white font-semibold bg-brand-green hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.18a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -132,8 +132,8 @@ export default function RoleplayLesson({
           {/* File upload area */}
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="relative border-2 border-dashed rounded-xl cursor-pointer transition-colors hover:border-brand-orange/40"
-            style={{ borderColor: uploadedFile ? '#F9731644' : '#1E2A3B', minHeight: '140px' }}
+            className="relative border-2 border-dashed rounded-xl cursor-pointer transition-colors hover:border-brand-green/40"
+            style={{ borderColor: uploadedFile ? '#7BC10944' : '#1E2A3B', minHeight: '140px' }}
           >
             {previewUrl ? (
               <div className="relative w-full rounded-xl overflow-hidden" style={{ minHeight: '140px' }}>
@@ -194,7 +194,7 @@ export default function RoleplayLesson({
                       ? n >= content.minimumScore
                         ? 'bg-green-500 border-green-500 text-white'
                         : 'bg-red-500 border-red-500 text-white'
-                      : 'border-surface-border text-tx-secondary hover:border-brand-orange/40'
+                      : 'border-surface-border text-tx-secondary hover:border-brand-green/40'
                   }`}
                 >
                   {n}
@@ -229,7 +229,7 @@ export default function RoleplayLesson({
             {scoreTooLow ? (
               <button
                 onClick={handleRetry}
-                className="flex-1 py-3 rounded-xl border border-brand-orange text-brand-orange font-semibold text-sm hover:bg-brand-orange/5 transition-colors"
+                className="flex-1 py-3 rounded-xl border border-brand-green text-brand-green font-semibold text-sm hover:bg-brand-green/5 transition-colors"
               >
                 Try Again
               </button>
@@ -237,7 +237,7 @@ export default function RoleplayLesson({
               <button
                 onClick={handleSubmit}
                 disabled={!canSubmit || completing}
-                className="flex-1 py-3 rounded-xl text-white font-semibold text-sm bg-brand-orange hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 rounded-xl text-white font-semibold text-sm bg-brand-green hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {completing ? (
                   <>

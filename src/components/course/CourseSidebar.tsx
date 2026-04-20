@@ -68,7 +68,7 @@ export default function CourseSidebar({ course, currentLessonId, completedIds }:
       {/* Mobile toggle */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-brand-orange text-white shadow-lg flex items-center justify-center"
+        className="lg:hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-brand-green text-white shadow-lg flex items-center justify-center"
         aria-label="Toggle course outline"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -117,9 +117,12 @@ export default function CourseSidebar({ course, currentLessonId, completedIds }:
         <nav className="flex-1 overflow-y-auto py-2">
           {course.sections.map((section) => (
             <div key={section.id}>
-              <div className="px-5 pt-4 pb-2">
+              <div className="px-5 pt-4 pb-2 flex items-center justify-between">
                 <span className="text-xs font-semibold text-tx-muted uppercase tracking-wider">
                   {section.title}
+                </span>
+                <span className="text-xs text-tx-muted opacity-60 shrink-0 ml-2">
+                  {sectionDuration(section.lessons)}
                 </span>
               </div>
 
@@ -135,6 +138,7 @@ export default function CourseSidebar({ course, currentLessonId, completedIds }:
                         <StatusDot completed={false} current={false} locked={true} color={course.coverColor} />
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-tx-muted truncate leading-snug">{lesson.title}</p>
+                          <p className="text-xs text-tx-muted opacity-60 mt-0.5">{lessonDuration(lesson.durationMinutes)}</p>
                         </div>
                         <div className="text-tx-muted shrink-0">{TYPE_ICON[lesson.type]}</div>
                       </div>
@@ -156,8 +160,11 @@ export default function CourseSidebar({ course, currentLessonId, completedIds }:
                           }`}>
                             {lesson.title}
                           </p>
+                          <p className={`text-xs mt-0.5 ${isCurrent ? 'text-brand-green opacity-80' : 'text-tx-muted opacity-60'}`}>
+                            {lessonDuration(lesson.durationMinutes)}
+                          </p>
                         </div>
-                        <div className={`shrink-0 ${isCurrent ? 'text-brand-orange' : 'text-tx-muted'}`}>
+                        <div className={`shrink-0 ${isCurrent ? 'text-brand-green' : 'text-tx-muted'}`}>
                           {TYPE_ICON[lesson.type]}
                         </div>
                       </Link>
@@ -184,6 +191,26 @@ export default function CourseSidebar({ course, currentLessonId, completedIds }:
       </aside>
     </>
   )
+}
+
+function lessonDuration(min: number): string {
+  if (min <= 2) return '2–3 min'
+  if (min <= 3) return '3–4 min'
+  if (min <= 5) return '4–6 min'
+  if (min <= 6) return '6–8 min'
+  if (min <= 7) return '7–9 min'
+  if (min <= 8) return '8–10 min'
+  if (min <= 10) return '10–12 min'
+  if (min <= 15) return '15–20 min'
+  if (min <= 25) return '25–30 min'
+  return `${min}+ min`
+}
+
+function sectionDuration(lessons: { durationMinutes: number }[]): string {
+  const total = lessons.reduce((sum, l) => sum + l.durationMinutes, 0)
+  const low = Math.max(5, Math.floor(total / 5) * 5)
+  const high = Math.ceil((total * 1.2) / 5) * 5
+  return `${low}–${high} min`
 }
 
 function StatusDot({

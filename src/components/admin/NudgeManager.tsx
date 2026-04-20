@@ -153,7 +153,7 @@ export default function NudgeManager() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+        <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2">
           <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
         </svg>
       </div>
@@ -180,9 +180,9 @@ export default function NudgeManager() {
                 onClick={() => selectTemplate(tpl.id)}
                 className="flex-1 py-3 px-4 text-xs font-semibold transition-colors relative"
                 style={{
-                  color: selectedId === tpl.id ? '#F97316' : '#6b7280',
-                  background: selectedId === tpl.id ? '#F9731610' : 'transparent',
-                  borderBottom: selectedId === tpl.id ? '2px solid #F97316' : '2px solid transparent',
+                  color: selectedId === tpl.id ? '#7BC109' : '#6b7280',
+                  background: selectedId === tpl.id ? '#7BC10910' : 'transparent',
+                  borderBottom: selectedId === tpl.id ? '2px solid #7BC109' : '2px solid transparent',
                 }}
               >
                 {tpl.name}
@@ -249,9 +249,9 @@ export default function NudgeManager() {
               disabled={saving || !isDirty}
               className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
               style={{
-                background: saveSuccess ? '#22c55e20' : '#F9731620',
-                color: saveSuccess ? '#22c55e' : '#F97316',
-                border: saveSuccess ? '1px solid #22c55e40' : '1px solid #F9731640',
+                background: saveSuccess ? '#22c55e20' : '#7BC10920',
+                color: saveSuccess ? '#22c55e' : '#7BC109',
+                border: saveSuccess ? '1px solid #22c55e40' : '1px solid #7BC10940',
               }}
             >
               {saving ? (
@@ -323,7 +323,7 @@ export default function NudgeManager() {
                           className="flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
                           style={isSent
                             ? { background: '#22c55e15', color: '#22c55e', border: '1px solid #22c55e30' }
-                            : { background: '#F9731615', color: '#F97316', border: '1px solid #F9731635' }
+                            : { background: '#7BC10915', color: '#7BC109', border: '1px solid #7BC10935' }
                           }
                         >
                           {isSending ? (

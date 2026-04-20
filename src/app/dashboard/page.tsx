@@ -67,7 +67,7 @@ export default async function DashboardPage() {
       <header className="border-b border-surface-border bg-surface-sidebar">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-brand-orange flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-brand-green flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="3" fill="white"/>
                 <circle cx="12" cy="12" r="7" stroke="white" strokeWidth="1.5" fill="none" opacity="0.6"/>

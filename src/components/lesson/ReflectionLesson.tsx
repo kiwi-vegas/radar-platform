@@ -36,8 +36,8 @@ export default function ReflectionLesson({
       {content.intro && (
         <div className="bg-surface-card border border-surface-border rounded-2xl p-6">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center shrink-0 mt-0.5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2">
+            <div className="w-8 h-8 rounded-lg bg-brand-green/10 border border-brand-green/20 flex items-center justify-center shrink-0 mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7BC109" strokeWidth="2">
                 <circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
               </svg>
             </div>
@@ -72,7 +72,7 @@ export default function ReflectionLesson({
         <button
           onClick={onComplete}
           disabled={!allAnswered || completing}
-          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed bg-brand-orange flex items-center justify-center gap-2"
+          className="w-full py-4 rounded-xl text-white font-semibold transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed bg-brand-green flex items-center justify-center gap-2"
         >
           {completing ? (
             <>
@@ -143,7 +143,7 @@ function QuestionBlock({
           disabled={disabled}
           rows={3}
           placeholder="Type your response here…"
-          className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-orange transition-colors text-sm resize-none disabled:opacity-60"
+          className="w-full bg-surface border border-surface-border rounded-xl px-4 py-3 text-tx-primary placeholder:text-tx-muted focus:outline-none focus:border-brand-green transition-colors text-sm resize-none disabled:opacity-60"
         />
       )}
     </div>
@@ -179,8 +179,8 @@ function ScaleInput({
             disabled={disabled}
             className={`w-9 h-9 rounded-lg text-sm font-semibold border transition-all ${
               value === n
-                ? 'bg-brand-orange border-brand-orange text-white'
-                : 'border-surface-border text-tx-secondary hover:border-brand-orange/40 hover:text-tx-primary'
+                ? 'bg-brand-green border-brand-green text-white'
+                : 'border-surface-border text-tx-secondary hover:border-brand-green/40 hover:text-tx-primary'
             } disabled:cursor-not-allowed`}
           >
             {n}
