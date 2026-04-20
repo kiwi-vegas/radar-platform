@@ -98,172 +98,193 @@ export default function CertificateLesson({
     window.open('https://www.instagram.com/', '_blank')
   }
 
-  // ─── Print certificate (formal) ─────────────────────────────────────────────
+  // ─── Print / PDF certificate ────────────────────────────────────────────────
   function handleDownloadCertificate() {
     const win = window.open('', '_blank')
     if (!win) return
     const name = userName || 'Graduate'
-    const modulesLine = content.modules.join(' &nbsp;&middot;&nbsp; ')
+    const modulesLine = content.modules.join(' · ')
     const ribbonUrl = `${window.location.origin}/images/graduate-ribbon.png`
     win.document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>University of Ylopo &mdash; ${name}</title>
+  <title>University of Ylopo — ${name}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap');
-    :root {
-      --green: #7BC109; --green-dark: #508200;
-      --navy: #172F44; --slate: #696F8B;
-      --gold: #ba9a2c; --white: #fff;
-    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      background: #eef1f4;
-      font-family: 'Nunito', Arial, sans-serif;
+      width: 100%; height: 100%;
+      background: #fff;
+      font-family: 'Nunito', Georgia, sans-serif;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
+      color: #1a1a2e;
     }
-    body { padding: 32px; }
-    .wrap { width: 800px; margin: 0 auto; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4in;
+      min-height: 100vh;
+    }
     .cert {
+      width: 720px;
+      padding: 52px 60px 44px;
+      background: #fff;
+      border: 3px solid #172F44;
       position: relative;
-      background: linear-gradient(170deg, #fff 0%, #f9fbfc 100%);
-      border: 2px solid rgba(23,47,68,0.16);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 24px 60px rgba(23,47,68,0.12);
-      padding: 48px 56px 42px;
+      text-align: center;
     }
+    /* Inner ornamental border */
     .cert::before {
-      content: "";
+      content: '';
       position: absolute;
-      inset: 13px;
-      border: 1px solid rgba(23,47,68,0.1);
-      border-radius: 16px;
+      inset: 10px;
+      border: 1px solid #7BC109;
       pointer-events: none;
     }
-    .accent-tr {
-      position: absolute; top: 0; right: 0;
-      width: 130px; height: 130px;
-      background: linear-gradient(225deg, var(--green) 0%, var(--green) 28%, transparent 58%);
-      border-radius: 0 24px 0 0; opacity: 0.13;
+    /* Corner marks */
+    .corner {
+      position: absolute;
+      width: 22px; height: 22px;
+      border-color: #7BC109; border-style: solid;
     }
-    .accent-bl {
-      position: absolute; bottom: 0; left: 0;
-      width: 110px; height: 110px;
-      background: linear-gradient(45deg, var(--navy) 0%, var(--navy) 28%, transparent 58%);
-      border-radius: 0 0 0 24px; opacity: 0.07;
-    }
+    .tl { top: 5px; left: 5px; border-width: 2px 0 0 2px; }
+    .tr { top: 5px; right: 5px; border-width: 2px 2px 0 0; }
+    .bl { bottom: 5px; left: 5px; border-width: 0 0 2px 2px; }
+    .br { bottom: 5px; right: 5px; border-width: 0 2px 2px 0; }
+
+    .ribbon { width: 160px; height: auto; display: block; margin: 0 auto 10px; }
+
     .university {
-      font-family: 'Raleway', sans-serif; color: var(--navy);
-      font-size: 13.5px; font-weight: 700; letter-spacing: 0.26em;
-      text-transform: uppercase; text-align: center; margin-top: 12px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: #172F44; margin-bottom: 4px;
     }
-    .dept { text-align: center; color: var(--slate); font-size: 12px; margin-top: 5px; }
-    .title {
-      font-family: 'Raleway', sans-serif; color: var(--navy);
-      font-size: 36px; font-weight: 800; letter-spacing: 0.04em;
-      text-transform: uppercase; text-align: center; margin-top: 22px;
+    .dept { font-size: 10.5px; color: #696F8B; margin-bottom: 22px; }
+
+    .diploma-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 32px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: #172F44; margin-bottom: 10px;
     }
     .rule {
-      width: 155px; height: 3px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-      border-radius: 999px; margin: 13px auto 18px;
+      width: 140px; height: 2px; margin: 0 auto 16px;
+      background: #7BC109;
     }
-    .certifies { text-align: center; font-size: 16px; color: #666; font-weight: 500; }
+    .certifies { font-size: 14px; color: #555; margin-bottom: 8px; font-style: italic; }
     .name {
-      text-align: center; font-family: 'Raleway', sans-serif;
-      color: var(--gold); font-size: 44px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.02em;
-      line-height: 1.1; margin: 10px 0 12px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 40px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      color: #b8912a; line-height: 1.1; margin-bottom: 10px;
     }
-    .body {
-      text-align: center; max-width: 580px; margin: 0 auto;
-      color: #4E4E4E; font-size: 14px; line-height: 1.6;
+    .completed { font-size: 13px; color: #555; margin-bottom: 20px; }
+
+    .divider {
+      display: flex; align-items: center; gap: 12px; margin: 0 auto 20px; width: 80%;
     }
-    .course-block { text-align: center; margin-top: 26px; }
+    .div-line { flex: 1; height: 1px; background: #d0c5b0; }
+    .div-diamond { width: 6px; height: 6px; background: #7BC109; transform: rotate(45deg); flex-shrink: 0; }
+
     .course-label {
-      color: var(--slate); font-size: 11px; letter-spacing: 0.22em;
-      text-transform: uppercase; font-weight: 700; margin-bottom: 7px;
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: #696F8B; margin-bottom: 6px;
     }
     .course-name {
-      font-family: 'Raleway', sans-serif; color: var(--navy);
-      font-size: 24px; font-weight: 800; line-height: 1.2;
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px; font-weight: 800; color: #172F44; margin-bottom: 4px;
     }
     .course-sub {
-      margin-top: 6px; color: var(--slate);
-      font-size: 12px; letter-spacing: 0.18em;
-      text-transform: uppercase; font-weight: 600;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #7BC109; margin-bottom: 20px;
     }
-    .date-line { text-align: center; margin-top: 20px; color: #4E4E4E; font-size: 13px; }
+    .date { font-size: 12px; color: #555; margin-bottom: 28px; }
+    .date strong { color: #172F44; }
+
     .sig-row {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      margin-top: 30px; padding-top: 22px;
-      border-top: 1px solid rgba(23,47,68,0.14);
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; padding-top: 18px;
+      border-top: 1px solid #d0c5b0;
     }
-    .sig { text-align: center; }
-    .sig-mark {
-      height: 44px; display: flex; align-items: flex-end; justify-content: center;
-      margin-bottom: 6px; font-size: 26px; color: var(--navy);
+    .sig-script {
       font-family: 'Dancing Script', cursive; font-weight: 700;
-      letter-spacing: -0.01em;
+      color: #172F44; margin-bottom: 6px; line-height: 1; display: block;
     }
-    .sig-1 .sig-mark { transform: rotate(-3deg); font-size: 24px; }
-    .sig-2 .sig-mark { transform: rotate(-1.5deg); font-size: 22px; }
-    .sig-3 .sig-mark { transform: rotate(-2.5deg); font-size: 23px; }
-    .sig-line { width: 85%; margin: 0 auto 7px; border-top: 1px solid rgba(23,47,68,0.25); }
-    .sig-name { font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); }
-    .sig-title { margin-top: 3px; font-size: 11px; color: var(--slate); font-weight: 600; }
+    .sig-1 .sig-script { font-size: 22px; transform: rotate(-2.5deg); display: inline-block; }
+    .sig-2 .sig-script { font-size: 20px; transform: rotate(-1deg); display: inline-block; }
+    .sig-3 .sig-script { font-size: 21px; transform: rotate(-2deg); display: inline-block; }
+    .sig-line { width: 80%; height: 1px; background: #aaa; margin: 4px auto 6px; }
+    .sig-name { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; color: #172F44; }
+    .sig-title { font-size: 10px; color: #696F8B; font-weight: 600; margin-top: 2px; }
+
     @media print {
-      html, body { background: #fff; padding: 0; }
-      .cert { box-shadow: none; margin: 0 auto; }
-      @page { size: auto; margin: 0.3in; }
+      @page { size: letter portrait; margin: 0.35in; }
+      body { padding: 0; }
+      .cert { border-color: #172F44; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="cert">
-      <div class="accent-tr"></div>
-      <div class="accent-bl"></div>
-      <img src="${ribbonUrl}" alt="Graduate 2026" style="width:120px;height:auto;display:block;margin:0 auto 4px;filter:drop-shadow(0 4px 12px rgba(123,193,9,0.2))" />
-      <div class="university">University of Ylopo</div>
-      <div class="dept">Faculty of Digital Prospecting, Client Conversion &amp; Real Estate Growth</div>
-      <div class="title">Diploma of Graduation</div>
-      <div class="rule"></div>
-      <div class="certifies">This certifies that</div>
-      <div class="name">${name}</div>
-      <div class="body">has successfully completed the program requirements for graduation from the University of Ylopo and has demonstrated achievement in modern real-estate marketing, seller conversion, and business growth systems.</div>
-      <div class="course-block">
-        <div class="course-label">Program completed</div>
-        <div class="course-name">${content.courseName}: ${content.courseSubtitle}</div>
-        <div class="course-sub">${modulesLine}</div>
+  <div class="cert">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <img class="ribbon" src="${ribbonUrl}" alt="Graduate 2026" id="ribbon" />
+
+    <div class="university">University of Ylopo</div>
+    <div class="dept">Faculty of Digital Prospecting, Client Conversion &amp; Real Estate Growth</div>
+
+    <div class="diploma-title">Diploma of Graduation</div>
+    <div class="rule"></div>
+
+    <div class="certifies">This certifies that</div>
+    <div class="name">${name}</div>
+    <div class="completed">has successfully completed all requirements for graduation from the University of Ylopo</div>
+
+    <div class="divider"><div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div></div>
+
+    <div class="course-label">Program Completed</div>
+    <div class="course-name">${content.courseName}: ${content.courseSubtitle}</div>
+    <div class="course-sub">${modulesLine}</div>
+
+    <div class="date"><strong>${completionDate}</strong> &nbsp;&bull;&nbsp; Official Date of Completion</div>
+
+    <div class="sig-row">
+      <div class="sig sig-1">
+        <span class="sig-script">Barry Jenkins</span>
+        <div class="sig-line"></div>
+        <div class="sig-name">Barry Jenkins</div>
+        <div class="sig-title">Head Realtor In Residence</div>
       </div>
-      <div class="date-line"><strong>${completionDate}</strong> &nbsp;&bull;&nbsp; Official Date of Completion</div>
-      <div class="sig-row">
-        <div class="sig sig-1">
-          <div class="sig-mark">Barry Jenkins</div>
-          <div class="sig-line"></div>
-          <div class="sig-name">Barry Jenkins</div>
-          <div class="sig-title">Head Realtor In Residence</div>
-        </div>
-        <div class="sig sig-2">
-          <div class="sig-mark">Howard Tager</div>
-          <div class="sig-line"></div>
-          <div class="sig-name">Howard Tager</div>
-          <div class="sig-title">CEO &amp; Co-Founder, Ylopo</div>
-        </div>
-        <div class="sig sig-3">
-          <div class="sig-mark">Juefeng Ge</div>
-          <div class="sig-line"></div>
-          <div class="sig-name">Juefeng Ge</div>
-          <div class="sig-title">President &amp; Co-Founder, Ylopo</div>
-        </div>
+      <div class="sig sig-2">
+        <span class="sig-script">Howard Tager</span>
+        <div class="sig-line"></div>
+        <div class="sig-name">Howard Tager</div>
+        <div class="sig-title">CEO &amp; Co-Founder, Ylopo</div>
+      </div>
+      <div class="sig sig-3">
+        <span class="sig-script">Juefeng Ge</span>
+        <div class="sig-line"></div>
+        <div class="sig-name">Juefeng Ge</div>
+        <div class="sig-title">President &amp; Co-Founder, Ylopo</div>
       </div>
     </div>
   </div>
-  <script>window.onload = () => { window.print() }<\/script>
+  <script>
+    function doPrint() { window.print(); }
+    var img = document.getElementById('ribbon');
+    document.fonts.ready.then(function() {
+      if (img.complete) { setTimeout(doPrint, 150); }
+      else { img.onload = function() { setTimeout(doPrint, 150); }; }
+    });
+  <\/script>
 </body>
 </html>`)
     win.document.close()
@@ -344,42 +365,26 @@ export default function CertificateLesson({
       <div className="py-2 space-y-8 animate-fade-in">
 
         {/* Hero */}
-        <div className="text-center space-y-4">
-          {/* Badge */}
-          <div className="relative inline-flex items-center justify-center">
-            <div className="absolute w-36 h-36 rounded-full animate-ping opacity-10" style={{ background: '#7BC109' }} />
-            <div className="absolute w-28 h-28 rounded-full opacity-15" style={{ background: '#7BC109' }} />
-            <div
-              className="relative w-20 h-20 rounded-full flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #7BC109, #508200)', boxShadow: '0 0 50px rgba(123,193,9,0.6)' }}
-            >
-              <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
-                <path d="M24 6L28.91 18.09L42 19.27L32.5 28.09L35.27 41L24 34.5L12.73 41L15.5 28.09L6 19.27L19.09 18.09Z" fill="white"/>
-              </svg>
-            </div>
-          </div>
-
-          <div className="pt-1">
-            <p className="text-xs font-bold tracking-[0.35em] uppercase mb-3" style={{ color: '#7BC109' }}>
-              ✦ &nbsp; RaiDAR Certified &nbsp; ✦
-            </p>
-            {userName ? (
-              <>
-                <h2 className="text-4xl font-bold text-white leading-tight">Congratulations,</h2>
-                <h2 className="text-4xl font-bold leading-tight mt-1" style={{ color: '#7BC109', fontFamily: 'Georgia, serif' }}>
-                  {userName}.
-                </h2>
-              </>
-            ) : (
-              <h2 className="text-3xl font-bold text-white leading-tight">
-                Congratulations, you have graduated.
+        <div className="text-center space-y-3">
+          <p className="text-sm font-bold tracking-[0.3em] uppercase" style={{ color: '#7BC109' }}>
+            RaiDAR Certified
+          </p>
+          {userName ? (
+            <>
+              <h2 className="text-4xl font-bold text-white leading-tight">Congratulations,</h2>
+              <h2 className="text-4xl font-bold leading-tight" style={{ color: '#7BC109', fontFamily: 'Raleway, sans-serif' }}>
+                {userName}.
               </h2>
-            )}
-            <p className="text-tx-secondary mt-4 text-sm max-w-md mx-auto leading-relaxed">
-              You&apos;ve officially completed the RaiDAR Seller Conversion Program.
-              You are ready to work leads, build relationships, and convert sellers.
-            </p>
-          </div>
+            </>
+          ) : (
+            <h2 className="text-3xl font-bold text-white leading-tight">
+              Congratulations, you have graduated.
+            </h2>
+          )}
+          <p className="text-tx-secondary text-sm max-w-md mx-auto leading-relaxed pt-1">
+            You&apos;ve officially completed the RaiDAR Seller Conversion Program.
+            You are ready to work leads, build relationships, and convert sellers.
+          </p>
         </div>
 
         {/* Certificate card — on-screen version */}
@@ -409,7 +414,7 @@ export default function CertificateLesson({
               {/* Ribbon badge */}
               <div className="flex justify-center mb-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '110px', height: 'auto', filter: 'drop-shadow(0 4px 12px rgba(123,193,9,0.25))' }} />
+                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 4px 16px rgba(123,193,9,0.3))' }} />
               </div>
 
               {/* University header */}
