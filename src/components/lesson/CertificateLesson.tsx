@@ -99,7 +99,7 @@ export default function CertificateLesson({
   <meta charset="UTF-8" />
   <title>University of Ylopo &mdash; ${name}</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap');
     :root {
       --green: #7BC109; --green-dark: #508200;
       --navy: #172F44; --slate: #696F8B;
@@ -208,9 +208,13 @@ export default function CertificateLesson({
     .sig { text-align: center; }
     .sig-mark {
       height: 44px; display: flex; align-items: flex-end; justify-content: center;
-      margin-bottom: 6px; font-size: 28px; color: var(--navy);
-      font-family: 'Brush Script MT', 'Segoe Script', cursive;
+      margin-bottom: 6px; font-size: 26px; color: var(--navy);
+      font-family: 'Dancing Script', cursive; font-weight: 700;
+      letter-spacing: -0.01em;
     }
+    .sig-1 .sig-mark { transform: rotate(-3deg); font-size: 24px; }
+    .sig-2 .sig-mark { transform: rotate(-1.5deg); font-size: 22px; }
+    .sig-3 .sig-mark { transform: rotate(-2.5deg); font-size: 23px; }
     .sig-line { width: 85%; margin: 0 auto 7px; border-top: 1px solid rgba(23,47,68,0.25); }
     .sig-name { font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); }
     .sig-title { margin-top: 3px; font-size: 11px; color: var(--slate); font-weight: 600; }
@@ -241,19 +245,19 @@ export default function CertificateLesson({
       </div>
       <div class="date-line"><strong>${completionDate}</strong> &nbsp;&bull;&nbsp; Official Date of Completion</div>
       <div class="sig-row">
-        <div class="sig">
-          <div class="sig-mark">B Jenkins</div>
+        <div class="sig sig-1">
+          <div class="sig-mark">Barry Jenkins</div>
           <div class="sig-line"></div>
           <div class="sig-name">Barry Jenkins</div>
           <div class="sig-title">Head Realtor In Residence</div>
         </div>
-        <div class="sig">
-          <div class="sig-mark">H Tager</div>
+        <div class="sig sig-2">
+          <div class="sig-mark">Howard Tager</div>
           <div class="sig-line"></div>
           <div class="sig-name">Howard Tager</div>
           <div class="sig-title">CEO &amp; Co-Founder, Ylopo</div>
         </div>
-        <div class="sig">
+        <div class="sig sig-3">
           <div class="sig-mark">Juefeng Ge</div>
           <div class="sig-line"></div>
           <div class="sig-name">Juefeng Ge</div>
@@ -488,17 +492,29 @@ export default function CertificateLesson({
               {/* Three signatories */}
               <div className="grid grid-cols-3 gap-3 pt-4" style={{ borderTop: '1px solid #1E2A3B' }}>
                 {[
-                  { name: 'Barry Jenkins', title: 'Head Realtor In Residence' },
-                  { name: 'Howard Tager', title: 'CEO & Co-Founder, Ylopo' },
-                  { name: 'Juefeng Ge', title: 'President & Co-Founder' },
-                ].map((sig) => (
-                  <div key={sig.name} className="text-center">
-                    <div className="h-8 flex items-end justify-center mb-1" style={{ fontFamily: '"Brush Script MT", "Segoe Script", cursive', fontSize: '20px', color: '#94a3b8' }}>
-                      {sig.name.split(' ')[0][0]} {sig.name.split(' ')[1]}
+                  { sig: 'Barry Jenkins', name: 'Barry Jenkins', title: 'Head Realtor In Residence', rotate: '-3deg', size: '22px' },
+                  { sig: 'Howard Tager', name: 'Howard Tager', title: 'CEO & Co-Founder, Ylopo', rotate: '-1.5deg', size: '20px' },
+                  { sig: 'Juefeng Ge', name: 'Juefeng Ge', title: 'President & Co-Founder', rotate: '-2.5deg', size: '21px' },
+                ].map((s) => (
+                  <div key={s.name} className="text-center">
+                    <div className="h-10 flex items-end justify-center mb-1 overflow-hidden">
+                      <span style={{
+                        fontFamily: '"Dancing Script", cursive',
+                        fontSize: s.size,
+                        fontWeight: 700,
+                        color: '#94a3b8',
+                        transform: `rotate(${s.rotate})`,
+                        display: 'inline-block',
+                        lineHeight: 1,
+                        paddingBottom: '2px',
+                        letterSpacing: '-0.01em',
+                      }}>
+                        {s.sig}
+                      </span>
                     </div>
-                    <div className="h-px mb-2 mx-2" style={{ background: 'rgba(148,163,184,0.25)' }} />
-                    <p className="text-xs font-bold" style={{ color: '#e2e8f0', fontFamily: 'Raleway, sans-serif', fontSize: '10px' }}>{sig.name}</p>
-                    <p className="text-xs" style={{ color: '#475569', fontSize: '9px', marginTop: '2px' }}>{sig.title}</p>
+                    <div className="h-px mb-2 mx-1" style={{ background: 'rgba(148,163,184,0.2)' }} />
+                    <p style={{ color: '#e2e8f0', fontFamily: 'Raleway, sans-serif', fontSize: '10px', fontWeight: 700 }}>{s.name}</p>
+                    <p style={{ color: '#475569', fontSize: '9px', marginTop: '2px' }}>{s.title}</p>
                   </div>
                 ))}
               </div>
