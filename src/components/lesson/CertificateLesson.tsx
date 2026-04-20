@@ -93,6 +93,7 @@ export default function CertificateLesson({
     if (!win) return
     const name = userName || 'Graduate'
     const modulesLine = content.modules.join(' &nbsp;&middot;&nbsp; ')
+    const ribbonUrl = `${window.location.origin}/images/graduate-ribbon.png`
     win.document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,21 +143,6 @@ export default function CertificateLesson({
       width: 110px; height: 110px;
       background: linear-gradient(45deg, var(--navy) 0%, var(--navy) 28%, transparent 58%);
       border-radius: 0 0 0 24px; opacity: 0.07;
-    }
-    .seal {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #a4dd48, var(--green) 44%, var(--green-dark));
-      border: 5px solid #d7ecb3;
-      box-shadow: 0 8px 20px rgba(23,47,68,0.14);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; color: #fff;
-      font-family: 'Raleway', sans-serif; font-weight: 800;
-      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-      position: relative; margin: 0 auto 6px;
-    }
-    .seal::after {
-      content: ""; position: absolute; inset: -5px;
-      border-radius: 50%; border: 1.5px dashed rgba(255,255,255,0.65);
     }
     .university {
       font-family: 'Raleway', sans-serif; color: var(--navy);
@@ -230,7 +216,7 @@ export default function CertificateLesson({
     <div class="cert">
       <div class="accent-tr"></div>
       <div class="accent-bl"></div>
-      <div class="seal">Graduate<br/>2026</div>
+      <img src="${ribbonUrl}" alt="Graduate 2026" style="width:120px;height:auto;display:block;margin:0 auto 4px;filter:drop-shadow(0 4px 12px rgba(123,193,9,0.2))" />
       <div class="university">University of Ylopo</div>
       <div class="dept">Faculty of Digital Prospecting, Client Conversion &amp; Real Estate Growth</div>
       <div class="title">Diploma of Graduation</div>
@@ -409,27 +395,10 @@ export default function CertificateLesson({
                 <div key={i} className={`absolute w-5 h-5 ${cls} m-3`} style={{ borderColor: '#c8a96e55' }} />
               ))}
 
-              {/* Seal */}
-              <div className="flex justify-center mb-3">
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center flex-col text-center relative"
-                  style={{
-                    background: 'radial-gradient(circle at 35% 35%, #a4dd48, #7BC109 44%, #508200)',
-                    border: '4px solid rgba(215,236,179,0.5)',
-                    boxShadow: '0 6px 20px rgba(123,193,9,0.3)',
-                    color: '#fff',
-                    fontSize: '8px',
-                    fontWeight: 800,
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    lineHeight: 1.2,
-                    fontFamily: 'Raleway, sans-serif',
-                  }}
-                >
-                  <span>Grad</span>
-                  <span>2026</span>
-                  <div className="absolute inset-0 rounded-full" style={{ border: '1.5px dashed rgba(255,255,255,0.5)', inset: '-4px', borderRadius: '50%', position: 'absolute' }} />
-                </div>
+              {/* Ribbon badge */}
+              <div className="flex justify-center mb-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '110px', height: 'auto', filter: 'drop-shadow(0 4px 12px rgba(123,193,9,0.25))' }} />
               </div>
 
               {/* University header */}
@@ -644,10 +613,9 @@ export default function CertificateLesson({
         style={{ background: 'linear-gradient(170deg, #0f1829 0%, #0D1320 100%)', border: '1.5px solid #c8a96e33' }}
       >
         <div className="relative m-3 rounded-xl border p-6 text-center" style={{ borderColor: '#c8a96e18' }}>
-          {/* Seal */}
-          <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 flex-col" style={{ background: 'radial-gradient(circle at 35% 35%, #a4dd48, #7BC109 44%, #508200)', border: '3px solid rgba(215,236,179,0.4)', fontSize: '8px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '0.08em', lineHeight: 1.2 }}>
-            <span>Grad</span><span>2026</span>
-          </div>
+          {/* Ribbon badge */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/graduate-ribbon.png" alt="Graduate" style={{ width: '80px', height: 'auto', margin: '0 auto 8px', display: 'block' }} />
           <p className="text-xs font-bold tracking-[0.26em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>University of Ylopo</p>
           <p className="text-xs mb-3" style={{ color: '#475569', fontSize: '10px' }}>Diploma of Graduation</p>
           <div className="flex items-center gap-3 mb-3">
