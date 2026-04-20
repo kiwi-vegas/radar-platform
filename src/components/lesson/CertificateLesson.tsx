@@ -156,7 +156,7 @@ export default function CertificateLesson({
     .bl { bottom: 5px; left: 5px; border-width: 0 0 2px 2px; }
     .br { bottom: 5px; right: 5px; border-width: 0 2px 2px 0; }
 
-    .ribbon { width: 160px; height: auto; display: block; margin: 0 auto 10px; }
+    .ribbon { width: 320px; height: auto; display: block; margin: 0 auto 10px; }
 
     .university {
       font-family: 'Raleway', sans-serif;
@@ -181,7 +181,7 @@ export default function CertificateLesson({
       font-family: 'Raleway', sans-serif;
       font-size: 40px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.03em;
-      color: #b8912a; line-height: 1.1; margin-bottom: 10px;
+      color: #172F44; line-height: 1.1; margin-bottom: 10px;
     }
     .completed { font-size: 13px; color: #555; margin-bottom: 20px; }
 
@@ -236,7 +236,7 @@ export default function CertificateLesson({
     <div class="corner bl"></div>
     <div class="corner br"></div>
 
-    <img class="ribbon" src="${ribbonUrl}" alt="Graduate 2026" id="ribbon" />
+    <img class="ribbon" src="${ribbonUrl}" alt="Graduate 2026" id="ribbon" style="width:320px;height:auto;display:block;margin:0 auto 10px" />
 
     <div class="university">University of Ylopo</div>
     <div class="dept">Faculty of Digital Prospecting, Client Conversion &amp; Real Estate Growth</div>
@@ -396,7 +396,7 @@ export default function CertificateLesson({
             className="relative rounded-2xl overflow-hidden mx-auto"
             style={{
               background: 'linear-gradient(170deg, #0f1829 0%, #0D1320 100%)',
-              border: '1.5px solid #c8a96e33',
+              border: '1.5px solid #7BC10922',
               boxShadow: '0 0 80px rgba(200,169,110,0.06), 0 24px 48px rgba(0,0,0,0.4)',
             }}
           >
@@ -404,17 +404,17 @@ export default function CertificateLesson({
             <div className="absolute top-0 right-0 w-24 h-24 rounded-tr-2xl opacity-10" style={{ background: 'linear-gradient(225deg, #7BC109 0%, #7BC109 30%, transparent 60%)' }} />
             <div className="absolute bottom-0 left-0 w-20 h-20 rounded-bl-2xl opacity-6" style={{ background: 'linear-gradient(45deg, #172F44 0%, #172F44 30%, transparent 60%)' }} />
 
-            <div className="relative m-3 rounded-xl border" style={{ borderColor: '#c8a96e18', padding: '1.75rem 1.75rem 1.5rem' }}>
+            <div className="relative m-3 rounded-xl border" style={{ borderColor: '#7BC10914', padding: '1.75rem 1.75rem 1.5rem' }}>
 
               {/* Corner flourishes */}
               {(['top-0 left-0 border-t border-l', 'top-0 right-0 border-t border-r', 'bottom-0 left-0 border-b border-l', 'bottom-0 right-0 border-b border-r'] as const).map((cls, i) => (
-                <div key={i} className={`absolute w-5 h-5 ${cls} m-3`} style={{ borderColor: '#c8a96e55' }} />
+                <div key={i} className={`absolute w-5 h-5 ${cls} m-3`} style={{ borderColor: '#7BC10966' }} />
               ))}
 
               {/* Ribbon badge */}
               <div className="flex justify-center mb-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '220px', height: 'auto', filter: 'drop-shadow(0 4px 16px rgba(123,193,9,0.3))' }} />
+                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" style={{ width: '440px', height: 'auto', filter: 'drop-shadow(0 4px 16px rgba(123,193,9,0.3))' }} />
               </div>
 
               {/* University header */}
@@ -426,15 +426,15 @@ export default function CertificateLesson({
               </p>
 
               {/* Diploma title */}
-              <p className="text-center font-bold tracking-[0.06em] uppercase mb-3" style={{ color: '#c8a96e', fontFamily: 'Raleway, sans-serif', fontSize: '1.1rem' }}>
+              <p className="text-center font-bold tracking-[0.06em] uppercase mb-3" style={{ color: '#7BC109', fontFamily: 'Raleway, sans-serif', fontSize: '1.1rem' }}>
                 Diploma of Graduation
               </p>
 
               {/* Divider */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #c8a96e44)' }} />
+                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #7BC10944)' }} />
                 <div className="w-1.5 h-1.5 rotate-45 flex-shrink-0" style={{ background: '#7BC109' }} />
-                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #c8a96e44)' }} />
+                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #7BC10944)' }} />
               </div>
 
               {/* Certifies text */}
@@ -447,9 +447,9 @@ export default function CertificateLesson({
                 className="text-center font-bold mb-1 leading-tight tracking-wide uppercase"
                 style={{
                   fontSize: userName && userName.length > 20 ? '1.5rem' : '1.85rem',
-                  color: '#c8a96e',
+                  color: '#7BC109',
                   fontFamily: 'Raleway, sans-serif',
-                  textShadow: '0 0 30px rgba(200,169,110,0.2)',
+                  textShadow: '0 0 30px rgba(123,193,9,0.2)',
                 }}
               >
                 {userName || 'Graduate'}
@@ -461,9 +461,9 @@ export default function CertificateLesson({
 
               {/* Divider */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #c8a96e44)' }} />
+                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #7BC10944)' }} />
                 <div className="w-1.5 h-1.5 rotate-45 flex-shrink-0" style={{ background: '#7BC109' }} />
-                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #c8a96e44)' }} />
+                <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #7BC10944)' }} />
               </div>
 
               {/* Course name */}
@@ -667,21 +667,21 @@ export default function CertificateLesson({
       {/* Certificate preview — dimmed */}
       <div
         className="relative rounded-2xl overflow-hidden mx-auto mb-6 opacity-40"
-        style={{ background: 'linear-gradient(170deg, #0f1829 0%, #0D1320 100%)', border: '1.5px solid #c8a96e33' }}
+        style={{ background: 'linear-gradient(170deg, #0f1829 0%, #0D1320 100%)', border: '1.5px solid #7BC10922' }}
       >
-        <div className="relative m-3 rounded-xl border p-6 text-center" style={{ borderColor: '#c8a96e18' }}>
+        <div className="relative m-3 rounded-xl border p-6 text-center" style={{ borderColor: '#7BC10914' }}>
           {/* Ribbon badge */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/graduate-ribbon.png" alt="Graduate" style={{ width: '80px', height: 'auto', margin: '0 auto 8px', display: 'block' }} />
+          <img src="/images/graduate-ribbon.png" alt="Graduate" style={{ width: '160px', height: 'auto', margin: '0 auto 8px', display: 'block' }} />
           <p className="text-xs font-bold tracking-[0.26em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>University of Ylopo</p>
           <p className="text-xs mb-3" style={{ color: '#475569', fontSize: '10px' }}>Diploma of Graduation</p>
           <div className="flex items-center gap-3 mb-3">
-            <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #c8a96e44)' }} />
+            <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #7BC10944)' }} />
             <div className="w-1.5 h-1.5 rotate-45" style={{ background: '#7BC109' }} />
-            <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #c8a96e44)' }} />
+            <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #7BC10944)' }} />
           </div>
           <p className="text-xs italic mb-2" style={{ color: '#64748b', fontFamily: 'Georgia, serif' }}>This certifies that</p>
-          <h3 className="font-bold mb-2 uppercase tracking-wide" style={{ fontFamily: 'Raleway, sans-serif', fontSize: '1.6rem', color: '#c8a96e' }}>
+          <h3 className="font-bold mb-2 uppercase tracking-wide" style={{ fontFamily: 'Raleway, sans-serif', fontSize: '1.6rem', color: '#7BC109' }}>
             {userName || 'Your Name'}
           </h3>
           <p className="text-xs mb-3" style={{ color: '#475569' }}>has successfully completed</p>
