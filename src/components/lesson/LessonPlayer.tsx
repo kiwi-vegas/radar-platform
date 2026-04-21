@@ -13,6 +13,7 @@ import VideoCollectionLesson from './VideoCollectionLesson'
 import IntroLesson from './IntroLesson'
 import EmbedLesson from './EmbedLesson'
 import CertificateLesson from './CertificateLesson'
+import ReadingLesson from './ReadingLesson'
 
 interface LessonPlayerProps {
   course: Course
@@ -34,6 +35,7 @@ const TYPE_LABEL: Record<string, string> = {
   'intro': 'Introduction',
   'embed': 'Interactive',
   'certificate': 'Certification',
+  'reading': 'Reading',
 }
 
 export default function LessonPlayer({
@@ -260,6 +262,15 @@ export default function LessonPlayer({
 
           {lesson.type === 'embed' && (
             <EmbedLesson
+              lesson={lesson}
+              isCompleted={isAlreadyCompleted}
+              onComplete={() => markComplete()}
+              completing={completing}
+            />
+          )}
+
+          {lesson.type === 'reading' && (
+            <ReadingLesson
               lesson={lesson}
               isCompleted={isAlreadyCompleted}
               onComplete={() => markComplete()}

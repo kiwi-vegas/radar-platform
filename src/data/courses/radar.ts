@@ -45,6 +45,41 @@ export const radarCourse: Course = {
           },
         },
         {
+          id: 'lesson-0-reading',
+          title: 'What Makes RaiDAR Leads Different',
+          type: 'reading',
+          durationMinutes: 2,
+          content: {
+            intro: "These aren't \"fill out a form\" leads. You're not waiting for someone to raise their hand — you're getting in front of homeowners before they go anywhere else.",
+            sections: [
+              {
+                heading: 'Identified Before They Raise Their Hand',
+                body: 'Powered by national homeowner data (equity, ownership history, demographics)\nAI identifies who is most likely to sell in the next 90–180 days\nYou\'re talking to sellers before they hit Zillow or Realtor.com',
+              },
+              {
+                heading: 'AI Starts the Conversation for You',
+                body: 'Every lead is pre-contacted by AI text + follow-up\nConversations happen at scale before you ever get involved\nYou\'re stepping into a conversation — not starting from zero',
+              },
+              {
+                heading: 'Only Engaged Leads Get Passed to You',
+                body: 'Not every homeowner gets sent to your CRM. Ylopo filters for:\n**AI_ENGAGED** (they\'re responding)\n**AI_NEEDS_FOLLOW_UP** (they showed signals)\nYou\'re working signal, not noise',
+              },
+              {
+                heading: 'Built for Relationship-First Conversion',
+                body: 'These aren\'t instant deals — they\'re early-stage opportunities\nMost convert over weeks to months, not minutes\nThe agent who builds the relationship early… wins the listing',
+              },
+              {
+                heading: 'This Isn\'t DIY',
+                body: 'Requires massive national data aggregation, predictive modeling (propensity to sell), and an AI conversation + qualification layer.\nThis system is doing what no individual agent can replicate at scale.',
+              },
+              {
+                heading: 'The Advantage',
+                body: '**You\'re not competing for leads**\n**You\'re getting there first**\n**You\'re building trust before anyone else shows up**',
+              },
+            ],
+          },
+        },
+        {
           id: 'lesson-1-1',
           title: 'The RaiDAR Mindset — From "Always Be Closing" to "Always Be Consulting"',
           type: 'video',
