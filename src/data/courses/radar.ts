@@ -381,6 +381,7 @@ export const radarCourse: Course = {
           title: 'The Purpose and Vibe of the Radar Call',
           type: 'flashcard',
           durationMinutes: 2,
+          image: '/images/the-purpose-and-vibe-of-the-radar-call.png',
           content: {
             intro:
               'Before you touch a script, you need to own the mindset behind it. These cards cover what the Radar call is actually trying to accomplish — and what it is not. Get this foundation right and the words will land naturally.',
@@ -415,6 +416,7 @@ export const radarCourse: Course = {
           title: 'Opening the Call and Disarming the Lead',
           type: 'flashcard',
           durationMinutes: 4,
+          image: '/images/opening-the-call-and-disarming-the-lead.png',
           content: {
             intro:
               'The first 15 seconds determine everything. These cards drill the exact opening language — and the disarming frame that immediately lowers resistance. Commit these to memory.',
@@ -461,6 +463,7 @@ export const radarCourse: Course = {
           title: 'Reading the Text Response — 4 Scenarios',
           type: 'flashcard',
           durationMinutes: 4,
+          image: '/images/reading-the-text-response.png',
           content: {
             intro:
               "Every Radar call starts from a specific text exchange. The lead already said something — your job is to pick up exactly where that thread left off. These 4 scenarios cover every major entry point. Know which one you're in before you dial.",
@@ -513,6 +516,7 @@ export const radarCourse: Course = {
           title: 'Power Phrases, Normalizing, and Value Statement',
           type: 'flashcard',
           durationMinutes: 4,
+          image: '/images/power-phrases-normalizing-and-value-statement.png',
           content: {
             intro:
               'Three short sections that do heavy lifting in the middle of every call: the power phrases that keep conversations open, the normalizing language that builds trust, and the value statement that positions you as a resource rather than a salesperson.',
@@ -563,6 +567,7 @@ export const radarCourse: Course = {
           title: 'Transition, Close, and the 8-Day Drip',
           type: 'flashcard',
           durationMinutes: 5,
+          image: '/images/transition-close-and-the-8-day-drip.png',
           content: {
             intro:
               'How to move from a good conversation to a clear next step — and what happens after the call ends. These cards cover the transition to next steps, the call close, and every day of the 8-day text drip sequence.',
@@ -618,6 +623,7 @@ export const radarCourse: Course = {
           title: 'Scripts Comprehension Quiz',
           type: 'quiz',
           durationMinutes: 6,
+          image: '/images/scripts-comprehension-quiz.png',
           content: {
             intro:
               'This 12-question quiz covers every major concept from the Radar scriptbook — call purpose, opening language, scenario routing, power phrases, the value statement, and the drip sequence. You need 70% or better to advance to the practice call.',
@@ -862,6 +868,7 @@ SCORING GUIDE:
           title: 'Radar Certification',
           type: 'certificate',
           durationMinutes: 2,
+          image: '/images/radar-certification.png',
           content: {
             courseName: 'Radar',
             courseSubtitle: 'Getting More Sellers',
