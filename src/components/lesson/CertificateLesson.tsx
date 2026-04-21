@@ -113,7 +113,7 @@ export default function CertificateLesson({
   <meta charset="UTF-8" />
   <title>University of Ylopo — ${name}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;600;700&family=Mr+Dafoe&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -213,12 +213,7 @@ export default function CertificateLesson({
       gap: 16px; padding-top: 18px;
       border-top: 1px solid #d0c5b0;
     }
-    .sig-script {
-      color: #172F44; margin-bottom: 6px; line-height: 1; display: inline-block;
-    }
-    .sig-1 .sig-script { font-family: 'Mr Dafoe', cursive; font-weight: 400; font-size: 26px; transform: rotate(-4deg) translateY(2px); }
-    .sig-2 .sig-script { font-family: 'Mr Dafoe', cursive; font-weight: 400; font-size: 24px; transform: rotate(-1deg); }
-    .sig-3 .sig-script { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: 25px; transform: rotate(2deg) translateY(1px); }
+    .sig-svg { display: block; width: 100%; margin-bottom: 6px; }
     .sig-line { width: 80%; height: 1px; background: #aaa; margin: 4px auto 6px; }
     .sig-name { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; color: #172F44; }
     .sig-title { font-size: 10px; color: #696F8B; font-weight: 600; margin-top: 2px; }
@@ -259,19 +254,28 @@ export default function CertificateLesson({
 
     <div class="sig-row">
       <div class="sig sig-1">
-        <span class="sig-script">Barry Jenkins</span>
+        <svg class="sig-svg" viewBox="0 0 200 65" fill="none" overflow="visible" preserveAspectRatio="xMidYMid meet">
+          <path d="M 6,36 C 6,10 8,8 12,12 C 16,16 15,24 12,27 C 10,30 14,32 16,28 C 18,24 16,18 20,16 C 24,14 27,18 30,25 C 33,32 38,34 44,30 C 50,26 54,22 60,26 C 66,30 68,36 74,32 C 80,28 86,22 92,16 C 96,12 100,12 104,16 C 108,20 107,32 105,42 C 103,50 100,56 94,54 C 88,52 86,44 90,40 C 95,36 102,32 110,30 C 118,28 123,32 128,36 C 133,40 138,36 144,30 C 150,24 154,22 160,26 C 165,30 167,36 172,34" stroke="#172F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M 4,44 C 60,50 120,48 170,45 C 178,44 184,42 190,40" stroke="#172F44" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
         <div class="sig-line"></div>
         <div class="sig-name">Barry Jenkins</div>
         <div class="sig-title">Head Realtor In Residence</div>
       </div>
       <div class="sig sig-2">
-        <span class="sig-script">Howard Tager</span>
+        <svg class="sig-svg" viewBox="0 0 200 65" fill="none" overflow="visible" preserveAspectRatio="xMidYMid meet">
+          <path d="M 8,12 L 8,38 M 8,24 C 12,22 16,22 20,24 M 20,12 L 20,38 C 22,42 26,40 30,36 C 36,30 42,26 48,26 C 54,26 58,30 64,28 C 70,26 74,22 80,24 C 86,26 88,32 94,30 C 100,28 106,24 112,24 C 118,24 122,28 128,28 C 134,28 138,24 144,20 C 150,16 156,18 162,22 C 166,25 168,22 174,16" stroke="#172F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M 174,16 C 178,10 183,6 192,6" stroke="#172F44" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
         <div class="sig-line"></div>
         <div class="sig-name">Howard Tager</div>
         <div class="sig-title">CEO &amp; Co-Founder, Ylopo</div>
       </div>
       <div class="sig sig-3">
-        <span class="sig-script">Juefeng Ge</span>
+        <svg class="sig-svg" viewBox="0 0 200 65" fill="none" overflow="visible" preserveAspectRatio="xMidYMid meet">
+          <path d="M 34,10 C 36,14 38,24 36,36 C 34,46 28,54 22,52 C 16,50 16,42 22,40 C 28,38 34,34 40,26 C 46,18 50,12 56,14 C 62,16 64,28 70,32 C 76,36 82,28 88,20 C 94,12 98,10 104,14 C 110,18 110,30 116,36 C 122,42 128,36 134,28 C 140,20 144,18 150,22 C 156,26 156,36 162,38 C 166,39 170,36 174,30" stroke="#172F44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M 174,30 C 164,42 146,46 126,44 C 106,42 86,44 68,40" stroke="#172F44" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
         <div class="sig-line"></div>
         <div class="sig-name">Juefeng Ge</div>
         <div class="sig-title">President &amp; Co-Founder, Ylopo</div>
@@ -437,16 +441,39 @@ export default function CertificateLesson({
 
               {/* Signatories */}
               <div className="grid grid-cols-3 gap-2 pt-3" style={{ borderTop: '1px solid rgba(30,42,59,0.8)' }}>
-                {[
-                  { sig: 'Barry Jenkins', name: 'Barry Jenkins', title: 'Head Realtor In Residence', font: '"Mr Dafoe", cursive', rotate: '-4deg', size: '22px', weight: 400, translateY: '2px' },
-                  { sig: 'Howard Tager', name: 'Howard Tager', title: 'CEO & Co-Founder, Ylopo', font: '"Mr Dafoe", cursive', rotate: '-1deg', size: '20px', weight: 400, translateY: '0px' },
-                  { sig: 'Juefeng Ge', name: 'Juefeng Ge', title: 'President & Co-Founder', font: '"Pinyon Script", cursive', rotate: '+2deg', size: '21px', weight: 400, translateY: '1px' },
-                ].map((s) => (
+                {([
+                  {
+                    name: 'Barry Jenkins',
+                    title: 'Head Realtor In Residence',
+                    svgPaths: [
+                      { d: 'M 6,36 C 6,10 8,8 12,12 C 16,16 15,24 12,27 C 10,30 14,32 16,28 C 18,24 16,18 20,16 C 24,14 27,18 30,25 C 33,32 38,34 44,30 C 50,26 54,22 60,26 C 66,30 68,36 74,32 C 80,28 86,22 92,16 C 96,12 100,12 104,16 C 108,20 107,32 105,42 C 103,50 100,56 94,54 C 88,52 86,44 90,40 C 95,36 102,32 110,30 C 118,28 123,32 128,36 C 133,40 138,36 144,30 C 150,24 154,22 160,26 C 165,30 167,36 172,34', strokeWidth: 1.8 },
+                      { d: 'M 4,44 C 60,50 120,48 170,45 C 178,44 184,42 190,40', strokeWidth: 1.3 },
+                    ],
+                  },
+                  {
+                    name: 'Howard Tager',
+                    title: 'CEO & Co-Founder, Ylopo',
+                    svgPaths: [
+                      { d: 'M 8,12 L 8,38 M 8,24 C 12,22 16,22 20,24 M 20,12 L 20,38 C 22,42 26,40 30,36 C 36,30 42,26 48,26 C 54,26 58,30 64,28 C 70,26 74,22 80,24 C 86,26 88,32 94,30 C 100,28 106,24 112,24 C 118,24 122,28 128,28 C 134,28 138,24 144,20 C 150,16 156,18 162,22 C 166,25 168,22 174,16', strokeWidth: 1.8 },
+                      { d: 'M 174,16 C 178,10 183,6 192,6', strokeWidth: 1.3 },
+                    ],
+                  },
+                  {
+                    name: 'Juefeng Ge',
+                    title: 'President & Co-Founder',
+                    svgPaths: [
+                      { d: 'M 34,10 C 36,14 38,24 36,36 C 34,46 28,54 22,52 C 16,50 16,42 22,40 C 28,38 34,34 40,26 C 46,18 50,12 56,14 C 62,16 64,28 70,32 C 76,36 82,28 88,20 C 94,12 98,10 104,14 C 110,18 110,30 116,36 C 122,42 128,36 134,28 C 140,20 144,18 150,22 C 156,26 156,36 162,38 C 166,39 170,36 174,30', strokeWidth: 1.8 },
+                      { d: 'M 174,30 C 164,42 146,46 126,44 C 106,42 86,44 68,40', strokeWidth: 1.3 },
+                    ],
+                  },
+                ] as const).map((s) => (
                   <div key={s.name} className="text-center">
-                    <div className="h-8 flex items-end justify-center overflow-hidden" style={{ marginBottom: '4px' }}>
-                      <span style={{ fontFamily: s.font, fontSize: s.size, fontWeight: s.weight, color: '#94a3b8', transform: `rotate(${s.rotate}) translateY(${s.translateY})`, display: 'inline-block', lineHeight: 1 }}>
-                        {s.sig}
-                      </span>
+                    <div className="flex justify-center items-end" style={{ marginBottom: '4px' }}>
+                      <svg width="100%" viewBox="0 0 200 65" fill="none" overflow="visible" preserveAspectRatio="xMidYMid meet">
+                        {s.svgPaths.map((p, i) => (
+                          <path key={i} d={p.d} stroke="#94a3b8" strokeWidth={p.strokeWidth} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                        ))}
+                      </svg>
                     </div>
                     <div className="h-px mx-1 mb-1.5" style={{ background: 'rgba(100,116,139,0.25)' }} />
                     <p style={{ color: '#cbd5e1', fontFamily: 'Raleway, sans-serif', fontSize: '9px', fontWeight: 700 }}>{s.name}</p>
