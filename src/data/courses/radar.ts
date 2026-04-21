@@ -49,6 +49,7 @@ export const radarCourse: Course = {
           title: 'What Makes Radar Leads Different',
           type: 'reading',
           durationMinutes: 2,
+          image: '/images/what-makes-radar-leads-different.png',
           content: {
             intro: "These aren't \"fill out a form\" leads. You're not waiting for someone to raise their hand — you're getting in front of homeowners before they go anywhere else.",
             sections: [
