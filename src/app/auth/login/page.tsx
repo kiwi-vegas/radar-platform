@@ -97,7 +97,7 @@ export default function LoginPage() {
                 <circle cx="12" cy="12" r="11" stroke="white" strokeWidth="1" fill="none" opacity="0.3"/>
               </svg>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-tx-primary">RaiDAR</span>
+            <span className="text-2xl font-bold tracking-tight text-tx-primary">Radar</span>
           </div>
           <p className="text-tx-secondary text-sm">Training Platform</p>
         </div>

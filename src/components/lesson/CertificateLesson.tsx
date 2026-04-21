@@ -27,7 +27,7 @@ export default function CertificateLesson({
   const certCardRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
-  const shareCaption = `Guess what? I'm super excited to keep leveling up my real estate skills 🎉 I just graduated from the RaiDAR: Getting More Sellers program by Ylopo! This training covered seller mindset, tactical prospecting, and scripting — everything I need to identify, engage, and convert seller leads. Can't wait to put it all into action. 🏡 #RaiDAR #YlopoUniversity #RealEstate #SellerLeads #LevelingUp`
+  const shareCaption = `Guess what? I'm super excited to keep leveling up my real estate skills 🎉 I just graduated from the Radar: Getting More Sellers program by Ylopo! This training covered seller mindset, tactical prospecting, and scripting — everything I need to identify, engage, and convert seller leads. Can't wait to put it all into action. 🏡 #Radar #YlopoUniversity #RealEstate #SellerLeads #LevelingUp`
 
   const completionDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -83,7 +83,7 @@ export default function CertificateLesson({
   function handleLinkedIn() {
     const url = encodeURIComponent('https://www.ylopo.com')
     const summary = encodeURIComponent(shareCaption)
-    const title = encodeURIComponent('RaiDAR Certified — Getting More Sellers')
+    const title = encodeURIComponent('Radar Certified — Getting More Sellers')
     window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, '_blank')
   }
 
@@ -308,7 +308,7 @@ export default function CertificateLesson({
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        a.download = `RaiDAR-Certified-${(userName || 'Graduate').replace(/\s+/g, '-')}.png`
+        a.download = `Radar-Certified-${(userName || 'Graduate').replace(/\s+/g, '-')}.png`
         a.click()
         URL.revokeObjectURL(url)
       }, 'image/png')
@@ -325,7 +325,7 @@ export default function CertificateLesson({
         {/* Hero */}
         <div className="text-center space-y-3">
           <p className="text-sm font-bold tracking-[0.3em] uppercase" style={{ color: '#7BC109' }}>
-            RaiDAR Certified
+            Radar Certified
           </p>
           {userName ? (
             <>
@@ -340,7 +340,7 @@ export default function CertificateLesson({
             </h2>
           )}
           <p className="text-tx-secondary text-sm max-w-md mx-auto leading-relaxed pt-1">
-            You&apos;ve officially completed the RaiDAR Seller Conversion Program.
+            You&apos;ve officially completed the Radar Seller Conversion Program.
             You are ready to work leads, build relationships, and convert sellers.
           </p>
         </div>
@@ -471,7 +471,7 @@ export default function CertificateLesson({
           <p className="text-sm font-semibold text-white mb-1">Post this. You earned it.</p>
           <p className="text-xs text-tx-muted leading-relaxed">
             Download your share card and post it to LinkedIn or your team chat.
-            Send it to your team leader — this is your proof of graduation and your green light to start working RaiDAR leads.
+            Send it to your team leader — this is your proof of graduation and your green light to start working Radar leads.
           </p>
         </div>
 
@@ -480,7 +480,7 @@ export default function CertificateLesson({
           <p className="text-xs font-semibold tracking-widest uppercase text-tx-muted mb-3">What happens next</p>
           {[
             { n: '1', title: 'Share with your team leader', desc: 'Send your card or certificate. This is your official sign-off that you have completed training.' },
-            { n: '2', title: 'Get assigned to RaiDAR leads', desc: 'Your team leader will plug you into the RaiDAR pipeline. These are real homeowners — treat every call like the training.' },
+            { n: '2', title: 'Get assigned to Radar leads', desc: 'Your team leader will plug you into the Radar pipeline. These are real homeowners — treat every call like the training.' },
             { n: '3', title: 'Apply everything you learned', desc: 'Always Be Consulting. Disarm. Get curious. Normalize not-ready. The scripts are in your head — trust them.' },
           ].map((step) => (
             <div key={step.n} className="flex gap-4 px-4 py-4 rounded-xl border bg-surface-card" style={{ borderColor: '#1E2A3B' }}>
@@ -615,11 +615,11 @@ export default function CertificateLesson({
     <div className="py-4 animate-fade-in">
       <div className="text-center mb-6">
         <p className="text-xs font-bold tracking-[0.35em] uppercase mb-3" style={{ color: '#7BC109' }}>
-          ✦ &nbsp; RaiDAR Certified &nbsp; ✦
+          ✦ &nbsp; Radar Certified &nbsp; ✦
         </p>
         <h2 className="text-2xl font-bold text-tx-primary mb-2">You&apos;re almost there.</h2>
         <p className="text-tx-secondary text-sm max-w-lg mx-auto leading-relaxed">
-          Complete all three sections of the RaiDAR training to earn your certificate.
+          Complete all three sections of the Radar training to earn your certificate.
           Once you graduate, you can download and share it with your team leader.
         </p>
       </div>

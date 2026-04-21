@@ -3,10 +3,10 @@ import type { Course } from '@/lib/types'
 export const radarCourse: Course = {
   id: 'radar-v1',
   slug: 'radar',
-  title: 'RaiDAR',
+  title: 'Radar',
   subtitle: 'Getting More Sellers',
   description:
-    'Master the RaiDAR system to identify and engage early-stage sellers before your competitors ever know they exist. This is not about cold calling — it is about being the trusted advisor already in the conversation when sellers are ready to move.',
+    'Master the Radar system to identify and engage early-stage sellers before your competitors ever know they exist. This is not about cold calling — it is about being the trusted advisor already in the conversation when sellers are ready to move.',
   coverColor: '#7BC109',
   coverImage: '/images/main-radar-thumb.png',
   sections: [
@@ -46,7 +46,7 @@ export const radarCourse: Course = {
         },
         {
           id: 'lesson-0-reading',
-          title: 'What Makes RaiDAR Leads Different',
+          title: 'What Makes Radar Leads Different',
           type: 'reading',
           durationMinutes: 2,
           content: {
@@ -81,7 +81,7 @@ export const radarCourse: Course = {
         },
         {
           id: 'lesson-1-1',
-          title: 'The RaiDAR Mindset — From "Always Be Closing" to "Always Be Consulting"',
+          title: 'The Radar Mindset — From "Always Be Closing" to "Always Be Consulting"',
           type: 'video',
           durationMinutes: 5,
           image: '/images/mindset.png',
@@ -108,14 +108,14 @@ export const radarCourse: Course = {
             cards: [
               {
                 id: 'fc-1',
-                question: "In the RaiDAR program, what does the acronym 'ABC' stand for?",
+                question: "In the Radar program, what does the acronym 'ABC' stand for?",
                 answer: 'Always Be Consulting.',
                 clarification: "The traditional sales ABC — Always Be Closing — puts the agent's needs (getting a signed listing) ahead of the homeowner's. Flipping it to Always Be Consulting shifts the focus to the homeowner's situation and timeline. This reframe isn't just philosophical — it changes how leads respond to you in real time, because people can feel the difference between someone trying to extract value and someone genuinely trying to help.",
               },
               {
                 id: 'fc-3',
                 question:
-                  'According to the RaiDAR Mastermind, the goal for every call should be to build a relationship with a _____.',
+                  'According to the Radar Mastermind, the goal for every call should be to build a relationship with a _____.',
                 answer: 'Human being.',
                 clarification: "This sounds obvious, but most agents treat calls as transactions — they're trying to get a lead to 'convert.' The Mastermind frames it differently: every person on the other end of that call has a life, a situation, and a timeline that has nothing to do with your pipeline. When you approach them as a human being first, you ask better questions, you listen more carefully, and you become the kind of advisor people actually want to call back.",
               },
@@ -179,13 +179,13 @@ export const radarCourse: Course = {
           image: '/images/quiz.png',
           content: {
             intro:
-              "Time to lock it in. This 10-question quiz covers everything from the RaiDAR mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
+              "Time to lock it in. This 10-question quiz covers everything from the Radar mindset shift to objection handling, courage, and the consulting framework. You need 70% or better to complete the Mindset Module and advance to tactics.",
             passingScore: 70,
             questions: [
               {
                 id: 'mq-1',
                 question:
-                  "What is the primary mindset shift proposed by the RaiDAR program to replace the traditional 'ABC' of sales?",
+                  "What is the primary mindset shift proposed by the Radar program to replace the traditional 'ABC' of sales?",
                 options: [
                   'Always Be Collecting',
                   'Always Be Closing',
@@ -335,7 +335,7 @@ export const radarCourse: Course = {
       id: 'section-tactical',
       title: 'Section 2: Tactical',
       description:
-        'Get hands-on with the Ylopo tools that make the RaiDAR system work. Walk through the seller report and set up your first seller alert.',
+        'Get hands-on with the Ylopo tools that make the Radar system work. Walk through the seller report and set up your first seller alert.',
       lessons: [
         {
           id: 'lesson-2-arcade-1',
@@ -345,7 +345,7 @@ export const radarCourse: Course = {
           image: '/images/seller-report-walkthrough.png',
           content: {
             description:
-              "An agent working RaiDAR leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
+              "An agent working Radar leads is building a relationship with homeowners to earn that listing. A key part of that relationship is the YLOPO Seller Report — a powerful tool that keeps you top of mind and positions you as their trusted market advisor. Go through this three-minute interactive walkthrough so you understand the value of each section within the report.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(45.2604% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/gzLHC8kQA5oMnu7blYRu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Walkthrough of the Ylopo Seller Report" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
             durationLabel: '2-3 minutes to complete',
           },
@@ -358,7 +358,7 @@ export const radarCourse: Course = {
           image: '/images/creating-a-seller-report.png',
           content: {
             description:
-              "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every RaiDAR lead you work.",
+              "Now that you know what the Seller Report delivers, here's how to set one up. This step-by-step walkthrough shows you exactly how to create a Seller Alert inside STARS. It takes about two minutes — follow each step so you can do this confidently for every Radar lead you work.",
             embedHtml: `<div style="position: relative; padding-bottom: calc(48.6458% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/yXwzm80DHqKBacZdbwlX?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create a Seller Alert for a Lead in Stars" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"></iframe></div>`,
             durationLabel: '1 minute to complete',
           },
@@ -373,27 +373,27 @@ export const radarCourse: Course = {
       id: 'section-scripts',
       title: 'Section 3: Scripting for Success',
       description:
-        'The complete call from first word to next step. These lessons give you the exact language, the scenarios, and the reps to deliver every RaiDAR call with confidence and zero pressure.',
+        'The complete call from first word to next step. These lessons give you the exact language, the scenarios, and the reps to deliver every Radar call with confidence and zero pressure.',
       lessons: [
         {
           id: 'lesson-4-1',
-          title: 'The Purpose and Vibe of the RaiDAR Call',
+          title: 'The Purpose and Vibe of the Radar Call',
           type: 'flashcard',
           durationMinutes: 2,
           content: {
             intro:
-              'Before you touch a script, you need to own the mindset behind it. These cards cover what the RaiDAR call is actually trying to accomplish — and what it is not. Get this foundation right and the words will land naturally.',
+              'Before you touch a script, you need to own the mindset behind it. These cards cover what the Radar call is actually trying to accomplish — and what it is not. Get this foundation right and the words will land naturally.',
             cards: [
               {
                 id: 'sc-1',
-                question: 'What is the primary purpose of the RaiDAR follow-up call?',
+                question: 'What is the primary purpose of the Radar follow-up call?',
                 answer:
                   'To continue the conversation the AI assistant started over text — casually and without pressure. Not to pitch or close.',
                 clarification: "The AI already started a rapport-building exchange with this homeowner. When you call, you're not a stranger — you're continuing something that already exists. Framing it as 'continuing the conversation' rather than 'I'm calling to tell you about my services' completely changes how the homeowner hears those first seconds. The goal is continuation, not conversion.",
               },
               {
                 id: 'sc-5',
-                question: 'What is "success" on a RaiDAR call? (It is not always an appointment.)',
+                question: 'What is "success" on a Radar call? (It is not always an appointment.)',
                 answer:
                   'Clear timeline understanding + clear motivation + trust built + continued engagement. An appointment is a bonus, not the goal.',
                 clarification: "Redefining success is one of the most important mental shifts in this entire framework. When agents chase appointments, they push too hard and lose the relationship. When they chase understanding — timeline, motivation, trust — they often end up with better appointments anyway, because the homeowner actually wants to meet. Measure success by what you learned, not what you got.",
@@ -401,10 +401,10 @@ export const radarCourse: Course = {
               {
                 id: 'sc-7',
                 question:
-                  'True or false: The goal of a RaiDAR call is to convince the homeowner to move their timeline forward.',
+                  'True or false: The goal of a Radar call is to convince the homeowner to move their timeline forward.',
                 answer:
                   'False. The goal is to understand where they are and stay in their orbit as a trusted resource — not to push them faster than they\'re ready.',
-                clarification: "Trying to accelerate a homeowner's timeline is one of the most common and damaging mistakes agents make. It signals that you care more about your schedule than their situation. The RaiDAR model flips this: your job is to be so useful and trustworthy that when their timeline naturally moves forward, you're the first person they call. Patience is the competitive advantage.",
+                clarification: "Trying to accelerate a homeowner's timeline is one of the most common and damaging mistakes agents make. It signals that you care more about your schedule than their situation. The Radar model flips this: your job is to be so useful and trustworthy that when their timeline naturally moves forward, you're the first person they call. Patience is the competitive advantage.",
               },
             ],
           },
@@ -420,14 +420,14 @@ export const radarCourse: Course = {
             cards: [
               {
                 id: 'sc-8',
-                question: 'What is the correct opening line for a RaiDAR call?',
+                question: 'What is the correct opening line for a Radar call?',
                 answer:
                   '"Hey [First Name], this is [Agent Name]. I saw my assistant was texting with you about some information on your home, so I wanted to continue that conversation for a minute." [Pause]',
                 clarification: "Every word in this opener is deliberate. 'My assistant was texting with you' is true — an AI system did reach out — and it immediately provides context without requiring the homeowner to place you. 'Continue that conversation' reframes the call as an extension of something they already participated in, not a cold outreach. The pause at the end is critical: it invites them to respond instead of rolling you into a scripted sales call.",
               },
               {
                 id: 'sc-9',
-                question: 'What are two things the agent must NOT do at the opening of a RaiDAR call?',
+                question: 'What are two things the agent must NOT do at the opening of a Radar call?',
                 answer: 'Do NOT apologize. Do NOT ask permission to sell.',
                 clarification: "Apologizing ('sorry to bother you') immediately signals low status and puts the homeowner in the role of deciding whether to tolerate the call. Asking permission to sell ('would you be open to...?') frames the call as a sales attempt before you've established any value. Both mistakes tell the homeowner you believe the call is an imposition — which is exactly the opposite of how a trusted advisor shows up.",
               },
@@ -462,7 +462,7 @@ export const radarCourse: Course = {
           durationMinutes: 4,
           content: {
             intro:
-              "Every RaiDAR call starts from a specific text exchange. The lead already said something — your job is to pick up exactly where that thread left off. These 4 scenarios cover every major entry point. Know which one you're in before you dial.",
+              "Every Radar call starts from a specific text exchange. The lead already said something — your job is to pick up exactly where that thread left off. These 4 scenarios cover every major entry point. Know which one you're in before you dial.",
             cards: [
               {
                 id: 'sc-16',
@@ -619,12 +619,12 @@ export const radarCourse: Course = {
           durationMinutes: 6,
           content: {
             intro:
-              'This 12-question quiz covers every major concept from the RaiDAR scriptbook — call purpose, opening language, scenario routing, power phrases, the value statement, and the drip sequence. You need 70% or better to advance to the practice call.',
+              'This 12-question quiz covers every major concept from the Radar scriptbook — call purpose, opening language, scenario routing, power phrases, the value statement, and the drip sequence. You need 70% or better to advance to the practice call.',
             passingScore: 70,
             questions: [
               {
                 id: 'sq-1',
-                question: 'What is the primary purpose of a RaiDAR follow-up call?',
+                question: 'What is the primary purpose of a Radar follow-up call?',
                 options: [
                   'To pitch the homeowner on listing their home as soon as possible',
                   'To continue the AI text conversation and build trust through curiosity',
@@ -633,13 +633,13 @@ export const radarCourse: Course = {
                 ],
                 correctIndex: 1,
                 explanation:
-                  "The RaiDAR call is not a pitch — it's a continuation of the trust the AI already started building over text. The job is curiosity, not conversion.",
+                  "The Radar call is not a pitch — it's a continuation of the trust the AI already started building over text. The job is curiosity, not conversion.",
               },
               {
                 id: 'sq-2',
-                question: 'Which two things should the agent never do at the start of a RaiDAR call?',
+                question: 'Which two things should the agent never do at the start of a Radar call?',
                 options: [
-                  'Use the homeowner\'s first name and mention RaiDAR',
+                  'Use the homeowner\'s first name and mention Radar',
                   'Apologize for calling and ask permission to sell',
                   'Reference the text conversation and pause after opening',
                   'Mention the home\'s value and ask about their timeline',
@@ -787,14 +787,14 @@ export const radarCourse: Course = {
         },
         {
           id: 'lesson-4-7',
-          title: 'Full RaiDAR Call Practice',
+          title: 'Full Radar Call Practice',
           type: 'roleplay',
           durationMinutes: 15,
           image: '/images/ai-roleplay.png',
           content: {
             intro:
-              'This is the capstone practice call for Section 4. You will run a complete RaiDAR call from open to close — anchoring to a text conversation, delivering the disarming frame, reading the scenario, using power phrases, normalizing not ready, delivering the value statement, and transitioning to next steps. There are no shortcuts. Every beat matters. Score yourself honestly — an 8 means it felt natural, consultant-like, and low-pressure throughout.',
-            script: `FULL RaiDAR CALL — 7 BEATS TO HIT
+              'This is the capstone practice call for Section 4. You will run a complete Radar call from open to close — anchoring to a text conversation, delivering the disarming frame, reading the scenario, using power phrases, normalizing not ready, delivering the value statement, and transitioning to next steps. There are no shortcuts. Every beat matters. Score yourself honestly — an 8 means it felt natural, consultant-like, and low-pressure throughout.',
+            script: `FULL Radar CALL — 7 BEATS TO HIT
 
 CONTEXT: The homeowner responded to a home valuation text sent by your AI assistant.
 
@@ -858,11 +858,11 @@ SCORING GUIDE:
         },
         {
           id: 'lesson-4-certificate',
-          title: 'RaiDAR Certification',
+          title: 'Radar Certification',
           type: 'certificate',
           durationMinutes: 2,
           content: {
-            courseName: 'RaiDAR',
+            courseName: 'Radar',
             courseSubtitle: 'Getting More Sellers',
             modules: ['Mindset', 'Tactical', 'Scripting for Success'],
             instructorName: 'Barry Jenkins',

@@ -110,7 +110,7 @@ export default function LessonPlayer({
             You've completed <span className="text-tx-primary font-semibold">{course.title}</span>.
           </p>
           <p className="text-tx-muted text-sm mb-8">
-            You've earned your RaiDAR certification. The system works when you do. Now go build some relationships.
+            You've earned your Radar certification. The system works when you do. Now go build some relationships.
           </p>
           <button
             onClick={() => router.push('/dashboard')}

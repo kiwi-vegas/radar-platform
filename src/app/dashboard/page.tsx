@@ -74,7 +74,7 @@ export default async function DashboardPage() {
                 <circle cx="12" cy="12" r="11" stroke="white" strokeWidth="1" fill="none" opacity="0.3"/>
               </svg>
             </div>
-            <span className="font-bold text-tx-primary tracking-tight">RaiDAR</span>
+            <span className="font-bold text-tx-primary tracking-tight">Radar</span>
           </div>
 
           <div className="flex items-center gap-4">
