@@ -24,7 +24,7 @@ export default function CertificateLesson({
   const [userName, setUserName] = useState<string | null>(null)
   const [instagramCopied, setInstagramCopied] = useState(false)
   const [generatingImage, setGeneratingImage] = useState(false)
-  const socialCardRef = useRef<HTMLDivElement>(null)
+  const certCardRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   const shareCaption = `Guess what? I'm super excited to keep leveling up my real estate skills 🎉 I just graduated from the RaiDAR: Getting More Sellers program by Ylopo! This training covered seller mindset, tactical prospecting, and scripting — everything I need to identify, engage, and convert seller leads. Can't wait to put it all into action. 🏡 #RaiDAR #YlopoUniversity #RealEstate #SellerLeads #LevelingUp`
@@ -291,15 +291,17 @@ export default function CertificateLesson({
 
   // ─── Social card → real PNG download via html2canvas ────────────────────────
   async function handleDownloadSocialCard() {
-    if (!socialCardRef.current || generatingImage) return
+    if (!certCardRef.current || generatingImage) return
     setGeneratingImage(true)
     try {
       const html2canvas = (await import('html2canvas')).default
-      const canvas = await html2canvas(socialCardRef.current, {
+      const canvas = await html2canvas(certCardRef.current!, {
         scale: 2,
         useCORS: true,
-        backgroundColor: '#0B0F1A',
+        allowTaint: false,
+        backgroundColor: '#0f1829',
         logging: false,
+        imageTimeout: 15000,
       })
       canvas.toBlob((blob) => {
         if (!blob) return
@@ -347,6 +349,7 @@ export default function CertificateLesson({
         <div>
           <p className="text-xs font-semibold tracking-widest uppercase text-tx-muted mb-3 text-center">Your Certificate</p>
           <div
+            ref={certCardRef}
             className="relative rounded-2xl overflow-hidden mx-auto"
             style={{
               background: 'linear-gradient(160deg, #0f1829 0%, #0b1020 100%)',
@@ -457,53 +460,6 @@ export default function CertificateLesson({
                 &nbsp;&bull;&nbsp;Official Date of Completion
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Hidden social card rendered for html2canvas capture */}
-        <div style={{ position: 'fixed', top: '-9999px', left: '-9999px', width: '1080px', height: '1080px', zIndex: -1 }}>
-          <div
-            ref={socialCardRef}
-            style={{
-              width: '1080px', height: '1080px',
-              background: '#0B0F1A',
-              display: 'flex', flexDirection: 'column',
-              alignItems: 'center', justifyContent: 'center',
-              position: 'relative', overflow: 'hidden',
-              fontFamily: 'Raleway, sans-serif',
-            }}
-          >
-            {/* Background grid */}
-            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(123,193,9,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(123,193,9,0.04) 1px, transparent 1px)', backgroundSize: '72px 72px' }} />
-            {/* Glow */}
-            <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%,-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(123,193,9,0.12) 0%, transparent 65%)' }} />
-            {/* Corner accents */}
-            {[['top:56px;left:56px;border-top:3px solid rgba(123,193,9,0.6);border-left:3px solid rgba(123,193,9,0.6)', '0 0 0 0'],
-              ['top:56px;right:56px;border-top:3px solid rgba(123,193,9,0.6);border-right:3px solid rgba(123,193,9,0.6)', '0 0 0 0'],
-              ['bottom:56px;left:56px;border-bottom:3px solid rgba(123,193,9,0.6);border-left:3px solid rgba(123,193,9,0.6)', '0 0 0 0'],
-              ['bottom:56px;right:56px;border-bottom:3px solid rgba(123,193,9,0.6);border-right:3px solid rgba(123,193,9,0.6)', '0 0 0 0'],
-            ].map(([s], i) => (
-              <div key={i} style={{ position: 'absolute', width: '80px', height: '80px', ...Object.fromEntries(s.split(';').filter(Boolean).map(r => r.split(':').map(x => x.trim())).map(([k, v]) => [k.replace(/-([a-z])/g, (_, c) => c.toUpperCase()), v])) }} />
-            ))}
-            {/* Content */}
-            <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '0 100px' }}>
-              <p style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '8px', textTransform: 'uppercase', color: 'rgba(123,193,9,0.8)', marginBottom: '32px' }}>✦  Ylopo University  ✦</p>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/graduate-ribbon2.png" alt="" style={{ width: '260px', marginBottom: '24px' }} />
-              <p style={{ fontFamily: 'Raleway, sans-serif', fontSize: '18px', letterSpacing: '10px', color: 'rgba(123,193,9,0.9)', marginBottom: '12px', textTransform: 'uppercase', fontWeight: 700 }}>RaiDAR Certified</p>
-              <h1 style={{ fontFamily: 'Raleway, sans-serif', fontSize: '84px', lineHeight: 1, color: '#fff', letterSpacing: '3px', marginBottom: '6px', fontWeight: 900, textShadow: '0 0 60px rgba(123,193,9,0.35)' }}>RaiDAR</h1>
-              <p style={{ fontSize: '17px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '40px' }}>Seller Conversion Program</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', width: '500px', marginBottom: '36px' }}>
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, transparent, rgba(123,193,9,0.5))' }} />
-                <div style={{ width: '8px', height: '8px', background: '#7BC109', transform: 'rotate(45deg)', flexShrink: 0 }} />
-                <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, transparent, rgba(123,193,9,0.5))' }} />
-              </div>
-              <p style={{ fontSize: '15px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '14px' }}>Awarded to</p>
-              <h2 style={{ fontFamily: 'Raleway, sans-serif', fontSize: '58px', fontWeight: 800, color: '#ffffff', lineHeight: 1.1, marginBottom: '40px', textTransform: 'uppercase', letterSpacing: '2px' }}>{userName || 'Graduate'}</h2>
-              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.45)', letterSpacing: '1px', marginBottom: '6px' }}>Ready to identify, engage, and convert seller leads.</p>
-              <p style={{ fontSize: '13px', color: 'rgba(123,193,9,0.6)', letterSpacing: '3px', textTransform: 'uppercase' }}>{completionDate}</p>
-            </div>
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '5px', background: 'linear-gradient(to right, transparent, #7BC109, #7BC109, transparent)' }} />
           </div>
         </div>
 
