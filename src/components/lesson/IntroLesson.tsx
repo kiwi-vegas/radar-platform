@@ -53,23 +53,25 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
         </div>
       )}
 
-      {/* Bio + Book side by side */}
-      <div className={`flex gap-5 items-start ${content.book ? 'flex-col sm:flex-row' : ''}`}>
-        <div className="rounded-2xl bg-surface border border-surface-border p-6 flex-1">
+      {/* Bio + Book */}
+      <div className="rounded-2xl bg-surface border border-surface-border p-6 flex gap-6 items-start">
+        {/* Bio */}
+        <div className="flex-1 min-w-0">
           <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-3">About Barry</div>
           <p className="text-tx-secondary text-sm leading-relaxed">{content.bio}</p>
         </div>
 
+        {/* Book cover */}
         {content.book && (
-          <div className="rounded-2xl bg-surface border border-surface-border p-5 flex flex-col items-center text-center sm:w-44 shrink-0 gap-3">
-            <div className="text-xs font-semibold text-brand-green uppercase tracking-wider">Best-Selling Author</div>
-            <div className="relative w-28 rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
+          <div className="flex-shrink-0 flex flex-col items-center text-center gap-2.5 w-32">
+            <div className="text-xs font-semibold text-brand-green uppercase tracking-wider whitespace-nowrap">Best-Selling Author</div>
+            <div className="relative w-full rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
               <Image
                 src={content.book.coverImage}
                 alt={content.book.title}
                 fill
                 className="object-cover"
-                sizes="112px"
+                sizes="128px"
               />
             </div>
             <div>
