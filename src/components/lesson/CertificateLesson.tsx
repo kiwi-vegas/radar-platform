@@ -106,7 +106,7 @@ export default function CertificateLesson({
     if (!win) return
     const name = userName || 'Graduate'
     const modulesLine = content.modules.join(' · ')
-    const ribbonUrl = `${window.location.origin}/images/graduate-ribbon.png`
+    const ribbonUrl = `${window.location.origin}/images/graduate-ribbon2.png`
     win.document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -376,7 +376,7 @@ export default function CertificateLesson({
               {/* Ribbon */}
               <div className="relative mb-[8px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/graduate-ribbon.png" alt="Graduate 2026" className="block mx-auto" style={{ width: '55%', height: 'auto', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
+                <img src="/images/graduate-ribbon2.png" alt="Graduate 2026" className="block mx-auto" style={{ width: '55%', height: 'auto', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
               </div>
 
               {/* University */}
@@ -493,7 +493,7 @@ export default function CertificateLesson({
             <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '0 100px' }}>
               <p style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '8px', textTransform: 'uppercase', color: 'rgba(123,193,9,0.8)', marginBottom: '32px' }}>✦  Ylopo University  ✦</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/graduate-ribbon.png" alt="" style={{ width: '260px', marginBottom: '24px' }} />
+              <img src="/images/graduate-ribbon2.png" alt="" style={{ width: '260px', marginBottom: '24px' }} />
               <p style={{ fontFamily: 'Raleway, sans-serif', fontSize: '18px', letterSpacing: '10px', color: 'rgba(123,193,9,0.9)', marginBottom: '12px', textTransform: 'uppercase', fontWeight: 700 }}>RaiDAR Certified</p>
               <h1 style={{ fontFamily: 'Raleway, sans-serif', fontSize: '84px', lineHeight: 1, color: '#fff', letterSpacing: '3px', marginBottom: '6px', fontWeight: 900, textShadow: '0 0 60px rgba(123,193,9,0.35)' }}>RaiDAR</h1>
               <p style={{ fontSize: '17px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '40px' }}>Seller Conversion Program</p>
@@ -680,7 +680,7 @@ export default function CertificateLesson({
         <div className="relative m-3 rounded-xl border p-6 text-center" style={{ borderColor: '#7BC10914' }}>
           {/* Ribbon badge */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/graduate-ribbon.png" alt="Graduate" style={{ width: '160px', height: 'auto', margin: '0 auto 8px', display: 'block' }} />
+          <img src="/images/graduate-ribbon2.png" alt="Graduate" style={{ width: '160px', height: 'auto', margin: '0 auto 8px', display: 'block' }} />
           <p className="text-xs font-bold tracking-[0.26em] uppercase mb-0.5" style={{ color: '#94a3b8' }}>University of Ylopo</p>
           <p className="text-xs mb-3" style={{ color: '#475569', fontSize: '10px' }}>Diploma of Graduation</p>
           <div className="flex items-center gap-3 mb-3">
