@@ -374,13 +374,13 @@ export default function CertificateLesson({
 
             <div className="relative px-6 pt-4 pb-6">
               {/* Ribbon */}
-              <div className="relative">
+              <div className="relative mb-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/graduate-ribbon.png" alt="Graduate 2026" className="block mx-auto" style={{ width: '55%', height: 'auto', filter: 'drop-shadow(0 6px 20px rgba(123,193,9,0.35))' }} />
               </div>
 
               {/* University */}
-              <p className="text-center font-bold tracking-[0.3em] uppercase mt-6 mb-0.5" style={{ fontSize: '10px', color: '#64748b', letterSpacing: '0.28em' }}>
+              <p className="text-center font-bold tracking-[0.3em] uppercase mt-2 mb-0.5" style={{ fontSize: '10px', color: '#64748b', letterSpacing: '0.28em' }}>
                 University of Ylopo
               </p>
               <p className="text-center mb-3" style={{ fontSize: '9px', color: '#334155' }}>
