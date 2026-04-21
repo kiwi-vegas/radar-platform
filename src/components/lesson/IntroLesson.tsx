@@ -15,18 +15,39 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
 
   return (
     <div className="space-y-6">
-      {/* Hero image */}
-      <div className="flex justify-center sm:justify-start">
-        <div className="relative rounded-2xl overflow-hidden border border-surface-border w-56 sm:w-64" style={{ aspectRatio: '1 / 1' }}>
+      {/* Hero — instructor photo + book side by side */}
+      <div className="flex items-end gap-5">
+        <div className="relative rounded-2xl overflow-hidden border border-surface-border w-52 sm:w-60 flex-shrink-0" style={{ aspectRatio: '1 / 1' }}>
           <Image
             src={content.instructorImage}
             alt={content.instructorName}
             fill
             className="object-cover object-top"
             priority
-            sizes="256px"
+            sizes="240px"
           />
         </div>
+
+        {content.book && (
+          <div className="flex flex-col items-center text-center gap-2 pb-1">
+            <div className="text-xs font-semibold text-brand-green uppercase tracking-wider">Best-Selling Author</div>
+            <div className="relative w-24 sm:w-28 rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
+              <Image
+                src={content.book.coverImage}
+                alt={content.book.title}
+                fill
+                className="object-cover"
+                sizes="112px"
+              />
+            </div>
+            <div>
+              <p className="text-tx-primary text-xs font-bold leading-snug">{content.book.title}</p>
+              {content.book.subtitle && (
+                <p className="text-tx-muted text-xs mt-0.5 leading-tight">{content.book.subtitle}</p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Name + title */}
@@ -53,35 +74,10 @@ export default function IntroLesson({ lesson, onComplete, completing }: IntroLes
         </div>
       )}
 
-      {/* Bio + Book */}
-      <div className="rounded-2xl bg-surface border border-surface-border p-6 flex gap-6 items-start">
-        {/* Bio */}
-        <div className="flex-1 min-w-0">
-          <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-3">About Barry</div>
-          <p className="text-tx-secondary text-sm leading-relaxed">{content.bio}</p>
-        </div>
-
-        {/* Book cover */}
-        {content.book && (
-          <div className="flex-shrink-0 flex flex-col items-center text-center gap-2.5 w-32">
-            <div className="text-xs font-semibold text-brand-green uppercase tracking-wider whitespace-nowrap">Best-Selling Author</div>
-            <div className="relative w-full rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '2 / 3' }}>
-              <Image
-                src={content.book.coverImage}
-                alt={content.book.title}
-                fill
-                className="object-cover"
-                sizes="128px"
-              />
-            </div>
-            <div>
-              <p className="text-tx-primary text-xs font-bold leading-snug">{content.book.title}</p>
-              {content.book.subtitle && (
-                <p className="text-tx-muted text-xs mt-0.5 leading-tight">{content.book.subtitle}</p>
-              )}
-            </div>
-          </div>
-        )}
+      {/* Bio */}
+      <div className="rounded-2xl bg-surface border border-surface-border p-6">
+        <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-3">About Barry</div>
+        <p className="text-tx-secondary text-sm leading-relaxed">{content.bio}</p>
       </div>
 
       {/* CTA */}
