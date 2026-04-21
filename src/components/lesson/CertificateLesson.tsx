@@ -113,7 +113,7 @@ export default function CertificateLesson({
   <meta charset="UTF-8" />
   <title>University of Ylopo — ${name}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;600;700&family=Mr+Dafoe&family=Pinyon+Script&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -214,12 +214,11 @@ export default function CertificateLesson({
       border-top: 1px solid #d0c5b0;
     }
     .sig-script {
-      font-family: 'Dancing Script', cursive; font-weight: 700;
-      color: #172F44; margin-bottom: 6px; line-height: 1; display: block;
+      color: #172F44; margin-bottom: 6px; line-height: 1; display: inline-block;
     }
-    .sig-1 .sig-script { font-size: 22px; transform: rotate(-2.5deg); display: inline-block; }
-    .sig-2 .sig-script { font-size: 20px; transform: rotate(-1deg); display: inline-block; }
-    .sig-3 .sig-script { font-size: 21px; transform: rotate(-2deg); display: inline-block; }
+    .sig-1 .sig-script { font-family: 'Mr Dafoe', cursive; font-weight: 400; font-size: 26px; transform: rotate(-4deg) translateY(2px); }
+    .sig-2 .sig-script { font-family: 'Mr Dafoe', cursive; font-weight: 400; font-size: 24px; transform: rotate(-1deg); }
+    .sig-3 .sig-script { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: 25px; transform: rotate(2deg) translateY(1px); }
     .sig-line { width: 80%; height: 1px; background: #aaa; margin: 4px auto 6px; }
     .sig-name { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; color: #172F44; }
     .sig-title { font-size: 10px; color: #696F8B; font-weight: 600; margin-top: 2px; }
@@ -439,13 +438,13 @@ export default function CertificateLesson({
               {/* Signatories */}
               <div className="grid grid-cols-3 gap-2 pt-3" style={{ borderTop: '1px solid rgba(30,42,59,0.8)' }}>
                 {[
-                  { sig: 'Barry Jenkins', name: 'Barry Jenkins', title: 'Head Realtor In Residence', rotate: '-3deg', size: '19px' },
-                  { sig: 'Howard Tager', name: 'Howard Tager', title: 'CEO & Co-Founder, Ylopo', rotate: '-1.5deg', size: '17px' },
-                  { sig: 'Juefeng Ge', name: 'Juefeng Ge', title: 'President & Co-Founder', rotate: '-2.5deg', size: '18px' },
+                  { sig: 'Barry Jenkins', name: 'Barry Jenkins', title: 'Head Realtor In Residence', font: '"Mr Dafoe", cursive', rotate: '-4deg', size: '22px', weight: 400, translateY: '2px' },
+                  { sig: 'Howard Tager', name: 'Howard Tager', title: 'CEO & Co-Founder, Ylopo', font: '"Mr Dafoe", cursive', rotate: '-1deg', size: '20px', weight: 400, translateY: '0px' },
+                  { sig: 'Juefeng Ge', name: 'Juefeng Ge', title: 'President & Co-Founder', font: '"Pinyon Script", cursive', rotate: '+2deg', size: '21px', weight: 400, translateY: '1px' },
                 ].map((s) => (
                   <div key={s.name} className="text-center">
                     <div className="h-8 flex items-end justify-center overflow-hidden" style={{ marginBottom: '4px' }}>
-                      <span style={{ fontFamily: '"Dancing Script", cursive', fontSize: s.size, fontWeight: 700, color: '#94a3b8', transform: `rotate(${s.rotate})`, display: 'inline-block', lineHeight: 1 }}>
+                      <span style={{ fontFamily: s.font, fontSize: s.size, fontWeight: s.weight, color: '#94a3b8', transform: `rotate(${s.rotate}) translateY(${s.translateY})`, display: 'inline-block', lineHeight: 1 }}>
                         {s.sig}
                       </span>
                     </div>
