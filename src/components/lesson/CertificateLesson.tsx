@@ -107,6 +107,9 @@ export default function CertificateLesson({
     const name = userName || 'Graduate'
     const modulesLine = content.modules.join(' · ')
     const ribbonUrl = `${window.location.origin}/images/graduate-ribbon2.png`
+    const sigBarry   = `${window.location.origin}/images/barry-signature-wht.png`
+    const sigHoward  = `${window.location.origin}/images/howard-signature-wht.png`
+    const sigJuefeng = `${window.location.origin}/images/juefueng-signature-wht.png`
     win.document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -213,10 +216,7 @@ export default function CertificateLesson({
       gap: 16px; padding-top: 18px;
       border-top: 1px solid #d0c5b0;
     }
-    .sig-script { font-family: 'Great Vibes', cursive; color: #172F44; display: inline-block; line-height: 1.1; letter-spacing: 0.02em; white-space: nowrap; text-shadow: 0px 1px 2px rgba(0,0,0,0.15); margin-bottom: 6px; }
-    .sig-1 .sig-script { font-size: 28px; transform: rotate(-3deg); transform-origin: center bottom; }
-    .sig-2 .sig-script { font-size: 28px; transform: rotate(-1deg); transform-origin: center bottom; }
-    .sig-3 .sig-script { font-size: 24px; transform: rotate(-2.5deg); transform-origin: center bottom; }
+    .sig-img { display: block; width: 100%; max-width: 130px; height: auto; margin: 0 auto 6px; filter: invert(1) sepia(1) saturate(2) hue-rotate(190deg) brightness(0.25); }
     .sig-line { width: 80%; height: 1px; background: #aaa; margin: 4px auto 6px; }
     .sig-name { font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700; color: #172F44; }
     .sig-title { font-size: 10px; color: #696F8B; font-weight: 600; margin-top: 2px; }
@@ -257,19 +257,19 @@ export default function CertificateLesson({
 
     <div class="sig-row">
       <div class="sig sig-1">
-        <span class="sig-script">Barry Jenkins</span>
+        <img class="sig-img" src="${sigBarry}" alt="Barry Jenkins signature" />
         <div class="sig-line"></div>
         <div class="sig-name">Barry Jenkins</div>
         <div class="sig-title">Head Realtor In Residence</div>
       </div>
       <div class="sig sig-2">
-        <span class="sig-script">Howard Tager</span>
+        <img class="sig-img" src="${sigHoward}" alt="Howard Tager signature" />
         <div class="sig-line"></div>
         <div class="sig-name">Howard Tager</div>
         <div class="sig-title">CEO &amp; Co-Founder, Ylopo</div>
       </div>
       <div class="sig sig-3">
-        <span class="sig-script">Juefeng Ge</span>
+        <img class="sig-img" src="${sigJuefeng}" alt="Juefeng Ge signature" />
         <div class="sig-line"></div>
         <div class="sig-name">Juefeng Ge</div>
         <div class="sig-title">President &amp; Co-Founder, Ylopo</div>
@@ -436,29 +436,14 @@ export default function CertificateLesson({
               {/* Signatories */}
               <div className="grid grid-cols-3 gap-2 pt-3" style={{ borderTop: '1px solid rgba(30,42,59,0.8)' }}>
                 {([
-                  { name: 'Barry Jenkins',  title: 'Head Realtor In Residence',   rotate: '-3deg',  size: '2.2rem' },
-                  { name: 'Howard Tager',   title: 'CEO & Co-Founder, Ylopo',     rotate: '-1deg',  size: '2.2rem' },
-                  { name: 'Juefeng Ge',     title: 'President & Co-Founder',      rotate: '-2.5deg', size: '2rem'  },
+                  { name: 'Barry Jenkins',  title: 'Head Realtor In Residence',  img: '/images/barry-signature-wht.png'    },
+                  { name: 'Howard Tager',   title: 'CEO & Co-Founder, Ylopo',    img: '/images/howard-signature-wht.png'   },
+                  { name: 'Juefeng Ge',     title: 'President & Co-Founder',     img: '/images/juefueng-signature-wht.png' },
                 ] as const).map((s) => (
                   <div key={s.name} className="text-center">
-                    <div className="flex justify-center items-end min-h-[70px]" style={{ marginBottom: '4px' }}>
-                      <span
-                        className="signature-text"
-                        style={{
-                          fontFamily: "'Great Vibes', cursive",
-                          fontSize: s.size,
-                          color: '#94a3b8',
-                          lineHeight: 1.1,
-                          letterSpacing: '0.02em',
-                          transform: `rotate(${s.rotate})`,
-                          transformOrigin: 'center bottom',
-                          display: 'inline-block',
-                          whiteSpace: 'nowrap',
-                          userSelect: 'none',
-                        }}
-                      >
-                        {s.name}
-                      </span>
+                    <div className="flex justify-center items-end min-h-[56px]" style={{ marginBottom: '4px' }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={s.img} alt={`${s.name} signature`} style={{ width: '100%', maxWidth: '130px', height: 'auto', opacity: 0.85 }} />
                     </div>
                     <div className="h-px mx-1 mb-1.5" style={{ background: 'rgba(100,116,139,0.25)' }} />
                     <p style={{ color: '#cbd5e1', fontFamily: 'Raleway, sans-serif', fontSize: '9px', fontWeight: 700 }}>{s.name}</p>
