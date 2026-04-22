@@ -23,6 +23,29 @@ function textToHtml(text: string): string {
   return `<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; max-width: 600px;">${body}${cta}</div>`
 }
 
+function textToHtmlCongrats(text: string): string {
+  const body = text
+    .split('\n\n')
+    .map((para) =>
+      `<p style="margin: 0 0 16px 0;">${para.replace(/\n/g, '<br>')}</p>`
+    )
+    .join('')
+
+  const sharingNote = `
+    <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+      <p style="margin: 0 0 8px 0; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; color: #172F44;">
+        Your certificate is attached 🎓
+      </p>
+      <p style="margin: 0; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #555555;">
+        Be sure to <strong>share it and post about your success</strong> — on LinkedIn, Instagram, or with your team leader.
+        You've earned this, and we're proud of you.
+      </p>
+    </div>
+  `
+
+  return `<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; max-width: 600px;">${body}${sharingNote}</div>`
+}
+
 // POST /api/admin/nudge — send a nudge email to a user
 export async function POST(request: Request) {
   // Verify admin
@@ -70,6 +93,48 @@ export async function POST(request: Request) {
 
   const fromEmail = process.env.NUDGE_FROM_EMAIL || 'Barry Jenkins <onboarding@resend.dev>'
   const replyTo = 'kiwi@ylopo.com'
+  const isCongrats = templateId === 'congrats'
+
+  // For congrats emails, generate a certificate PNG attachment
+  let attachments: Array<{ filename: string; content: string }> = []
+  if (isCongrats) {
+    try {
+      // Get user's display name
+      const { data: profile } = await admin
+        .from('user_profiles')
+        .select('full_name')
+        .eq('id', userId)
+        .single()
+
+      const userName =
+        profile?.full_name ||
+        recipient.user_metadata?.full_name ||
+        recipient.user_metadata?.name ||
+        recipient.email.split('@')[0]
+
+      // Get graduation date
+      const { data: enrollment } = await admin
+        .from('user_course_enrollments')
+        .select('graduated_at')
+        .eq('user_id', userId)
+        .eq('course_slug', 'radar')
+        .single()
+
+      const { generateCertificatePng } = await import('@/lib/generateCertificate')
+      const pngBuffer = await generateCertificatePng(
+        userName,
+        enrollment?.graduated_at ?? null,
+      )
+
+      attachments = [{
+        filename: `Radar-Certificate-${userName.replace(/\s+/g, '-')}.png`,
+        content: pngBuffer.toString('base64'),
+      }]
+    } catch (err) {
+      console.error('Certificate generation failed — sending without attachment:', err)
+      // Non-fatal: email still sends without attachment
+    }
+  }
 
   // Send via Resend REST API
   const sendRes = await fetch('https://api.resend.com/emails', {
@@ -84,7 +149,8 @@ export async function POST(request: Request) {
       reply_to: replyTo,
       subject,
       text: emailBody,
-      html: textToHtml(emailBody),
+      html: isCongrats ? textToHtmlCongrats(emailBody) : textToHtml(emailBody),
+      ...(attachments.length > 0 ? { attachments } : {}),
     }),
   })
 
@@ -92,7 +158,6 @@ export async function POST(request: Request) {
 
   if (!sendRes.ok) {
     console.error('Resend error:', sendData)
-    // Log failed attempt
     await admin.from('email_nudges').insert({
       user_id: userId,
       template_id: templateId,
