@@ -149,6 +149,7 @@ export const radarCourse: Course = {
           title: 'Mindset Short Videos',
           type: 'video-collection',
           durationMinutes: 10,
+          image: '/images/mindset-short-videos.png',
           content: {
             intro:
               "These are the golden nuggets — short clips pulled directly from Barry's Big Mastermind sessions. Watch each one, absorb the coaching, and carry it into your next call.",
