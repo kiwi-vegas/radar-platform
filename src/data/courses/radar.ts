@@ -87,7 +87,7 @@ export const radarCourse: Course = {
           durationMinutes: 5,
           image: '/images/mindset.png',
           content: {
-            vimeoId: '1181193890',
+            vimeoId: '1185338274',
             description:
               'The foundational mindset shift that separates top performers from everyone else. This single lesson will change how you approach every conversation with a potential seller.',
             keyPoints: [
