@@ -141,11 +141,30 @@ Lessons without a vimeoId show a "Coming soon" placeholder.
 - `inactiveDays` is calculated from max(completed_at) across lessons
 - Dashboard auto-sorts at-risk users to the top
 
+### Automated Nudge Sequence
+Nudges run automatically via Vercel Cron — no manual button needed.
+
+**Cron schedule:** Daily at 2pm UTC (9am EST) — `vercel.json` → `/api/cron/nudge`
+
+**Sequence per user (resets if they come back):**
+1. 3 days inactive → send `nudge-3day`
+2. 4 days after nudge-3day (still inactive) → send `nudge-4day`
+3. 7 days after nudge-4day (still inactive) → send `nudge-7day`
+4. After nudge-7day: sequence ends for this inactive period
+
+**Reset:** If a user completes any lesson after a nudge, the sequence resets — the timer starts over and they'd need to be inactive 3+ days again to receive another nudge.
+
+**Graduation:** Users with `graduated_at` are excluded from all nudges.
+
+**Required env vars (Vercel):**
+- `CRON_SECRET` — optional but recommended; Vercel Cron auth token (set in Vercel → Settings → Environment Variables)
+- `RESEND_API_KEY`, `NUDGE_FROM_EMAIL` — already required for manual congrats emails
+
+**Congrats email:** Manual — admin clicks "Send Congrats 🎓" from the dashboard for graduated users. Attaches a certificate PNG.
+
 ### Email Send Flow
-1. Admin opens nudge modal (template auto-selected based on inactive days)
-2. Admin can edit subject/body before sending
-3. POST /api/admin/nudge → Resend API → logged in email_nudges table
-4. User row shows "Last nudge: X days ago" after send
+- Nudges: automated via cron → `POST https://api.resend.com/emails` → logged in `email_nudges` (sent_by = null)
+- Congrats: manual from admin dashboard → `POST /api/admin/nudge` (templateId: 'congrats') → certificate PNG attached
 
 ## Status
 - ✅ Auth (login/signup via Supabase)
@@ -155,8 +174,8 @@ Lessons without a vimeoId show a "Coming soon" placeholder.
 - ✅ Progress saved to Supabase
 - ✅ Graduation flow
 - ✅ Admin dashboard (user progress table + at-risk detection)
-- ✅ Email nudge system (3 templates, manual send via Resend)
-- ⬜ Automated nudge scheduling (add Vercel cron job or Supabase scheduled function)
+- ✅ Automated nudge sequence (Vercel Cron, 3-day → 4-day → 7-day, resets on activity)
+- ✅ Manual congrats email with certificate PNG attachment
 - ⬜ SMS nudges (add Twilio)
 - ⬜ PPC Plus course content
 - ⬜ Mastermind unlock gate

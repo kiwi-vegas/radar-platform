@@ -118,31 +118,19 @@ export default function AdminDashboard() {
   const [filter, setFilter] = useState<FilterTab>('all')
   const [sort, setSort] = useState<SortKey>('inactive-desc')
   const [search, setSearch] = useState('')
-  const [nudgeModal, setNudgeModal] = useState<NudgeModal | null>(null)
   const [congratsModal, setCongratsModal] = useState<NudgeModal | null>(null)
   const [sending, setSending] = useState(false)
   const [sendError, setSendError] = useState<string | null>(null)
   const [sendSuccess, setSendSuccess] = useState(false)
 
-  // Default templates (used in modal before fetching)
-  const [templates, setTemplates] = useState<Array<{ id: string; name: string; subject: string; body: string }>>([])
-
   async function load() {
     setLoading(true)
     setError(null)
     try {
-      const [usersRes, templatesRes] = await Promise.all([
-        fetch('/api/admin/users'),
-        fetch('/api/admin/templates'),
-      ])
-      const ud = await usersRes.json()
-      if (!usersRes.ok) throw new Error(ud.error || 'Failed to load users')
+      const res = await fetch('/api/admin/users')
+      const ud = await res.json()
+      if (!res.ok) throw new Error(ud.error || 'Failed to load users')
       setUsers(ud.users ?? [])
-
-      if (templatesRes.ok) {
-        const td = await templatesRes.json()
-        setTemplates(td.templates ?? [])
-      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to load')
     } finally {
@@ -192,29 +180,6 @@ export default function AdminDashboard() {
     return list
   }, [users, filter, search, sort])
 
-  function openNudgeModal(user: AdminUser) {
-    // Auto-select template based on inactivity
-    const days = user.inactiveDays ?? 0
-    let defaultTemplateId = 'nudge-3day'
-    if (days >= 7) defaultTemplateId = 'nudge-7day'
-    else if (days >= 4) defaultTemplateId = 'nudge-4day'
-
-    const tpl = templates.find((t) => t.id === defaultTemplateId) ?? templates[0]
-    if (!tpl) {
-      // Fallback if templates not loaded
-      setNudgeModal({
-        user,
-        templateId: defaultTemplateId,
-        subject: 'Quick check-in 👋',
-        body: 'Loading template...',
-      })
-      return
-    }
-    setNudgeModal({ user, templateId: tpl.id, subject: tpl.subject, body: tpl.body })
-    setSendError(null)
-    setSendSuccess(false)
-  }
-
   function openCongratsModal(user: AdminUser) {
     const firstName = user.fullName.split(' ')[0]
     setCongratsModal({
@@ -225,14 +190,6 @@ export default function AdminDashboard() {
     })
     setSendError(null)
     setSendSuccess(false)
-  }
-
-  function switchTemplate(templateId: string) {
-    if (!nudgeModal) return
-    const tpl = templates.find((t) => t.id === templateId)
-    if (tpl) {
-      setNudgeModal({ ...nudgeModal, templateId, subject: tpl.subject, body: tpl.body })
-    }
   }
 
   async function sendCongrats() {
@@ -255,38 +212,6 @@ export default function AdminDashboard() {
       if (!res.ok) throw new Error(data.error || 'Failed to send')
       setSendSuccess(true)
       setTimeout(() => { setCongratsModal(null); load() }, 1500)
-    } catch (e) {
-      setSendError(e instanceof Error ? e.message : 'Failed to send email')
-    } finally {
-      setSending(false)
-    }
-  }
-
-  async function sendNudge() {
-    if (!nudgeModal) return
-    setSending(true)
-    setSendError(null)
-    setSendSuccess(false)
-
-    try {
-      const res = await fetch('/api/admin/nudge', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: nudgeModal.user.id,
-          templateId: nudgeModal.templateId,
-          subject: nudgeModal.subject,
-          emailBody: nudgeModal.body,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Failed to send')
-      setSendSuccess(true)
-      // Refresh user list to show nudge badge
-      setTimeout(() => {
-        setNudgeModal(null)
-        load()
-      }, 1500)
     } catch (e) {
       setSendError(e instanceof Error ? e.message : 'Failed to send email')
     } finally {
@@ -550,181 +475,14 @@ export default function AdminDashboard() {
                     >
                       Send Congrats 🎓
                     </button>
-                  ) : (
-                    <button
-                      onClick={() => openNudgeModal(user)}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 whitespace-nowrap"
-                      style={{ background: '#7BC10920', color: '#7BC109', border: '1px solid #7BC10940' }}
-                    >
-                      Send Nudge
-                    </button>
-                  )}
+                  ) : user.status === 'in-progress' ? (
+                    <span className="text-xs px-2 py-1 rounded-md" style={{ color: '#4b5563', background: '#7BC10908', border: '1px solid #7BC10918' }}>
+                      Auto-nudge on
+                    </span>
+                  ) : null}
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      )}
-
-      {/* Nudge Modal */}
-      {nudgeModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)' }}
-          onClick={(e) => { if (e.target === e.currentTarget && !sending) setNudgeModal(null) }}
-        >
-          <div
-            className="w-full max-w-xl rounded-2xl p-6 shadow-2xl animate-slide-up"
-            style={{ background: '#131A2B', border: '1px solid #1E2A3B' }}
-          >
-            {/* Modal header */}
-            <div className="flex items-start justify-between mb-5">
-              <div>
-                <h2 className="text-tx-primary font-bold text-lg">Send Nudge Email</h2>
-                <p className="text-tx-muted text-sm mt-0.5">
-                  To: <span className="text-tx-secondary font-medium">{nudgeModal.user.fullName}</span>
-                  <span className="text-tx-muted ml-1">({nudgeModal.user.email})</span>
-                </p>
-              </div>
-              <button
-                onClick={() => setNudgeModal(null)}
-                disabled={sending}
-                className="text-tx-muted hover:text-tx-secondary transition-colors"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              </button>
-            </div>
-
-            {/* Template selector */}
-            <div className="flex gap-1.5 mb-4">
-              {templates.map((tpl) => {
-                const isSelected = nudgeModal.templateId === tpl.id
-                const days = nudgeModal.user.inactiveDays ?? 0
-                const isRecommended =
-                  (tpl.id === 'nudge-7day' && days >= 7) ||
-                  (tpl.id === 'nudge-4day' && days >= 4 && days < 7) ||
-                  (tpl.id === 'nudge-3day' && days < 4)
-                return (
-                  <button
-                    key={tpl.id}
-                    onClick={() => switchTemplate(tpl.id)}
-                    className="flex-1 py-2 px-3 rounded-lg text-xs font-semibold transition-all relative"
-                    style={{
-                      background: isSelected ? '#7BC10925' : '#0B0F1A',
-                      color: isSelected ? '#7BC109' : '#6b7280',
-                      border: isSelected ? '1px solid #7BC10950' : '1px solid #1E2A3B',
-                    }}
-                  >
-                    {tpl.name}
-                    {isRecommended && (
-                      <span
-                        className="absolute -top-1.5 -right-1.5 text-xs w-4 h-4 rounded-full flex items-center justify-center"
-                        style={{ background: '#7BC109', fontSize: '8px', color: 'white' }}
-                      >
-                        ✓
-                      </span>
-                    )}
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Subject */}
-            <div className="mb-3">
-              <label className="text-xs font-semibold text-tx-muted mb-1.5 block">Subject</label>
-              <input
-                type="text"
-                value={nudgeModal.subject}
-                onChange={(e) => setNudgeModal({ ...nudgeModal, subject: e.target.value })}
-                className="w-full px-3 py-2 rounded-lg text-sm text-tx-primary bg-surface outline-none"
-                style={{ border: '1px solid #1E2A3B' }}
-              />
-            </div>
-
-            {/* Body */}
-            <div className="mb-4">
-              <label className="text-xs font-semibold text-tx-muted mb-1.5 block">Message</label>
-              <textarea
-                value={nudgeModal.body}
-                onChange={(e) => setNudgeModal({ ...nudgeModal, body: e.target.value })}
-                rows={10}
-                className="w-full px-3 py-2 rounded-lg text-sm text-tx-secondary bg-surface outline-none resize-none leading-relaxed"
-                style={{ border: '1px solid #1E2A3B', fontFamily: 'inherit' }}
-              />
-            </div>
-
-            {/* From / reply-to info */}
-            <div
-              className="flex items-center gap-4 px-3 py-2 rounded-lg mb-4 text-xs text-tx-muted"
-              style={{ background: '#0B0F1A', border: '1px solid #1E2A3B' }}
-            >
-              <span><span className="text-tx-muted">From:</span> <span className="text-tx-secondary">Barry Jenkins</span></span>
-              <span><span className="text-tx-muted">Reply-To:</span> <span className="text-tx-secondary">kiwi@ylopo.com</span></span>
-            </div>
-
-            {/* Error / success */}
-            {sendError && (
-              <div
-                className="mb-4 px-3 py-2 rounded-lg text-sm"
-                style={{ background: '#ef444410', border: '1px solid #ef444430', color: '#ef4444' }}
-              >
-                {sendError}
-              </div>
-            )}
-            {sendSuccess && (
-              <div
-                className="mb-4 px-3 py-2 rounded-lg text-sm flex items-center gap-2"
-                style={{ background: '#22c55e10', border: '1px solid #22c55e30', color: '#22c55e' }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                Email sent to {nudgeModal.user.email}!
-              </div>
-            )}
-
-            {/* Actions */}
-            <div className="flex gap-3">
-              <button
-                onClick={() => setNudgeModal(null)}
-                disabled={sending}
-                className="flex-1 py-2.5 rounded-xl text-sm font-medium text-tx-secondary hover:text-tx-primary transition-colors disabled:opacity-50"
-                style={{ border: '1px solid #1E2A3B' }}
-              >
-                Cancel
-              </button>
-              <button
-                onClick={sendNudge}
-                disabled={sending || sendSuccess}
-                className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ background: '#7BC109' }}
-              >
-                {sending ? (
-                  <>
-                    <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-                    </svg>
-                    Sending…
-                  </>
-                ) : sendSuccess ? (
-                  <>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                    Sent!
-                  </>
-                ) : (
-                  <>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                    </svg>
-                    Send Email
-                  </>
-                )}
-              </button>
-            </div>
           </div>
         </div>
       )}
