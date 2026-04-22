@@ -151,6 +151,7 @@ export async function GET(request: Request) {
   const templates = await loadTemplates(admin)
 
   const results = { sent: 0, skipped: 0, errors: 0 }
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
   for (const enrollment of enrollments) {
     const { user_id, enrolled_at } = enrollment
@@ -228,6 +229,7 @@ export async function GET(request: Request) {
 
       if (sendRes.ok) {
         results.sent++
+        await sleep(350) // stay well under Resend's ~1 req/sec rate limit
       } else {
         console.error(`Nudge ${templateId} failed for ${authUser.email}:`, sendData)
         results.errors++
