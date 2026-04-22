@@ -56,7 +56,7 @@ function formatDate(dateStr: string | null): string {
 }
 
 function StatusBadge({ user }: { user: AdminUser }) {
-  if (user.graduatedAt) {
+  if (user.status === 'graduated') {
     return (
       <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full"
         style={{ background: '#22c55e15', color: '#22c55e', border: '1px solid #22c55e30' }}>
@@ -119,6 +119,7 @@ export default function AdminDashboard() {
   const [sort, setSort] = useState<SortKey>('inactive-desc')
   const [search, setSearch] = useState('')
   const [nudgeModal, setNudgeModal] = useState<NudgeModal | null>(null)
+  const [congratsModal, setCongratsModal] = useState<NudgeModal | null>(null)
   const [sending, setSending] = useState(false)
   const [sendError, setSendError] = useState<string | null>(null)
   const [sendSuccess, setSendSuccess] = useState(false)
@@ -214,11 +215,50 @@ export default function AdminDashboard() {
     setSendSuccess(false)
   }
 
+  function openCongratsModal(user: AdminUser) {
+    const firstName = user.fullName.split(' ')[0]
+    setCongratsModal({
+      user,
+      templateId: 'congrats',
+      subject: `Congratulations on completing Radar, ${firstName}! 🎓`,
+      body: `Hey ${firstName},\n\nYou did it! You've officially completed the Radar training and earned your certification.\n\nThis is a big deal — most agents never take the time to systematize their approach to seller leads. You now have the mindset, the scripts, and the framework to work Radar leads with confidence.\n\nNow it's time to put it into action. Your next Radar lead is waiting.\n\nProud of you,\nBarry`,
+    })
+    setSendError(null)
+    setSendSuccess(false)
+  }
+
   function switchTemplate(templateId: string) {
     if (!nudgeModal) return
     const tpl = templates.find((t) => t.id === templateId)
     if (tpl) {
       setNudgeModal({ ...nudgeModal, templateId, subject: tpl.subject, body: tpl.body })
+    }
+  }
+
+  async function sendCongrats() {
+    if (!congratsModal) return
+    setSending(true)
+    setSendError(null)
+    setSendSuccess(false)
+    try {
+      const res = await fetch('/api/admin/nudge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: congratsModal.user.id,
+          templateId: congratsModal.templateId,
+          subject: congratsModal.subject,
+          emailBody: congratsModal.body,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Failed to send')
+      setSendSuccess(true)
+      setTimeout(() => { setCongratsModal(null); load() }, 1500)
+    } catch (e) {
+      setSendError(e instanceof Error ? e.message : 'Failed to send email')
+    } finally {
+      setSending(false)
     }
   }
 
@@ -502,7 +542,15 @@ export default function AdminDashboard() {
 
                 {/* Actions */}
                 <div>
-                  {user.status !== 'graduated' && (
+                  {user.status === 'graduated' ? (
+                    <button
+                      onClick={() => openCongratsModal(user)}
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 whitespace-nowrap"
+                      style={{ background: '#22c55e15', color: '#22c55e', border: '1px solid #22c55e30' }}
+                    >
+                      Send Congrats 🎓
+                    </button>
+                  ) : (
                     <button
                       onClick={() => openNudgeModal(user)}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 whitespace-nowrap"
@@ -673,6 +721,119 @@ export default function AdminDashboard() {
                       <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
                     </svg>
                     Send Email
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Congrats Modal */}
+      {congratsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)' }}>
+          <div className="w-full max-w-lg rounded-2xl p-6 flex flex-col gap-4" style={{ background: '#131A2B', border: '1px solid #1E2A3B' }}>
+            {/* Header */}
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="text-base font-semibold text-tx-primary">Send Congratulations</div>
+                <div className="text-sm text-tx-secondary mt-0.5">to {congratsModal.user.fullName} ({congratsModal.user.email})</div>
+              </div>
+              <button
+                onClick={() => setCongratsModal(null)}
+                className="text-tx-muted hover:text-tx-primary transition-colors mt-0.5"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* From/Reply-To */}
+            <div className="text-xs text-tx-muted rounded-lg px-3 py-2" style={{ background: '#0D1320', border: '1px solid #1E2A3B' }}>
+              From: Barry Jenkins &lt;barry@yloposend.com&gt; · Reply-To: kiwi@ylopo.com
+            </div>
+
+            {/* Subject */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-medium text-tx-secondary">Subject</label>
+              <input
+                type="text"
+                value={congratsModal.subject}
+                onChange={(e) => setCongratsModal({ ...congratsModal, subject: e.target.value })}
+                className="w-full rounded-xl px-3 py-2.5 text-sm text-tx-primary bg-transparent outline-none focus:ring-1 focus:ring-brand-green/50"
+                style={{ border: '1px solid #1E2A3B' }}
+              />
+            </div>
+
+            {/* Body */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-medium text-tx-secondary">Message</label>
+              <textarea
+                value={congratsModal.body}
+                onChange={(e) => setCongratsModal({ ...congratsModal, body: e.target.value })}
+                rows={9}
+                className="w-full rounded-xl px-3 py-2.5 text-sm text-tx-primary bg-transparent outline-none focus:ring-1 focus:ring-brand-green/50 resize-none"
+                style={{ border: '1px solid #1E2A3B' }}
+              />
+            </div>
+
+            {/* Error */}
+            {sendError && (
+              <div className="text-xs text-red-400 rounded-lg px-3 py-2" style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)' }}>
+                {sendError}
+              </div>
+            )}
+
+            {/* Success */}
+            {sendSuccess && (
+              <div
+                className="text-xs font-medium rounded-lg px-3 py-2 flex items-center gap-2"
+                style={{ background: 'rgba(123,193,9,0.12)', border: '1px solid rgba(123,193,9,0.3)', color: '#7BC109' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Congrats email sent to {congratsModal.user.email}!
+              </div>
+            )}
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => setCongratsModal(null)}
+                disabled={sending}
+                className="flex-1 py-2.5 rounded-xl text-sm font-medium text-tx-secondary hover:text-tx-primary transition-colors disabled:opacity-50"
+                style={{ border: '1px solid #1E2A3B' }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={sendCongrats}
+                disabled={sending || sendSuccess}
+                className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{ background: '#7BC109' }}
+              >
+                {sending ? (
+                  <>
+                    <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                    </svg>
+                    Sending…
+                  </>
+                ) : sendSuccess ? (
+                  <>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Sent!
+                  </>
+                ) : (
+                  <>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                    Send Congrats 🎓
                   </>
                 )}
               </button>

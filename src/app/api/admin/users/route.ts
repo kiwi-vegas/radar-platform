@@ -99,7 +99,7 @@ export async function GET() {
   }
 
   // Build user rows (filter out admins for cleaner view, but include them)
-  const users = authUsers.map((u) => {
+  const users = await Promise.all(authUsers.map(async (u) => {
     const profile = profileMap.get(u.id)
     const courseSlug = 'radar'
     const enrollment = enrollmentMap.get(`${u.id}:${courseSlug}`)
@@ -108,7 +108,7 @@ export async function GET() {
     const completedLessons = progress?.count ?? 0
     const pct = totalLessons > 0 ? Math.min(100, Math.round((completedLessons / totalLessons) * 100)) : 0
 
-    const graduatedAt = enrollment?.graduated_at ?? null
+    let graduatedAt = enrollment?.graduated_at ?? null
     const enrolledAt = enrollment?.enrolled_at ?? null
     const lastLessonAt = progress?.maxCompletedAt ?? null
     const lastSignInAt = u.last_sign_in_at ?? null
@@ -119,9 +119,21 @@ export async function GET() {
       ? activityDates.reduce((a, b) => (a > b ? a : b))
       : null
 
+    // Backfill graduated_at if they've finished all lessons but it was never stamped
+    if (!graduatedAt && completedLessons >= totalLessons && totalLessons > 0) {
+      const backfillDate = progress?.maxCompletedAt ?? new Date().toISOString()
+      await admin
+        .from('user_course_enrollments')
+        .update({ graduated_at: backfillDate })
+        .eq('user_id', u.id)
+        .eq('course_slug', courseSlug)
+        .is('graduated_at', null)
+      graduatedAt = backfillDate
+    }
+
     // Determine status
     let status: 'not-started' | 'in-progress' | 'graduated'
-    if (graduatedAt) {
+    if (graduatedAt || (completedLessons >= totalLessons && totalLessons > 0)) {
       status = 'graduated'
     } else if (completedLessons > 0 || enrolledAt) {
       status = 'in-progress'
@@ -160,7 +172,7 @@ export async function GET() {
       isAtRisk,
       lastNudge,
     }
-  })
+  }))
 
   // Sort: at-risk first, then by inactiveDays desc
   users.sort((a, b) => {
