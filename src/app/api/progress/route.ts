@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { getCourseBySlug, getAllLessonIds } from '@/data/courses'
 
 // GET /api/progress?courseSlug=radar
 // Returns all completed lesson IDs for the current user + course
@@ -88,6 +89,31 @@ export async function POST(request: Request) {
     { user_id: user.id, course_slug: courseSlug },
     { onConflict: 'user_id,course_slug', ignoreDuplicates: true }
   )
+
+  // Check if all lessons are now complete — if so, stamp graduated_at
+  const course = getCourseBySlug(courseSlug)
+  if (course) {
+    const allLessonIds = getAllLessonIds(course)
+    const { data: completedRows } = await supabase
+      .from('user_lesson_progress')
+      .select('lesson_id')
+      .eq('user_id', user.id)
+      .eq('course_slug', courseSlug)
+      .eq('completed', true)
+      .in('lesson_id', allLessonIds)
+
+    const completedSet = new Set((completedRows ?? []).map((r: { lesson_id: string }) => r.lesson_id))
+    const allComplete = allLessonIds.every((id) => completedSet.has(id))
+
+    if (allComplete) {
+      await supabase
+        .from('user_course_enrollments')
+        .update({ graduated_at: new Date().toISOString() })
+        .eq('user_id', user.id)
+        .eq('course_slug', courseSlug)
+        .is('graduated_at', null)
+    }
+  }
 
   return NextResponse.json({ success: true })
 }

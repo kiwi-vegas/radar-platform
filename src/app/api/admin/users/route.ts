@@ -3,10 +3,13 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { NextResponse } from 'next/server'
 import { allCourses, getAllLessonIds } from '@/data/courses'
 
-// Total lessons per course (pre-computed for progress % calculation)
+// Total lessons + valid lesson ID sets per course (pre-computed)
 const courseTotals: Record<string, number> = {}
+const courseValidLessonIds: Record<string, Set<string>> = {}
 for (const course of allCourses) {
-  courseTotals[course.slug] = getAllLessonIds(course).length
+  const ids = getAllLessonIds(course)
+  courseTotals[course.slug] = ids.length
+  courseValidLessonIds[course.slug] = new Set(ids)
 }
 
 function daysSince(dateStr: string | null | undefined): number | null {
@@ -65,9 +68,11 @@ export async function GET() {
     .select('user_id, course_slug, lesson_id, completed_at')
     .eq('completed', true)
 
-  // Group progress by user+course
+  // Group progress by user+course — only count lessons still in the course
   const progressMap = new Map<string, { count: number; maxCompletedAt: string | null }>()
   for (const row of progressRows ?? []) {
+    const validIds = courseValidLessonIds[row.course_slug]
+    if (validIds && !validIds.has(row.lesson_id)) continue
     const key = `${row.user_id}:${row.course_slug}`
     const existing = progressMap.get(key)
     if (!existing) {
@@ -101,7 +106,7 @@ export async function GET() {
     const progress = progressMap.get(`${u.id}:${courseSlug}`)
     const totalLessons = courseTotals[courseSlug] ?? 0
     const completedLessons = progress?.count ?? 0
-    const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
+    const pct = totalLessons > 0 ? Math.min(100, Math.round((completedLessons / totalLessons) * 100)) : 0
 
     const graduatedAt = enrollment?.graduated_at ?? null
     const enrolledAt = enrollment?.enrolled_at ?? null
