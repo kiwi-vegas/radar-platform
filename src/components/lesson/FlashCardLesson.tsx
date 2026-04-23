@@ -21,8 +21,10 @@ export default function FlashCardLesson({
   const cards = content.cards
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isFlipped, setIsFlipped] = useState(false)
+  // 'front' → 'collapsing' (scaleX→0) → 'back' (scaleX→1): avoids 3D backface-visibility bugs
+  const [flipPhase, setFlipPhase] = useState<'front' | 'collapsing' | 'back'>('front')
   const [showClarification, setShowClarification] = useState(false)
+  const showingAnswer = flipPhase === 'back'
   const [reviewedCount, setReviewedCount] = useState(0)
   const [reviewed, setReviewed] = useState<boolean[]>(new Array(cards.length).fill(false))
   const [showSummary, setShowSummary] = useState(isCompleted)
@@ -39,14 +41,16 @@ export default function FlashCardLesson({
     if (isLast) {
       setShowSummary(true)
     } else {
-      setIsFlipped(false)
+      setFlipPhase('front')
       setShowClarification(false)
       setTimeout(() => setCurrentIndex((i) => i + 1), 150)
     }
   }
 
   function handleCardClick() {
-    if (!isFlipped) setIsFlipped(true)
+    if (flipPhase !== 'front') return
+    setFlipPhase('collapsing')
+    setTimeout(() => setFlipPhase('back'), 130)
   }
 
   // --- Summary screen ---
@@ -90,7 +94,7 @@ export default function FlashCardLesson({
           <button
             onClick={() => {
               setCurrentIndex(0)
-              setIsFlipped(false)
+              setFlipPhase('front')
               setShowClarification(false)
               setReviewed(new Array(cards.length).fill(false))
               setReviewedCount(0)
@@ -154,69 +158,74 @@ export default function FlashCardLesson({
         ))}
       </div>
 
-      {/* Flashcard */}
+      {/* Flashcard — scaleX collapse/expand avoids 3D backface-visibility browser bugs */}
       <div
-        className="perspective cursor-pointer select-none"
-        style={{ height: current.questionImage ? '380px' : '300px' }}
+        className="cursor-pointer select-none"
+        style={{ height: (current.questionImage || current.answerImage) ? '380px' : '300px' }}
         onClick={handleCardClick}
       >
         <div
-          className={`transform-style-3d relative w-full h-full transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}`}
+          className="relative w-full h-full rounded-2xl overflow-hidden"
+          style={{
+            transform: flipPhase === 'collapsing' ? 'scaleX(0)' : 'scaleX(1)',
+            transition: 'transform 0.13s ease-in-out',
+            background: showingAnswer ? '#7BC10908' : undefined,
+            border: showingAnswer ? '1px solid #7BC10944' : '1px solid #1E2A3B',
+          }}
         >
-          {/* Front — question */}
-          <div className="backface-hidden absolute inset-0 bg-surface-card border border-surface-border rounded-2xl overflow-hidden flex flex-col">
-            {current.questionImage ? (
-              <div className="relative w-full h-full">
-                <Image
-                  src={current.questionImage}
-                  alt={current.question}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 896px) 100vw, 768px"
-                />
+          {!showingAnswer ? (
+            /* Front — question */
+            <div className="bg-surface-card flex flex-col w-full h-full">
+              {current.questionImage ? (
+                <div className="relative w-full h-full">
+                  <Image
+                    src={current.questionImage}
+                    alt={current.question}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 896px) 100vw, 768px"
+                  />
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+                  <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-4">Question</div>
+                  <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.question}</p>
+                </div>
+              )}
+              <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+                <span className="text-xs text-tx-muted bg-surface-card/80 backdrop-blur-sm px-3 py-1 rounded-full border border-surface-border">
+                  Click to reveal answer
+                </span>
               </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                <div className="text-xs font-semibold text-tx-muted uppercase tracking-wider mb-4">Question</div>
-                <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.question}</p>
-              </div>
-            )}
-            <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-              <span className="text-xs text-tx-muted bg-surface-card/80 backdrop-blur-sm px-3 py-1 rounded-full border border-surface-border">
-                Click to reveal answer
-              </span>
             </div>
-          </div>
-
-          {/* Back — answer */}
-          <div
-            className="backface-hidden absolute inset-0 rounded-2xl overflow-hidden flex flex-col rotate-y-180"
-            style={{ borderColor: '#7BC10944', border: '1px solid #F9731444', background: '#7BC10908' }}
-          >
-            {current.answerImage ? (
-              <div className="relative w-full h-full">
-                <Image
-                  src={current.answerImage}
-                  alt={current.answer}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 896px) 100vw, 768px"
-                />
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                <div className="text-xs font-semibold text-brand-green uppercase tracking-wider mb-4">Answer</div>
-                <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.answer}</p>
-              </div>
-            )}
-          </div>
+          ) : (
+            /* Back — answer */
+            <div className="flex flex-col w-full h-full">
+              {current.answerImage ? (
+                <div className="relative w-full h-full">
+                  <Image
+                    src={current.answerImage}
+                    alt={current.answer}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 896px) 100vw, 768px"
+                  />
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+                  <div className="text-xs font-semibold text-brand-green uppercase tracking-wider mb-4">Answer</div>
+                  <p className="text-tx-primary text-lg font-medium leading-snug whitespace-pre-line">{current.answer}</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Action buttons — appear once answer is visible */}
       <div
         className="transition-all duration-300 overflow-hidden"
-        style={{ maxHeight: isFlipped ? '300px' : '0', opacity: isFlipped ? 1 : 0 }}
+        style={{ maxHeight: showingAnswer ? '300px' : '0', opacity: showingAnswer ? 1 : 0 }}
       >
         <div className="pt-1 space-y-3">
           {/* Clarification panel */}
@@ -260,7 +269,7 @@ export default function FlashCardLesson({
       <button
         onClick={() => {
           if (currentIndex === 0) return
-          setIsFlipped(false)
+          setFlipPhase('front')
           setShowClarification(false)
           setTimeout(() => setCurrentIndex((i) => i - 1), 150)
         }}
