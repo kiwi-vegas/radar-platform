@@ -116,12 +116,14 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState<FilterTab>('all')
-  const [sort, setSort] = useState<SortKey>('inactive-desc')
+  const [sort, setSort] = useState<SortKey>('joined-newest')
   const [search, setSearch] = useState('')
   const [congratsModal, setCongratsModal] = useState<NudgeModal | null>(null)
   const [sending, setSending] = useState(false)
   const [sendError, setSendError] = useState<string | null>(null)
   const [sendSuccess, setSendSuccess] = useState(false)
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
+  const [deleting, setDeleting] = useState(false)
 
   async function load() {
     setLoading(true)
@@ -179,6 +181,22 @@ export default function AdminDashboard() {
 
     return list
   }, [users, filter, search, sort])
+
+  async function deleteUser(userId: string) {
+    setDeleting(true)
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, { method: 'DELETE' })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Failed to delete user')
+      setUsers((prev) => prev.filter((u) => u.id !== userId))
+      setDeleteConfirm(null)
+    } catch (e) {
+      console.error('Delete failed:', e)
+      setDeleteConfirm(null)
+    } finally {
+      setDeleting(false)
+    }
+  }
 
   function openCongratsModal(user: AdminUser) {
     const firstName = user.fullName.split(' ')[0]
@@ -466,7 +484,7 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Actions */}
-                <div>
+                <div className="flex flex-col items-end gap-1.5">
                   {user.status === 'graduated' ? (
                     <button
                       onClick={() => openCongratsModal(user)}
@@ -480,6 +498,43 @@ export default function AdminDashboard() {
                       Auto-nudge on
                     </span>
                   ) : null}
+
+                  {/* Delete */}
+                  {!user.isAdmin && (
+                    deleteConfirm === user.id ? (
+                      <div className="flex items-center gap-1 animate-fade-in">
+                        <span className="text-xs text-tx-muted">Delete?</span>
+                        <button
+                          onClick={() => deleteUser(user.id)}
+                          disabled={deleting}
+                          className="text-xs font-semibold px-2 py-0.5 rounded transition-colors disabled:opacity-50"
+                          style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171', border: '1px solid rgba(239,68,68,0.25)' }}
+                        >
+                          {deleting ? '…' : 'Yes'}
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirm(null)}
+                          disabled={deleting}
+                          className="text-xs px-2 py-0.5 rounded text-tx-muted hover:text-tx-primary transition-colors"
+                          style={{ border: '1px solid #1E2A3B' }}
+                        >
+                          No
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => setDeleteConfirm(user.id)}
+                        className="text-tx-muted hover:text-red-400 transition-colors rounded p-0.5"
+                        title="Remove user"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="3 6 5 6 21 6"/>
+                          <path d="M19 6l-1 14H6L5 6"/>
+                          <path d="M10 11v6M14 11v6M9 6V4h6v2"/>
+                        </svg>
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
             ))}
