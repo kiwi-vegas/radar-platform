@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import type { Course, Lesson, Section } from '@/lib/types'
@@ -53,6 +53,16 @@ export default function LessonPlayer({
   const [completeError, setCompleteError] = useState<string | null>(null)
   const [showGraduation, setShowGraduation] = useState(false)
   const [certCompleted, setCertCompleted] = useState(false)
+
+  // Stamp started_at on first open so admin time-spent calc has real data.
+  // Server-side upsert ignores duplicates → re-opens don't reset the timer.
+  useEffect(() => {
+    fetch('/api/progress/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ courseSlug: course.slug, lessonId: lesson.id }),
+    }).catch(() => {})
+  }, [course.slug, lesson.id])
 
   const markComplete = useCallback(
     async (score?: number) => {

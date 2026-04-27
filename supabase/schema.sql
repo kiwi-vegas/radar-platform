@@ -17,6 +17,7 @@ create table if not exists user_lesson_progress (
   lesson_id   text not null,
   completed   boolean not null default false,
   score       int,                    -- optional: for quiz/roleplay scored lessons
+  started_at   timestamptz,           -- stamped on first lesson open; used for time-spent calc
   completed_at timestamptz,
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now(),

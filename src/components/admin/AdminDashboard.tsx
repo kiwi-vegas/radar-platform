@@ -20,6 +20,7 @@ interface AdminUser {
   inactiveDays: number | null
   isAtRisk: boolean
   lastNudge: { templateId: string; sentAt: string } | null
+  timeSpentMinutes: number
 }
 
 type FilterTab = 'all' | 'at-risk' | 'in-progress' | 'graduated' | 'not-started'
@@ -53,6 +54,14 @@ function formatRelative(dateStr: string | null): string {
 function formatDate(dateStr: string | null): string {
   if (!dateStr) return '—'
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function formatDuration(minutes: number): string {
+  if (!minutes || minutes <= 0) return '—'
+  if (minutes < 60) return `${minutes}m`
+  const h = Math.floor(minutes / 60)
+  const m = minutes % 60
+  return m === 0 ? `${h}h` : `${h}h ${m}m`
 }
 
 function StatusBadge({ user }: { user: AdminUser }) {
@@ -409,11 +418,12 @@ export default function AdminDashboard() {
           {/* Table header */}
           <div
             className="grid text-xs font-semibold text-tx-muted px-5 py-3"
-            style={{ gridTemplateColumns: '2fr 1.5fr 1.2fr 1.5fr 1.2fr auto', background: '#0D1320', borderBottom: '1px solid #1E2A3B' }}
+            style={{ gridTemplateColumns: '1.9fr 1.4fr 1.1fr 1.1fr 1.4fr 1.1fr auto', background: '#0D1320', borderBottom: '1px solid #1E2A3B' }}
           >
             <div>User</div>
             <div>Joined / Last Active</div>
             <div>Progress</div>
+            <div>Time Spent</div>
             <div>Status</div>
             <div>Last Nudge</div>
             <div></div>
@@ -426,7 +436,7 @@ export default function AdminDashboard() {
                 key={user.id}
                 className="grid px-5 py-4 items-center hover:bg-surface-card transition-colors"
                 style={{
-                  gridTemplateColumns: '2fr 1.5fr 1.2fr 1.5fr 1.2fr auto',
+                  gridTemplateColumns: '1.9fr 1.4fr 1.1fr 1.1fr 1.4fr 1.1fr auto',
                   borderTop: user.isAtRisk ? '1px solid #ef444418' : undefined,
                   background: user.isAtRisk ? '#ef444405' : undefined,
                 }}
@@ -462,6 +472,16 @@ export default function AdminDashboard() {
                 <div className="pr-4">
                   <ProgressBar pct={user.pct} graduated={!!user.graduatedAt} />
                   <p className="text-tx-muted text-xs mt-1">{user.completedLessons}/{user.totalLessons} lessons</p>
+                </div>
+
+                {/* Time Spent */}
+                <div>
+                  <p className="text-tx-secondary text-sm font-medium">{formatDuration(user.timeSpentMinutes)}</p>
+                  {user.completedLessons > 0 && user.timeSpentMinutes > 0 && (
+                    <p className="text-tx-muted text-xs mt-0.5">
+                      {user.status === 'graduated' ? 'total' : 'so far'}
+                    </p>
+                  )}
                 </div>
 
                 {/* Status */}

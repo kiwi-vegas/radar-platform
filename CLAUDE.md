@@ -136,6 +136,12 @@ Lessons without a vimeoId show a "Coming soon" placeholder.
 - Right panel shows at-risk users with quick-send buttons
 - All emails: From = Barry Jenkins, Reply-To = kiwi@ylopo.com
 
+### Time-Spent Tracking
+- `started_at` is stamped on `user_lesson_progress` the first time a user opens a lesson (idempotent upsert via `POST /api/progress/start`, fired from `LessonPlayer` on mount).
+- Admin users API computes `timeSpentMinutes` per user = sum across completed lessons of `min(completed_at − started_at, durationMinutes × 3)`.
+- Lessons completed before this tracking existed (no `started_at`) fall back to the static `durationMinutes`.
+- Cap multiplier (`TIME_CAP_MULTIPLIER = 3`) absorbs idle time / left-open tabs without punishing legitimately slow sessions.
+
 ### At-Risk Detection
 - User is "at risk" if: has started (≥1 lesson completed) + not graduated + 3+ days since last lesson activity
 - `inactiveDays` is calculated from max(completed_at) across lessons

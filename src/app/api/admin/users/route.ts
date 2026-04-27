@@ -6,11 +6,22 @@ import { allCourses, getAllLessonIds } from '@/data/courses'
 // Total lessons + valid lesson ID sets per course (pre-computed)
 const courseTotals: Record<string, number> = {}
 const courseValidLessonIds: Record<string, Set<string>> = {}
+const courseLessonDurations: Record<string, Record<string, number>> = {}
 for (const course of allCourses) {
   const ids = getAllLessonIds(course)
   courseTotals[course.slug] = ids.length
   courseValidLessonIds[course.slug] = new Set(ids)
+  const durations: Record<string, number> = {}
+  for (const section of course.sections) {
+    for (const lesson of section.lessons) {
+      durations[lesson.id] = lesson.durationMinutes ?? 0
+    }
+  }
+  courseLessonDurations[course.slug] = durations
 }
+
+// Cap per-lesson elapsed time at 3× expected duration to absorb idle / tab-left-open
+const TIME_CAP_MULTIPLIER = 3
 
 function daysSince(dateStr: string | null | undefined): number | null {
   if (!dateStr) return null
@@ -65,11 +76,13 @@ export async function GET() {
   // 4. All completed lesson progress
   const { data: progressRows } = await admin
     .from('user_lesson_progress')
-    .select('user_id, course_slug, lesson_id, completed_at')
+    .select('user_id, course_slug, lesson_id, completed_at, started_at')
     .eq('completed', true)
 
   // Group progress by user+course — only count lessons still in the course
   const progressMap = new Map<string, { count: number; maxCompletedAt: string | null }>()
+  // Total time-on-platform per user across all completed lessons
+  const timeSpentMs = new Map<string, number>()
   for (const row of progressRows ?? []) {
     const validIds = courseValidLessonIds[row.course_slug]
     if (validIds && !validIds.has(row.lesson_id)) continue
@@ -83,6 +96,20 @@ export async function GET() {
         existing.maxCompletedAt = row.completed_at
       }
     }
+
+    // Time-spent contribution for this lesson:
+    //   - both timestamps present → real elapsed, capped at 3× expected
+    //   - missing started_at (legacy) → fall back to expected durationMinutes
+    const expectedMin = courseLessonDurations[row.course_slug]?.[row.lesson_id] ?? 0
+    let lessonMs = 0
+    if (row.started_at && row.completed_at) {
+      const elapsed = new Date(row.completed_at).getTime() - new Date(row.started_at).getTime()
+      const cap = expectedMin * TIME_CAP_MULTIPLIER * 60_000
+      lessonMs = Math.max(0, Math.min(elapsed, cap || elapsed))
+    } else {
+      lessonMs = expectedMin * 60_000
+    }
+    timeSpentMs.set(row.user_id, (timeSpentMs.get(row.user_id) ?? 0) + lessonMs)
   }
 
   // 5. Last nudge sent per user
@@ -152,6 +179,7 @@ export async function GET() {
     const isAtRisk = status === 'in-progress' && (inactiveDays ?? 0) >= 3
 
     const lastNudge = lastNudgeMap.get(u.id) ?? null
+    const timeSpentMinutes = Math.round((timeSpentMs.get(u.id) ?? 0) / 60_000)
 
     return {
       id: u.id,
@@ -171,6 +199,7 @@ export async function GET() {
       inactiveDays,
       isAtRisk,
       lastNudge,
+      timeSpentMinutes,
     }
   }))
 
