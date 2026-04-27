@@ -74,10 +74,29 @@ export async function GET() {
   )
 
   // 4. All completed lesson progress
-  const { data: progressRows } = await admin
+  // Try with started_at; if the column hasn't been migrated yet, fall back so
+  // the dashboard keeps working — time-spent will use the durationMinutes estimate.
+  type ProgressRow = {
+    user_id: string
+    course_slug: string
+    lesson_id: string
+    completed_at: string | null
+    started_at?: string | null
+  }
+  let progressRows: ProgressRow[] | null = null
+  const withStartedAt = await admin
     .from('user_lesson_progress')
     .select('user_id, course_slug, lesson_id, completed_at, started_at')
     .eq('completed', true)
+  if (withStartedAt.error) {
+    const fallback = await admin
+      .from('user_lesson_progress')
+      .select('user_id, course_slug, lesson_id, completed_at')
+      .eq('completed', true)
+    progressRows = fallback.data as ProgressRow[] | null
+  } else {
+    progressRows = withStartedAt.data as ProgressRow[] | null
+  }
 
   // Group progress by user+course — only count lessons still in the course
   const progressMap = new Map<string, { count: number; maxCompletedAt: string | null }>()
