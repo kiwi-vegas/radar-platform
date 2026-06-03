@@ -120,6 +120,33 @@ function ProgressBar({ pct, graduated }: { pct: number; graduated: boolean }) {
   )
 }
 
+function exportCSV(users: AdminUser[]) {
+  const headers = ['Name', 'Email', 'Status', 'Lessons Completed', 'Total Lessons', 'Progress %', 'Time Spent (min)', 'Enrolled Date', 'Last Active', 'Graduated Date', 'Inactive Days']
+  const rows = users.map((u) => [
+    u.fullName,
+    u.email,
+    u.status === 'graduated' ? 'Graduated' : u.status === 'in-progress' ? 'In Progress' : 'Not Started',
+    u.completedLessons,
+    u.totalLessons,
+    u.pct,
+    u.timeSpentMinutes,
+    u.enrolledAt ? new Date(u.enrolledAt).toLocaleDateString('en-US') : '',
+    u.lastCourseActivityAt ? new Date(u.lastCourseActivityAt).toLocaleDateString('en-US') : '',
+    u.graduatedAt ? new Date(u.graduatedAt).toLocaleDateString('en-US') : '',
+    u.inactiveDays ?? '',
+  ])
+  const csv = [headers, ...rows]
+    .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+    .join('\n')
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `radar-users-${new Date().toISOString().slice(0, 10)}.csv`
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
 export default function AdminDashboard() {
   const [users, setUsers] = useState<AdminUser[]>([])
   const [loading, setLoading] = useState(true)
@@ -288,15 +315,30 @@ export default function AdminDashboard() {
           <h1 className="text-2xl font-bold text-tx-primary">User Progress</h1>
           <p className="text-tx-muted text-sm mt-0.5">Track and re-engage your agents</p>
         </div>
-        <button
-          onClick={load}
-          className="flex items-center gap-1.5 text-xs text-tx-muted hover:text-tx-secondary transition-colors px-3 py-2 rounded-lg hover:bg-surface-card border border-transparent hover:border-surface-border"
-        >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-          </svg>
-          Refresh
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => exportCSV(users)}
+            disabled={users.length === 0}
+            className="flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg transition-colors disabled:opacity-40"
+            style={{ background: '#7BC10915', color: '#7BC109', border: '1px solid #7BC10930' }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Export CSV
+          </button>
+          <button
+            onClick={load}
+            className="flex items-center gap-1.5 text-xs text-tx-muted hover:text-tx-secondary transition-colors px-3 py-2 rounded-lg hover:bg-surface-card border border-transparent hover:border-surface-border"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+            Refresh
+          </button>
+        </div>
       </div>
 
       {/* Stats cards */}
