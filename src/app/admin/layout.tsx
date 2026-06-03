@@ -55,6 +55,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 Email Templates
               </Link>
               <Link
+                href="/admin/invites"
+                className="px-3 py-1.5 rounded-lg text-sm text-tx-secondary hover:text-tx-primary hover:bg-surface-card transition-colors"
+              >
+                Invites
+              </Link>
+              <Link
                 href="/admin/waitlist"
                 className="px-3 py-1.5 rounded-lg text-sm text-tx-secondary hover:text-tx-primary hover:bg-surface-card transition-colors"
               >
