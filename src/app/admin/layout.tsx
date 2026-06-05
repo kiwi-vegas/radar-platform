@@ -61,6 +61,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 Invites
               </Link>
               <Link
+                href="/admin/team"
+                className="px-3 py-1.5 rounded-lg text-sm text-tx-secondary hover:text-tx-primary hover:bg-surface-card transition-colors"
+              >
+                Admin Team
+              </Link>
+              <Link
                 href="/admin/waitlist"
                 className="px-3 py-1.5 rounded-lg text-sm text-tx-secondary hover:text-tx-primary hover:bg-surface-card transition-colors"
               >
