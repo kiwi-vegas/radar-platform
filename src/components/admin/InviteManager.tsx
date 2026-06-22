@@ -50,13 +50,12 @@ export default function InviteManager() {
   const [stats, setStats] = useState<Stats>({ total: 0, accepted: 0, pending: 0 })
   const [loading, setLoading] = useState(true)
 
-  const [email, setEmail] = useState('')
+  const [emails, setEmails] = useState('')
   const [subject, setSubject] = useState(DEFAULT_SUBJECT)
   const [body, setBody] = useState(DEFAULT_BODY)
   const [showPreview, setShowPreview] = useState(false)
   const [sending, setSending] = useState(false)
-  const [sendError, setSendError] = useState<string | null>(null)
-  const [sendSuccess, setSendSuccess] = useState(false)
+  const [sendResults, setSendResults] = useState<{ sent: string[]; skipped: string[]; errors: string[] } | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'accepted'>('all')
 
   const loadInvites = useCallback(async () => {
@@ -73,24 +72,36 @@ export default function InviteManager() {
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email.trim()) return
-    setSending(true)
-    setSendError(null)
-    setSendSuccess(false)
-
-    const res = await fetch('/api/admin/invite', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.trim(), subject, body }),
+    // Parse: split on newlines, commas, or semicolons; strip whitespace; dedupe
+    const seen = new Set<string>()
+    const parsed = emails.split(/[\n,;]+/).map((s) => s.trim().toLowerCase()).filter((s) => {
+      if (!s.includes('@') || seen.has(s)) return false
+      seen.add(s)
+      return true
     })
-    const data = await res.json()
+    if (!parsed.length) return
 
-    if (res.ok) {
-      setSendSuccess(true)
-      setEmail('')
+    setSending(true)
+    setSendResults(null)
+
+    const results = { sent: [] as string[], skipped: [] as string[], errors: [] as string[] }
+
+    for (const addr of parsed) {
+      const res = await fetch('/api/admin/invite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: addr, subject, body }),
+      })
+      const data = await res.json()
+      if (res.ok) results.sent.push(addr)
+      else if (res.status === 409) results.skipped.push(addr)
+      else results.errors.push(`${addr}: ${data.error || 'failed'}`)
+    }
+
+    setSendResults(results)
+    if (results.sent.length > 0) {
+      setEmails('')
       await loadInvites()
-    } else {
-      setSendError(data.error || 'Failed to send invite')
     }
     setSending(false)
   }
@@ -129,14 +140,16 @@ export default function InviteManager() {
         <h2 className="text-sm font-semibold text-tx-primary mb-4">Send an Invite</h2>
         <form onSubmit={handleSend} className="space-y-4">
           <div>
-            <label className="block text-xs text-tx-muted mb-1.5">Email address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="agent@example.com"
+            <label className="block text-xs text-tx-muted mb-1.5">
+              Email addresses <span className="text-tx-muted font-normal">(one per line, or comma-separated)</span>
+            </label>
+            <textarea
+              value={emails}
+              onChange={(e) => setEmails(e.target.value)}
+              placeholder={`agent@example.com\nanother@example.com`}
               required
-              className="w-full px-4 py-2.5 rounded-xl text-sm text-tx-primary placeholder:text-tx-muted focus:outline-none"
+              rows={4}
+              className="w-full px-4 py-2.5 rounded-xl text-sm text-tx-primary placeholder:text-tx-muted focus:outline-none resize-y"
               style={{ background: '#0B0F1A', border: '1px solid #1E2A3B' }}
             />
           </div>
@@ -180,20 +193,23 @@ export default function InviteManager() {
             </div>
           )}
 
-          {sendError && (
-            <div
-              className="p-3 rounded-xl text-red-400 text-sm"
-              style={{ background: '#ef444415', border: '1px solid #ef444430' }}
-            >
-              {sendError}
-            </div>
-          )}
-          {sendSuccess && (
-            <div
-              className="p-3 rounded-xl text-sm"
-              style={{ background: '#7BC10915', color: '#7BC109', border: '1px solid #7BC10930' }}
-            >
-              Invite sent. Auto-nudges are scheduled if they don't sign up.
+          {sendResults && (
+            <div className="space-y-2">
+              {sendResults.sent.length > 0 && (
+                <div className="p-3 rounded-xl text-sm" style={{ background: '#7BC10915', color: '#7BC109', border: '1px solid #7BC10930' }}>
+                  ✓ {sendResults.sent.length} invite{sendResults.sent.length > 1 ? 's' : ''} sent. Auto-nudges scheduled if they don't sign up.
+                </div>
+              )}
+              {sendResults.skipped.length > 0 && (
+                <div className="p-3 rounded-xl text-sm text-tx-secondary" style={{ background: '#1E2A3B40', border: '1px solid #1E2A3B' }}>
+                  Skipped ({sendResults.skipped.length} already have a pending invite): {sendResults.skipped.join(', ')}
+                </div>
+              )}
+              {sendResults.errors.length > 0 && (
+                <div className="p-3 rounded-xl text-red-400 text-sm" style={{ background: '#ef444415', border: '1px solid #ef444430' }}>
+                  {sendResults.errors.join(' · ')}
+                </div>
+              )}
             </div>
           )}
 
@@ -203,7 +219,7 @@ export default function InviteManager() {
             className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition-opacity hover:opacity-90"
             style={{ background: '#7BC109' }}
           >
-            {sending ? 'Sending...' : 'Send Invite'}
+            {sending ? 'Sending…' : 'Send Invites'}
           </button>
         </form>
       </div>
